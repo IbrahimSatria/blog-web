@@ -1,2 +1,2 @@
 # blog-web
-A Personal Blog Website
+A Personal Blog Website Project
