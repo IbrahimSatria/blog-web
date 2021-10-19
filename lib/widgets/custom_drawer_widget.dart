@@ -37,10 +37,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           buildMenuItem(icon: Icons.home, text: 'Home'),
-          buildMenuItem(icon: Icons.people, text: 'About me'),
+          buildMenuItem(icon: Icons.people, text: 'About'),
           buildMenuItem(icon: Icons.people, text: 'Quote'),
-          buildMenuItem(icon: Icons.people, text: 'Contact me'),
-          buildMenuItem(icon: Icons.people, text: 'People'),
+          buildMenuItem(icon: Icons.people, text: 'Contact'),
+          buildMenuItem(icon: Icons.people, text: 'Blog'),
         ],
       ),
     );
