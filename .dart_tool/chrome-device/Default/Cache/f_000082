@@ -1,751 +1,894 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/freezed_annotation/freezed_annotation.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/collection/src/equality.dart'], (function load__packages__device_frame__src__theme_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__freezed_annotation__freezed_annotation$46dart, packages__flutter__src__foundation__debug$46dart, packages__collection__src__equality$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/rendering/editable.dart', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/material/text_selection_toolbar.dart', 'packages/flutter/src/material/text_selection_toolbar_text_button.dart', 'packages/flutter/src/rendering/custom_paint.dart'], (function load__packages__flutter__src__material__text_selection_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__rendering__editable$46dart, packages__flutter__src__services__text_input$46dart, packages__flutter__src__material__text_selection_toolbar$46dart, packages__flutter__src__material__text_selection_toolbar_text_button$46dart, packages__flutter__src__rendering__custom_paint$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text_selection = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text_selection;
   const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const freezed_annotation = packages__freezed_annotation__freezed_annotation$46dart.freezed_annotation;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const equality = packages__collection__src__equality$46dart.src__equality;
-  var theme = Object.create(dart.library);
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const text_selection_theme = packages__flutter__src__material__icon_button$46dart.src__material__text_selection_theme;
+  const debug = packages__flutter__src__material__icon_button$46dart.src__material__debug;
+  const material_localizations = packages__flutter__src__material__icon_button$46dart.src__material__material_localizations;
+  const editable = packages__flutter__src__rendering__editable$46dart.src__rendering__editable;
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const text_selection_toolbar = packages__flutter__src__material__text_selection_toolbar$46dart.src__material__text_selection_toolbar;
+  const text_selection_toolbar_text_button = packages__flutter__src__material__text_selection_toolbar_text_button$46dart.src__material__text_selection_toolbar_text_button;
+  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
+  var text_selection$ = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
   var $_equals = dartx._equals;
-  var $runtimeType = dartx.runtimeType;
+  var $_get = dartx._get;
+  var $length = dartx.length;
+  var $add = dartx.add;
+  var $isEmpty = dartx.isEmpty;
+  var $entries = dartx.entries;
+  var $asMap = dartx.asMap;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
   dart._checkModuleNullSafetyMode(true);
-  var T$ = {
-    DiagnosticsPropertyOfString: () => (T$.DiagnosticsPropertyOfString = dart.constFn(diagnostics.DiagnosticsProperty$(core.String)))(),
-    DiagnosticsPropertyOfDeviceKeyboardStyle: () => (T$.DiagnosticsPropertyOfDeviceKeyboardStyle = dart.constFn(diagnostics.DiagnosticsProperty$(theme.DeviceKeyboardStyle)))(),
-    DefaultEqualityOfNever: () => (T$.DefaultEqualityOfNever = dart.constFn(equality.DefaultEquality$(dart.Never)))(),
-    __$DeviceFrameStyleCopyWithImplOf_DeviceFrameStyle: () => (T$.__$DeviceFrameStyleCopyWithImplOf_DeviceFrameStyle = dart.constFn(theme.__$DeviceFrameStyleCopyWithImpl$(theme._DeviceFrameStyle)))(),
-    ObjectN: () => (T$.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
-    TToT: () => (T$.TToT = dart.constFn(dart.gFnType(T => [T, [T]], T => [T$.ObjectN()])))(),
-    DiagnosticsPropertyOfColor: () => (T$.DiagnosticsPropertyOfColor = dart.constFn(diagnostics.DiagnosticsProperty$(ui.Color)))(),
-    __$DeviceKeyboardStyleCopyWithImplOf_DeviceKeyboardStyle: () => (T$.__$DeviceKeyboardStyleCopyWithImplOf_DeviceKeyboardStyle = dart.constFn(theme.__$DeviceKeyboardStyleCopyWithImpl$(theme._DeviceKeyboardStyle)))()
+  var T = {
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    JSArrayOf_TextSelectionToolbarItemData: () => (T.JSArrayOf_TextSelectionToolbarItemData = dart.constFn(_interceptors.JSArray$(text_selection$._TextSelectionToolbarItemData)))(),
+    MapEntryOfint$_TextSelectionToolbarItemData: () => (T.MapEntryOfint$_TextSelectionToolbarItemData = dart.constFn(core.MapEntry$(core.int, text_selection$._TextSelectionToolbarItemData)))(),
+    MapEntryOfint$_TextSelectionToolbarItemDataToTextSelectionToolbarTextButton: () => (T.MapEntryOfint$_TextSelectionToolbarItemDataToTextSelectionToolbarTextButton = dart.constFn(dart.fnType(text_selection_toolbar_text_button.TextSelectionToolbarTextButton, [T.MapEntryOfint$_TextSelectionToolbarItemData()])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4294967295.0
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4283058763.0
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.Size.prototype,
+        [OffsetBase__dy]: 22,
+        [OffsetBase__dx]: 22
       });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4285361518.0
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "globalEditableRegion",
+        [_Location_column]: 7,
+        [_Location_line]: 42,
+        [_Location_file]: null
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 3710593837.0
-      });
-    },
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: theme._$_DeviceKeyboardStyle.prototype,
-        [_$_DeviceKeyboardStyle_button2ForegroundColor]: C[1] || CT.C1,
-        [_$_DeviceKeyboardStyle_button2BackgroundColor]: C[2] || CT.C2,
-        [_$_DeviceKeyboardStyle_button1ForegroundColor]: C[1] || CT.C1,
-        [_$_DeviceKeyboardStyle_button1BackgroundColor]: C[3] || CT.C3,
-        [_$_DeviceKeyboardStyle_backgroundColor]: C[4] || CT.C4
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: freezed_annotation.FreezedUnionCase.prototype,
-        [_name]: "FreezedUnionCase.none",
-        index: 0
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textLineHeight",
+        [_Location_column]: 7,
+        [_Location_line]: 43,
+        [_Location_file]: null
       });
     },
     get C5() {
       return C[5] = dart.const({
-        __proto__: freezed_annotation.Freezed.prototype,
-        [Freezed_fallbackUnion]: null,
-        [Freezed_unionValueCase]: C[6] || CT.C6,
-        [Freezed_unionKey]: null
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "selectionMidpoint",
+        [_Location_column]: 7,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "endpoints",
+        [_Location_column]: 7,
+        [_Location_line]: 45,
+        [_Location_file]: null
       });
     },
     get C7() {
       return C[7] = dart.const({
-        __proto__: diagnostics.DiagnosticLevel.prototype,
-        [_name$]: "DiagnosticLevel.info",
-        index: 3
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: T$.DefaultEqualityOfNever().prototype
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "delegate",
+        [_Location_column]: 7,
+        [_Location_line]: 46,
+        [_Location_file]: null
       });
     },
     get C8() {
       return C[8] = dart.const({
-        __proto__: equality.DeepCollectionEquality.prototype,
-        [DeepCollectionEquality__unordered]: false,
-        [DeepCollectionEquality__base]: C[9] || CT.C9
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipboardStatus",
+        [_Location_column]: 7,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "handleCut",
+        [_Location_column]: 7,
+        [_Location_line]: 48,
+        [_Location_file]: null
       });
     },
     get C10() {
-      return C[10] = dart.fn(theme._$identity, T$.TToT());
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "handleCopy",
+        [_Location_column]: 7,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: theme._$DeviceFrameStyleTearOff.prototype
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "handlePaste",
+        [_Location_column]: 7,
+        [_Location_line]: 50,
+        [_Location_file]: null
       });
     },
     get C12() {
       return C[12] = dart.const({
-        __proto__: theme._$DeviceKeyboardStyleTearOff.prototype
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "handleSelectAll",
+        [_Location_column]: 7,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], widget_inspector._Location);
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "painter",
+        [_Location_column]: 9,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15], widget_inspector._Location);
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 63,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], widget_inspector._Location);
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 27,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "angle",
+        [_Location_column]: 11,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 77,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], widget_inspector._Location);
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[22] || CT.C22,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 75,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: text_selection.TextSelectionHandleType.prototype,
+        [_name]: "TextSelectionHandleType.left",
+        index: 0
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: text_selection.TextSelectionHandleType.prototype,
+        [_name]: "TextSelectionHandleType.right",
+        index: 1
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "angle",
+        [_Location_column]: 11,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30], widget_inspector._Location);
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: text_selection.TextSelectionHandleType.prototype,
+        [_name]: "TextSelectionHandleType.collapsed",
+        index: 2
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 22
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: -4,
+        [OffsetBase__dx]: 11
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([], widget_inspector._Location);
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 196,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[35] || CT.C35,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 202,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[38] || CT.C38,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 29,
+        [_Location_line]: 251,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 41,
+        [_Location_line]: 251,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.constList([C[42] || CT.C42, C[43] || CT.C43], widget_inspector._Location);
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[41] || CT.C41,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 251,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[40] || CT.C40,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 35,
+        [_Location_line]: 261,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46], widget_inspector._Location);
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 261,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 11,
+        [_Location_line]: 259,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 11,
+        [_Location_line]: 260,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 261,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51], widget_inspector._Location);
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 258,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "anchorAbove",
+        [_Location_column]: 7,
+        [_Location_line]: 255,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "anchorBelow",
+        [_Location_column]: 7,
+        [_Location_line]: 256,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 257,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[55] || CT.C55, C[56] || CT.C56], widget_inspector._Location);
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[53] || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 254,
+        [_Location_file]: "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
       });
     }
   }, false);
-  var C = Array(13).fill(void 0);
-  var I = ["package:device_frame/src/theme.dart"];
-  var style$ = dart.privateName(theme, "DeviceFrameTheme.style");
-  theme.DeviceFrameTheme = class DeviceFrameTheme extends framework.InheritedWidget {
-    get style() {
-      return this[style$];
-    }
-    set style(value) {
-      super.style = value;
-    }
-    static of(context) {
-      let t0, t0$;
-      let widget = context.dependOnInheritedWidgetOfExactType(theme.DeviceFrameTheme);
-      t0$ = (t0 = widget, t0 == null ? null : t0.style);
-      return t0$ == null ? theme.DeviceFrameStyle.dark() : t0$;
-    }
-    updateShouldNotify(oldWidget) {
-      theme.DeviceFrameTheme.as(oldWidget);
-      return !oldWidget.style[$_equals](this.style);
-    }
-  };
-  (theme.DeviceFrameTheme.new = function(opts) {
-    let style = opts && 'style' in opts ? opts.style : null;
-    let child = opts && 'child' in opts ? opts.child : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[style$] = style;
-    theme.DeviceFrameTheme.__proto__.new.call(this, {child: child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = theme.DeviceFrameTheme.prototype;
-  dart.addTypeTests(theme.DeviceFrameTheme);
-  dart.addTypeCaches(theme.DeviceFrameTheme);
-  dart.setMethodSignature(theme.DeviceFrameTheme, () => ({
-    __proto__: dart.getMethods(theme.DeviceFrameTheme.__proto__),
-    updateShouldNotify: dart.fnType(core.bool, [dart.nullable(core.Object)])
-  }));
-  dart.setLibraryUri(theme.DeviceFrameTheme, I[0]);
-  dart.setFieldSignature(theme.DeviceFrameTheme, () => ({
-    __proto__: dart.getFields(theme.DeviceFrameTheme.__proto__),
-    style: dart.finalFieldType(theme.DeviceFrameStyle)
-  }));
-  theme._$DeviceFrameStyle = class _$36DeviceFrameStyle extends core.Object {};
-  theme._$DeviceFrameStyle[dart.mixinOn] = Object => class _$36DeviceFrameStyle extends Object {
-    get keyboardStyle() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get copyWith() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-  };
-  (theme._$DeviceFrameStyle[dart.mixinNew] = function() {
-  }).prototype = theme._$DeviceFrameStyle.prototype;
-  dart.addTypeTests(theme._$DeviceFrameStyle);
-  dart.addTypeCaches(theme._$DeviceFrameStyle);
-  theme._$DeviceFrameStyle[dart.implements] = () => [core.Object];
-  dart.setGetterSignature(theme._$DeviceFrameStyle, () => ({
-    __proto__: dart.getGetters(theme._$DeviceFrameStyle.__proto__),
-    keyboardStyle: theme.DeviceKeyboardStyle,
-    copyWith: theme.$DeviceFrameStyleCopyWith$(theme.DeviceFrameStyle)
-  }));
-  dart.setLibraryUri(theme._$DeviceFrameStyle, I[0]);
-  const Object__$36DeviceFrameStyle$36 = class Object__$36DeviceFrameStyle extends core.Object {};
-  (Object__$36DeviceFrameStyle$36.new = function() {
-  }).prototype = Object__$36DeviceFrameStyle$36.prototype;
-  dart.applyMixin(Object__$36DeviceFrameStyle$36, theme._$DeviceFrameStyle);
-  theme.DeviceFrameStyle = class DeviceFrameStyle extends Object__$36DeviceFrameStyle$36 {
-    static dark(opts) {
-      let t0;
-      let keyboardStyle = opts && 'keyboardStyle' in opts ? opts.keyboardStyle : null;
-      return new theme._$_DeviceFrameStyle.new({keyboardStyle: (t0 = keyboardStyle, t0 == null ? theme.DeviceKeyboardStyle.dark() : t0)});
-    }
-    static light(opts) {
-      let t0;
-      let keyboardStyle = opts && 'keyboardStyle' in opts ? opts.keyboardStyle : null;
-      return new theme._$_DeviceFrameStyle.new({keyboardStyle: (t0 = keyboardStyle, t0 == null ? theme.DeviceKeyboardStyle.dark() : t0)});
-    }
-  };
-  dart.addTypeTests(theme.DeviceFrameStyle);
-  dart.addTypeCaches(theme.DeviceFrameStyle);
-  dart.setLibraryUri(theme.DeviceFrameStyle, I[0]);
-  var Color_value = dart.privateName(ui, "Color.value");
-  var _$_DeviceKeyboardStyle_button2ForegroundColor = dart.privateName(theme, "_$_DeviceKeyboardStyle.button2ForegroundColor");
-  var _$_DeviceKeyboardStyle_button2BackgroundColor = dart.privateName(theme, "_$_DeviceKeyboardStyle.button2BackgroundColor");
-  var _$_DeviceKeyboardStyle_button1ForegroundColor = dart.privateName(theme, "_$_DeviceKeyboardStyle.button1ForegroundColor");
-  var _$_DeviceKeyboardStyle_button1BackgroundColor = dart.privateName(theme, "_$_DeviceKeyboardStyle.button1BackgroundColor");
-  var _$_DeviceKeyboardStyle_backgroundColor = dart.privateName(theme, "_$_DeviceKeyboardStyle.backgroundColor");
-  theme._$DeviceKeyboardStyle = class _$36DeviceKeyboardStyle extends core.Object {};
-  theme._$DeviceKeyboardStyle[dart.mixinOn] = Object => class _$36DeviceKeyboardStyle extends Object {
-    get backgroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button1BackgroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button1ForegroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button2BackgroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button2ForegroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get copyWith() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-  };
-  (theme._$DeviceKeyboardStyle[dart.mixinNew] = function() {
-  }).prototype = theme._$DeviceKeyboardStyle.prototype;
-  dart.addTypeTests(theme._$DeviceKeyboardStyle);
-  dart.addTypeCaches(theme._$DeviceKeyboardStyle);
-  theme._$DeviceKeyboardStyle[dart.implements] = () => [core.Object];
-  dart.setGetterSignature(theme._$DeviceKeyboardStyle, () => ({
-    __proto__: dart.getGetters(theme._$DeviceKeyboardStyle.__proto__),
-    backgroundColor: ui.Color,
-    button1BackgroundColor: ui.Color,
-    button1ForegroundColor: ui.Color,
-    button2BackgroundColor: ui.Color,
-    button2ForegroundColor: ui.Color,
-    copyWith: theme.$DeviceKeyboardStyleCopyWith$(theme.DeviceKeyboardStyle)
-  }));
-  dart.setLibraryUri(theme._$DeviceKeyboardStyle, I[0]);
-  const Object__$36DeviceKeyboardStyle$36 = class Object__$36DeviceKeyboardStyle extends core.Object {};
-  (Object__$36DeviceKeyboardStyle$36.new = function() {
-  }).prototype = Object__$36DeviceKeyboardStyle$36.prototype;
-  dart.applyMixin(Object__$36DeviceKeyboardStyle$36, theme._$DeviceKeyboardStyle);
-  theme.DeviceKeyboardStyle = class DeviceKeyboardStyle extends Object__$36DeviceKeyboardStyle$36 {
-    static dark() {
+  var C = Array(57).fill(void 0);
+  var I = [
+    "package:flutter/src/material/text_selection.dart",
+    "file:///C:/flutter/flutter/packages/flutter/lib/src/material/text_selection.dart"
+  ];
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _name = dart.privateName(text_selection, "_name");
+  text_selection$.MaterialTextSelectionControls = class MaterialTextSelectionControls extends text_selection.TextSelectionControls {
+    getHandleSize(textLineHeight) {
       return C[0] || CT.C0;
     }
-  };
-  dart.addTypeTests(theme.DeviceKeyboardStyle);
-  dart.addTypeCaches(theme.DeviceKeyboardStyle);
-  dart.setLibraryUri(theme.DeviceKeyboardStyle, I[0]);
-  theme._$DeviceFrameStyleTearOff = class _$36DeviceFrameStyleTearOff extends core.Object {
-    call(opts) {
-      let keyboardStyle = opts && 'keyboardStyle' in opts ? opts.keyboardStyle : null;
-      return new theme._$_DeviceFrameStyle.new({keyboardStyle: keyboardStyle});
+    buildToolbar(context, globalEditableRegion, textLineHeight, selectionMidpoint, endpoints, delegate, clipboardStatus, lastSecondaryTapDownPosition) {
+      return new text_selection$._TextSelectionControlsToolbar.new({globalEditableRegion: globalEditableRegion, textLineHeight: textLineHeight, selectionMidpoint: selectionMidpoint, endpoints: endpoints, delegate: delegate, clipboardStatus: clipboardStatus, handleCut: this.canCut(delegate) ? dart.fn(() => this.handleCut(delegate), T.VoidTovoid()) : null, handleCopy: this.canCopy(delegate) ? dart.fn(() => this.handleCopy(delegate, clipboardStatus), T.VoidTovoid()) : null, handlePaste: this.canPaste(delegate) ? dart.fn(() => this.handlePaste(delegate), T.VoidTovoid()) : null, handleSelectAll: this.canSelectAll(delegate) ? dart.fn(() => this.handleSelectAll(delegate), T.VoidTovoid()) : null, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
     }
-  };
-  (theme._$DeviceFrameStyleTearOff.new = function() {
-    ;
-  }).prototype = theme._$DeviceFrameStyleTearOff.prototype;
-  dart.addTypeTests(theme._$DeviceFrameStyleTearOff);
-  dart.addTypeCaches(theme._$DeviceFrameStyleTearOff);
-  dart.setMethodSignature(theme._$DeviceFrameStyleTearOff, () => ({
-    __proto__: dart.getMethods(theme._$DeviceFrameStyleTearOff.__proto__),
-    call: dart.fnType(theme._DeviceFrameStyle, [], {}, {keyboardStyle: theme.DeviceKeyboardStyle})
-  }));
-  dart.setLibraryUri(theme._$DeviceFrameStyleTearOff, I[0]);
-  const _is_$36DeviceFrameStyleCopyWith_default = Symbol('_is_$36DeviceFrameStyleCopyWith_default');
-  theme.$DeviceFrameStyleCopyWith$ = dart.generic($36Res => {
-    class $36DeviceFrameStyleCopyWith extends core.Object {}
-    ($36DeviceFrameStyleCopyWith[dart.mixinNew] = function() {
-    }).prototype = $36DeviceFrameStyleCopyWith.prototype;
-    dart.addTypeTests($36DeviceFrameStyleCopyWith);
-    $36DeviceFrameStyleCopyWith.prototype[_is_$36DeviceFrameStyleCopyWith_default] = true;
-    dart.addTypeCaches($36DeviceFrameStyleCopyWith);
-    dart.setLibraryUri($36DeviceFrameStyleCopyWith, I[0]);
-    return $36DeviceFrameStyleCopyWith;
-  });
-  theme.$DeviceFrameStyleCopyWith = theme.$DeviceFrameStyleCopyWith$();
-  dart.addTypeTests(theme.$DeviceFrameStyleCopyWith, _is_$36DeviceFrameStyleCopyWith_default);
-  var _value$ = dart.privateName(theme, "_$DeviceFrameStyleCopyWithImpl._value");
-  var _then$ = dart.privateName(theme, "_then");
-  var _value = dart.privateName(theme, "_value");
-  var Freezed_fallbackUnion = dart.privateName(freezed_annotation, "Freezed.fallbackUnion");
-  var _name = dart.privateName(freezed_annotation, "_name");
-  var Freezed_unionValueCase = dart.privateName(freezed_annotation, "Freezed.unionValueCase");
-  var Freezed_unionKey = dart.privateName(freezed_annotation, "Freezed.unionKey");
-  const _is__$36DeviceFrameStyleCopyWithImpl_default = Symbol('_is__$36DeviceFrameStyleCopyWithImpl_default');
-  theme._$DeviceFrameStyleCopyWithImpl$ = dart.generic($36Res => {
-    var _$DeviceKeyboardStyleCopyWithImplOf$Res = () => (_$DeviceKeyboardStyleCopyWithImplOf$Res = dart.constFn(theme._$DeviceKeyboardStyleCopyWithImpl$($36Res)))();
-    var DeviceKeyboardStyleTo$Res = () => (DeviceKeyboardStyleTo$Res = dart.constFn(dart.fnType($36Res, [theme.DeviceKeyboardStyle])))();
-    class _$36DeviceFrameStyleCopyWithImpl extends core.Object {
-      get [_value]() {
-        return this[_value$];
-      }
-      set [_value](value) {
-        super[_value] = value;
-      }
-      call(opts) {
-        let t1, t0, t0$;
-        let keyboardStyle = opts && 'keyboardStyle' in opts ? opts.keyboardStyle : C[5] || CT.C5;
-        t0$ = (t0 = this[_value], t1 = dart.equals(keyboardStyle, freezed_annotation.freezed) ? this[_value].keyboardStyle : theme.DeviceKeyboardStyle.as(keyboardStyle), t0.copyWith.call({keyboardStyle: t1}));
-        return this[_then$](t0$);
-      }
-      get keyboardStyle() {
-        return new (_$DeviceKeyboardStyleCopyWithImplOf$Res()).new(this[_value].keyboardStyle, dart.fn(value => {
-          let t1, t0, t0$;
-          t0$ = (t0 = this[_value], t1 = value, t0.copyWith.call({keyboardStyle: t1}));
-          return this[_then$](t0$);
-        }, DeviceKeyboardStyleTo$Res()));
-      }
-    }
-    (_$36DeviceFrameStyleCopyWithImpl.new = function(_value, _then) {
-      this[_value$] = _value;
-      this[_then$] = _then;
-      ;
-    }).prototype = _$36DeviceFrameStyleCopyWithImpl.prototype;
-    dart.addTypeTests(_$36DeviceFrameStyleCopyWithImpl);
-    _$36DeviceFrameStyleCopyWithImpl.prototype[_is__$36DeviceFrameStyleCopyWithImpl_default] = true;
-    dart.addTypeCaches(_$36DeviceFrameStyleCopyWithImpl);
-    _$36DeviceFrameStyleCopyWithImpl[dart.implements] = () => [theme.$DeviceFrameStyleCopyWith$($36Res)];
-    dart.setMethodSignature(_$36DeviceFrameStyleCopyWithImpl, () => ({
-      __proto__: dart.getMethods(_$36DeviceFrameStyleCopyWithImpl.__proto__),
-      call: dart.fnType($36Res, [], {keyboardStyle: dart.nullable(core.Object)}, {})
-    }));
-    dart.setGetterSignature(_$36DeviceFrameStyleCopyWithImpl, () => ({
-      __proto__: dart.getGetters(_$36DeviceFrameStyleCopyWithImpl.__proto__),
-      keyboardStyle: theme.$DeviceKeyboardStyleCopyWith$($36Res)
-    }));
-    dart.setLibraryUri(_$36DeviceFrameStyleCopyWithImpl, I[0]);
-    dart.setFieldSignature(_$36DeviceFrameStyleCopyWithImpl, () => ({
-      __proto__: dart.getFields(_$36DeviceFrameStyleCopyWithImpl.__proto__),
-      [_value]: dart.finalFieldType(theme.DeviceFrameStyle),
-      [_then$]: dart.finalFieldType(dart.fnType($36Res, [theme.DeviceFrameStyle]))
-    }));
-    return _$36DeviceFrameStyleCopyWithImpl;
-  });
-  theme._$DeviceFrameStyleCopyWithImpl = theme._$DeviceFrameStyleCopyWithImpl$();
-  dart.addTypeTests(theme._$DeviceFrameStyleCopyWithImpl, _is__$36DeviceFrameStyleCopyWithImpl_default);
-  const _is__$36DeviceFrameStyleCopyWith_default = Symbol('_is__$36DeviceFrameStyleCopyWith_default');
-  theme._$DeviceFrameStyleCopyWith$ = dart.generic($36Res => {
-    class _$36DeviceFrameStyleCopyWith extends core.Object {}
-    (_$36DeviceFrameStyleCopyWith[dart.mixinNew] = function() {
-    }).prototype = _$36DeviceFrameStyleCopyWith.prototype;
-    dart.addTypeTests(_$36DeviceFrameStyleCopyWith);
-    _$36DeviceFrameStyleCopyWith.prototype[_is__$36DeviceFrameStyleCopyWith_default] = true;
-    dart.addTypeCaches(_$36DeviceFrameStyleCopyWith);
-    _$36DeviceFrameStyleCopyWith[dart.implements] = () => [theme.$DeviceFrameStyleCopyWith$($36Res)];
-    dart.setLibraryUri(_$36DeviceFrameStyleCopyWith, I[0]);
-    return _$36DeviceFrameStyleCopyWith;
-  });
-  theme._$DeviceFrameStyleCopyWith = theme._$DeviceFrameStyleCopyWith$();
-  dart.addTypeTests(theme._$DeviceFrameStyleCopyWith, _is__$36DeviceFrameStyleCopyWith_default);
-  const _is___$36DeviceFrameStyleCopyWithImpl_default = Symbol('_is___$36DeviceFrameStyleCopyWithImpl_default');
-  theme.__$DeviceFrameStyleCopyWithImpl$ = dart.generic($36Res => {
-    var DeviceFrameStyleTo$Res = () => (DeviceFrameStyleTo$Res = dart.constFn(dart.fnType($36Res, [theme.DeviceFrameStyle])))();
-    class __$36DeviceFrameStyleCopyWithImpl extends theme._$DeviceFrameStyleCopyWithImpl$($36Res) {
-      get [_value]() {
-        return theme._DeviceFrameStyle.as(super[_value]);
-      }
-      call(opts) {
-        let t0;
-        let keyboardStyle = opts && 'keyboardStyle' in opts ? opts.keyboardStyle : C[5] || CT.C5;
-        t0 = new theme._$_DeviceFrameStyle.new({keyboardStyle: dart.equals(keyboardStyle, freezed_annotation.freezed) ? this[_value].keyboardStyle : theme.DeviceKeyboardStyle.as(keyboardStyle)});
-        return this[_then$](t0);
-      }
-    }
-    (__$36DeviceFrameStyleCopyWithImpl.new = function(_value, _then) {
-      __$36DeviceFrameStyleCopyWithImpl.__proto__.new.call(this, _value, dart.fn(v => _then(theme._DeviceFrameStyle.as(v)), DeviceFrameStyleTo$Res()));
-      ;
-    }).prototype = __$36DeviceFrameStyleCopyWithImpl.prototype;
-    dart.addTypeTests(__$36DeviceFrameStyleCopyWithImpl);
-    __$36DeviceFrameStyleCopyWithImpl.prototype[_is___$36DeviceFrameStyleCopyWithImpl_default] = true;
-    dart.addTypeCaches(__$36DeviceFrameStyleCopyWithImpl);
-    __$36DeviceFrameStyleCopyWithImpl[dart.implements] = () => [theme._$DeviceFrameStyleCopyWith$($36Res)];
-    dart.setGetterSignature(__$36DeviceFrameStyleCopyWithImpl, () => ({
-      __proto__: dart.getGetters(__$36DeviceFrameStyleCopyWithImpl.__proto__),
-      [_value]: theme._DeviceFrameStyle
-    }));
-    dart.setLibraryUri(__$36DeviceFrameStyleCopyWithImpl, I[0]);
-    return __$36DeviceFrameStyleCopyWithImpl;
-  });
-  theme.__$DeviceFrameStyleCopyWithImpl = theme.__$DeviceFrameStyleCopyWithImpl$();
-  dart.addTypeTests(theme.__$DeviceFrameStyleCopyWithImpl, _is___$36DeviceFrameStyleCopyWithImpl_default);
-  var keyboardStyle$ = dart.privateName(theme, "_$_DeviceFrameStyle.keyboardStyle");
-  var _name$ = dart.privateName(diagnostics, "_name");
-  var DeepCollectionEquality__unordered = dart.privateName(equality, "DeepCollectionEquality._unordered");
-  var DeepCollectionEquality__base = dart.privateName(equality, "DeepCollectionEquality._base");
-  const Object_DiagnosticableTreeMixin$36 = class Object_DiagnosticableTreeMixin extends core.Object {};
-  (Object_DiagnosticableTreeMixin$36.new = function() {
-  }).prototype = Object_DiagnosticableTreeMixin$36.prototype;
-  dart.applyMixin(Object_DiagnosticableTreeMixin$36, diagnostics.DiagnosticableTreeMixin);
-  theme._$_DeviceFrameStyle = class _$36_DeviceFrameStyle extends Object_DiagnosticableTreeMixin$36 {
-    get keyboardStyle() {
-      return this[keyboardStyle$];
-    }
-    set keyboardStyle(value) {
-      super.keyboardStyle = value;
-    }
-    toString(opts) {
-      let minLevel = opts && 'minLevel' in opts ? opts.minLevel : C[7] || CT.C7;
-      return "DeviceFrameStyle(keyboardStyle: " + dart.str(this.keyboardStyle) + ")";
-    }
-    debugFillProperties(properties) {
+    buildHandle(context, type, textHeight) {
       let t0;
-      super.debugFillProperties(properties);
-      t0 = properties;
-      (() => {
-        t0.add(new (T$.DiagnosticsPropertyOfString()).new("type", "DeviceFrameStyle"));
-        t0.add(new (T$.DiagnosticsPropertyOfDeviceKeyboardStyle()).new("keyboardStyle", this.keyboardStyle));
+      let theme = theme$.Theme.of(context);
+      let handleColor = (t0 = text_selection_theme.TextSelectionTheme.of(context).selectionHandleColor, t0 == null ? theme.colorScheme.primary : t0);
+      let handle = new basic.SizedBox.new({width: 22, height: 22, child: new basic.CustomPaint.new({painter: new text_selection$._TextSelectionHandlePainter.new({color: handleColor}), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+      switch (type) {
+        case C[25] || CT.C25:
+        {
+          return new basic.Transform.rotate({angle: 3.141592653589793 / 2.0, child: handle, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
+        }
+        case C[26] || CT.C26:
+        {
+          return handle;
+        }
+        case C[31] || CT.C31:
+        {
+          return new basic.Transform.rotate({angle: 3.141592653589793 / 4.0, child: handle, $creationLocationd_0dea112b090073317d4: C[27] || CT.C27});
+        }
+      }
+    }
+    getHandleAnchor(type, textLineHeight) {
+      switch (type) {
+        case C[25] || CT.C25:
+        {
+          return C[32] || CT.C32;
+        }
+        case C[26] || CT.C26:
+        {
+          return ui.Offset.zero;
+        }
+        default:
+        {
+          return C[33] || CT.C33;
+        }
+      }
+    }
+    canSelectAll(delegate) {
+      let value = delegate.textEditingValue;
+      return delegate.selectAllEnabled && value.text[$isNotEmpty] && !(value.selection.start === 0 && value.selection.end === value.text.length);
+    }
+  };
+  (text_selection$.MaterialTextSelectionControls.new = function() {
+    ;
+  }).prototype = text_selection$.MaterialTextSelectionControls.prototype;
+  dart.addTypeTests(text_selection$.MaterialTextSelectionControls);
+  dart.addTypeCaches(text_selection$.MaterialTextSelectionControls);
+  dart.setMethodSignature(text_selection$.MaterialTextSelectionControls, () => ({
+    __proto__: dart.getMethods(text_selection$.MaterialTextSelectionControls.__proto__),
+    getHandleSize: dart.fnType(ui.Size, [core.double]),
+    buildToolbar: dart.fnType(framework.Widget, [framework.BuildContext, ui.Rect, core.double, ui.Offset, core.List$(editable.TextSelectionPoint), text_input.TextSelectionDelegate, text_selection.ClipboardStatusNotifier, dart.nullable(ui.Offset)]),
+    buildHandle: dart.fnType(framework.Widget, [framework.BuildContext, text_selection.TextSelectionHandleType, core.double]),
+    getHandleAnchor: dart.fnType(ui.Offset, [text_selection.TextSelectionHandleType, core.double])
+  }));
+  dart.setLibraryUri(text_selection$.MaterialTextSelectionControls, I[0]);
+  var label$ = dart.privateName(text_selection$, "_TextSelectionToolbarItemData.label");
+  var onPressed$ = dart.privateName(text_selection$, "_TextSelectionToolbarItemData.onPressed");
+  text_selection$._TextSelectionToolbarItemData = class _TextSelectionToolbarItemData extends core.Object {
+    get label() {
+      return this[label$];
+    }
+    set label(value) {
+      super.label = value;
+    }
+    get onPressed() {
+      return this[onPressed$];
+    }
+    set onPressed(value) {
+      super.onPressed = value;
+    }
+  };
+  (text_selection$._TextSelectionToolbarItemData.new = function(opts) {
+    let label = opts && 'label' in opts ? opts.label : null;
+    let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+    this[label$] = label;
+    this[onPressed$] = onPressed;
+    ;
+  }).prototype = text_selection$._TextSelectionToolbarItemData.prototype;
+  dart.addTypeTests(text_selection$._TextSelectionToolbarItemData);
+  dart.addTypeCaches(text_selection$._TextSelectionToolbarItemData);
+  dart.setLibraryUri(text_selection$._TextSelectionToolbarItemData, I[0]);
+  dart.setFieldSignature(text_selection$._TextSelectionToolbarItemData, () => ({
+    __proto__: dart.getFields(text_selection$._TextSelectionToolbarItemData.__proto__),
+    label: dart.finalFieldType(core.String),
+    onPressed: dart.finalFieldType(dart.fnType(dart.void, []))
+  }));
+  var clipboardStatus$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.clipboardStatus");
+  var delegate$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.delegate");
+  var endpoints$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.endpoints");
+  var globalEditableRegion$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.globalEditableRegion");
+  var handleCut$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.handleCut");
+  var handleCopy$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.handleCopy");
+  var handlePaste$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.handlePaste");
+  var handleSelectAll$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.handleSelectAll");
+  var selectionMidpoint$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.selectionMidpoint");
+  var textLineHeight$ = dart.privateName(text_selection$, "_TextSelectionControlsToolbar.textLineHeight");
+  text_selection$._TextSelectionControlsToolbar = class _TextSelectionControlsToolbar extends framework.StatefulWidget {
+    get clipboardStatus() {
+      return this[clipboardStatus$];
+    }
+    set clipboardStatus(value) {
+      super.clipboardStatus = value;
+    }
+    get delegate() {
+      return this[delegate$];
+    }
+    set delegate(value) {
+      super.delegate = value;
+    }
+    get endpoints() {
+      return this[endpoints$];
+    }
+    set endpoints(value) {
+      super.endpoints = value;
+    }
+    get globalEditableRegion() {
+      return this[globalEditableRegion$];
+    }
+    set globalEditableRegion(value) {
+      super.globalEditableRegion = value;
+    }
+    get handleCut() {
+      return this[handleCut$];
+    }
+    set handleCut(value) {
+      super.handleCut = value;
+    }
+    get handleCopy() {
+      return this[handleCopy$];
+    }
+    set handleCopy(value) {
+      super.handleCopy = value;
+    }
+    get handlePaste() {
+      return this[handlePaste$];
+    }
+    set handlePaste(value) {
+      super.handlePaste = value;
+    }
+    get handleSelectAll() {
+      return this[handleSelectAll$];
+    }
+    set handleSelectAll(value) {
+      super.handleSelectAll = value;
+    }
+    get selectionMidpoint() {
+      return this[selectionMidpoint$];
+    }
+    set selectionMidpoint(value) {
+      super.selectionMidpoint = value;
+    }
+    get textLineHeight() {
+      return this[textLineHeight$];
+    }
+    set textLineHeight(value) {
+      super.textLineHeight = value;
+    }
+    createState() {
+      return new text_selection$._TextSelectionControlsToolbarState.new();
+    }
+  };
+  (text_selection$._TextSelectionControlsToolbar.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let clipboardStatus = opts && 'clipboardStatus' in opts ? opts.clipboardStatus : null;
+    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+    let endpoints = opts && 'endpoints' in opts ? opts.endpoints : null;
+    let globalEditableRegion = opts && 'globalEditableRegion' in opts ? opts.globalEditableRegion : null;
+    let handleCut = opts && 'handleCut' in opts ? opts.handleCut : null;
+    let handleCopy = opts && 'handleCopy' in opts ? opts.handleCopy : null;
+    let handlePaste = opts && 'handlePaste' in opts ? opts.handlePaste : null;
+    let handleSelectAll = opts && 'handleSelectAll' in opts ? opts.handleSelectAll : null;
+    let selectionMidpoint = opts && 'selectionMidpoint' in opts ? opts.selectionMidpoint : null;
+    let textLineHeight = opts && 'textLineHeight' in opts ? opts.textLineHeight : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[clipboardStatus$] = clipboardStatus;
+    this[delegate$] = delegate;
+    this[endpoints$] = endpoints;
+    this[globalEditableRegion$] = globalEditableRegion;
+    this[handleCut$] = handleCut;
+    this[handleCopy$] = handleCopy;
+    this[handlePaste$] = handlePaste;
+    this[handleSelectAll$] = handleSelectAll;
+    this[selectionMidpoint$] = selectionMidpoint;
+    this[textLineHeight$] = textLineHeight;
+    text_selection$._TextSelectionControlsToolbar.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = text_selection$._TextSelectionControlsToolbar.prototype;
+  dart.addTypeTests(text_selection$._TextSelectionControlsToolbar);
+  dart.addTypeCaches(text_selection$._TextSelectionControlsToolbar);
+  dart.setMethodSignature(text_selection$._TextSelectionControlsToolbar, () => ({
+    __proto__: dart.getMethods(text_selection$._TextSelectionControlsToolbar.__proto__),
+    createState: dart.fnType(text_selection$._TextSelectionControlsToolbarState, [])
+  }));
+  dart.setLibraryUri(text_selection$._TextSelectionControlsToolbar, I[0]);
+  dart.setFieldSignature(text_selection$._TextSelectionControlsToolbar, () => ({
+    __proto__: dart.getFields(text_selection$._TextSelectionControlsToolbar.__proto__),
+    clipboardStatus: dart.finalFieldType(text_selection.ClipboardStatusNotifier),
+    delegate: dart.finalFieldType(text_input.TextSelectionDelegate),
+    endpoints: dart.finalFieldType(core.List$(editable.TextSelectionPoint)),
+    globalEditableRegion: dart.finalFieldType(ui.Rect),
+    handleCut: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    handleCopy: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    handlePaste: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    handleSelectAll: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    selectionMidpoint: dart.finalFieldType(ui.Offset),
+    textLineHeight: dart.finalFieldType(core.double)
+  }));
+  var _onChangedClipboardStatus = dart.privateName(text_selection$, "_onChangedClipboardStatus");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(text_selection$._TextSelectionControlsToolbar) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(text_selection$._TextSelectionControlsToolbar)[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(text_selection$._TextSelectionControlsToolbar));
+  text_selection$._TextSelectionControlsToolbarState = class _TextSelectionControlsToolbarState extends State_TickerProviderStateMixin$36 {
+    [_onChangedClipboardStatus]() {
+      this.setState(dart.fn(() => {
+      }, T.VoidTovoid()));
+    }
+    initState() {
+      super.initState();
+      this.widget.clipboardStatus.addListener(dart.bind(this, _onChangedClipboardStatus));
+      this.widget.clipboardStatus.update();
+    }
+    didUpdateWidget(oldWidget) {
+      text_selection$._TextSelectionControlsToolbar.as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (!this.widget.clipboardStatus[$_equals](oldWidget.clipboardStatus)) {
+        this.widget.clipboardStatus.addListener(dart.bind(this, _onChangedClipboardStatus));
+        oldWidget.clipboardStatus.removeListener(dart.bind(this, _onChangedClipboardStatus));
+      }
+      this.widget.clipboardStatus.update();
+    }
+    dispose() {
+      super.dispose();
+      if (!this.widget.clipboardStatus.disposed) {
+        this.widget.clipboardStatus.removeListener(dart.bind(this, _onChangedClipboardStatus));
+      }
+    }
+    build(context) {
+      if (this.widget.handleCut == null && this.widget.handleCopy == null && this.widget.handlePaste == null && this.widget.handleSelectAll == null) {
+        return C[34] || CT.C34;
+      }
+      if (this.widget.handlePaste != null && this.widget.clipboardStatus.value === text_selection.ClipboardStatus.unknown) {
+        return C[37] || CT.C37;
+      }
+      let startTextSelectionPoint = this.widget.endpoints[$_get](0);
+      let endTextSelectionPoint = this.widget.endpoints[$length] > 1 ? this.widget.endpoints[$_get](1) : this.widget.endpoints[$_get](0);
+      let anchorAbove = new ui.Offset.new(this.widget.globalEditableRegion.left + this.widget.selectionMidpoint.dx, this.widget.globalEditableRegion.top + startTextSelectionPoint.point.dy - this.widget.textLineHeight - 8);
+      let anchorBelow = new ui.Offset.new(this.widget.globalEditableRegion.left + this.widget.selectionMidpoint.dx, this.widget.globalEditableRegion.top + endTextSelectionPoint.point.dy + 20);
+      if (!debug.debugCheckHasMaterialLocalizations(context)) dart.assertFailed(null, I[1], 223, 12, "debugCheckHasMaterialLocalizations(context)");
+      let localizations = material_localizations.MaterialLocalizations.of(context);
+      let itemDatas = (() => {
+        let t0 = T.JSArrayOf_TextSelectionToolbarItemData().of([]);
+        if (this.widget.handleCut != null) t0[$add](new text_selection$._TextSelectionToolbarItemData.new({label: localizations.cutButtonLabel, onPressed: dart.nullCheck(this.widget.handleCut)}));
+        if (this.widget.handleCopy != null) t0[$add](new text_selection$._TextSelectionToolbarItemData.new({label: localizations.copyButtonLabel, onPressed: dart.nullCheck(this.widget.handleCopy)}));
+        if (this.widget.handlePaste != null && this.widget.clipboardStatus.value === text_selection.ClipboardStatus.pasteable) t0[$add](new text_selection$._TextSelectionToolbarItemData.new({label: localizations.pasteButtonLabel, onPressed: dart.nullCheck(this.widget.handlePaste)}));
+        if (this.widget.handleSelectAll != null) t0[$add](new text_selection$._TextSelectionToolbarItemData.new({label: localizations.selectAllButtonLabel, onPressed: dart.nullCheck(this.widget.handleSelectAll)}));
         return t0;
       })();
-    }
-    _equals(other) {
-      if (other == null) return false;
-      return this === other || theme._DeviceFrameStyle.is(other) && (other.keyboardStyle === this.keyboardStyle || (C[8] || CT.C8).equals(other.keyboardStyle, this.keyboardStyle));
-    }
-    get hashCode() {
-      return (this[$runtimeType].hashCode ^ (C[8] || CT.C8).hash(this.keyboardStyle)) >>> 0;
-    }
-    get copyWith() {
-      return new (T$.__$DeviceFrameStyleCopyWithImplOf_DeviceFrameStyle()).new(this, dart.gbind(C[10] || CT.C10, theme._DeviceFrameStyle));
+      if (itemDatas[$isEmpty]) {
+        return C[39] || CT.C39;
+      }
+      return new text_selection_toolbar.TextSelectionToolbar.new({anchorAbove: anchorAbove, anchorBelow: anchorBelow, children: itemDatas[$asMap]()[$entries][$map](text_selection_toolbar_text_button.TextSelectionToolbarTextButton, dart.fn(entry => new text_selection_toolbar_text_button.TextSelectionToolbarTextButton.new({padding: text_selection_toolbar_text_button.TextSelectionToolbarTextButton.getPadding(entry.key, itemDatas[$length]), onPressed: entry.value.onPressed, child: new text.Text.new(entry.value.label, {$creationLocationd_0dea112b090073317d4: C[44] || CT.C44}), $creationLocationd_0dea112b090073317d4: C[47] || CT.C47}), T.MapEntryOfint$_TextSelectionToolbarItemDataToTextSelectionToolbarTextButton()))[$toList](), $creationLocationd_0dea112b090073317d4: C[52] || CT.C52});
     }
   };
-  (theme._$_DeviceFrameStyle.new = function(opts) {
-    let keyboardStyle = opts && 'keyboardStyle' in opts ? opts.keyboardStyle : null;
-    this[keyboardStyle$] = keyboardStyle;
+  (text_selection$._TextSelectionControlsToolbarState.new = function() {
+    text_selection$._TextSelectionControlsToolbarState.__proto__.new.call(this);
     ;
-  }).prototype = theme._$_DeviceFrameStyle.prototype;
-  dart.addTypeTests(theme._$_DeviceFrameStyle);
-  dart.addTypeCaches(theme._$_DeviceFrameStyle);
-  theme._$_DeviceFrameStyle[dart.implements] = () => [theme._DeviceFrameStyle];
-  dart.setMethodSignature(theme._$_DeviceFrameStyle, () => ({
-    __proto__: dart.getMethods(theme._$_DeviceFrameStyle.__proto__),
-    _equals: dart.fnType(core.bool, [dart.dynamic]),
-    [$_equals]: dart.fnType(core.bool, [dart.dynamic])
+  }).prototype = text_selection$._TextSelectionControlsToolbarState.prototype;
+  dart.addTypeTests(text_selection$._TextSelectionControlsToolbarState);
+  dart.addTypeCaches(text_selection$._TextSelectionControlsToolbarState);
+  dart.setMethodSignature(text_selection$._TextSelectionControlsToolbarState, () => ({
+    __proto__: dart.getMethods(text_selection$._TextSelectionControlsToolbarState.__proto__),
+    [_onChangedClipboardStatus]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
   }));
-  dart.setGetterSignature(theme._$_DeviceFrameStyle, () => ({
-    __proto__: dart.getGetters(theme._$_DeviceFrameStyle.__proto__),
-    copyWith: theme._$DeviceFrameStyleCopyWith$(theme._DeviceFrameStyle)
-  }));
-  dart.setLibraryUri(theme._$_DeviceFrameStyle, I[0]);
-  dart.setFieldSignature(theme._$_DeviceFrameStyle, () => ({
-    __proto__: dart.getFields(theme._$_DeviceFrameStyle.__proto__),
-    keyboardStyle: dart.finalFieldType(theme.DeviceKeyboardStyle)
-  }));
-  dart.defineExtensionMethods(theme._$_DeviceFrameStyle, ['toString', '_equals']);
-  dart.defineExtensionAccessors(theme._$_DeviceFrameStyle, ['hashCode']);
-  theme._DeviceFrameStyle = class _DeviceFrameStyle extends core.Object {
-    get keyboardStyle() {
-      return dart.throw(theme._privateConstructorUsedError);
+  dart.setLibraryUri(text_selection$._TextSelectionControlsToolbarState, I[0]);
+  text_selection$._TextSelectionHandlePainter = class _TextSelectionHandlePainter extends custom_paint.CustomPainter {
+    paint(canvas, size) {
+      let t1, t1$;
+      let paint = (t1 = ui.Paint.new(), (() => {
+        t1.color = this.color;
+        return t1;
+      })());
+      let radius = size.width / 2.0;
+      let circle = new ui.Rect.fromCircle({center: new ui.Offset.new(radius, radius), radius: radius});
+      let point = new ui.Rect.fromLTWH(0.0, 0.0, radius, radius);
+      let path = (t1$ = ui.Path.new(), (() => {
+        t1$.addOval(circle);
+        t1$.addRect(point);
+        return t1$;
+      })());
+      canvas.drawPath(path, paint);
     }
-    get copyWith() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-  };
-  (theme._DeviceFrameStyle[dart.mixinNew] = function() {
-  }).prototype = theme._DeviceFrameStyle.prototype;
-  dart.addTypeTests(theme._DeviceFrameStyle);
-  dart.addTypeCaches(theme._DeviceFrameStyle);
-  theme._DeviceFrameStyle[dart.implements] = () => [theme.DeviceFrameStyle];
-  dart.setGetterSignature(theme._DeviceFrameStyle, () => ({
-    __proto__: dart.getGetters(theme._DeviceFrameStyle.__proto__),
-    keyboardStyle: theme.DeviceKeyboardStyle,
-    copyWith: theme._$DeviceFrameStyleCopyWith$(theme._DeviceFrameStyle)
-  }));
-  dart.setLibraryUri(theme._DeviceFrameStyle, I[0]);
-  theme._$DeviceKeyboardStyleTearOff = class _$36DeviceKeyboardStyleTearOff extends core.Object {
-    call(opts) {
-      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-      let button1BackgroundColor = opts && 'button1BackgroundColor' in opts ? opts.button1BackgroundColor : null;
-      let button1ForegroundColor = opts && 'button1ForegroundColor' in opts ? opts.button1ForegroundColor : null;
-      let button2BackgroundColor = opts && 'button2BackgroundColor' in opts ? opts.button2BackgroundColor : null;
-      let button2ForegroundColor = opts && 'button2ForegroundColor' in opts ? opts.button2ForegroundColor : null;
-      return new theme._$_DeviceKeyboardStyle.new({backgroundColor: backgroundColor, button1BackgroundColor: button1BackgroundColor, button1ForegroundColor: button1ForegroundColor, button2BackgroundColor: button2BackgroundColor, button2ForegroundColor: button2ForegroundColor});
+    shouldRepaint(oldPainter) {
+      text_selection$._TextSelectionHandlePainter.as(oldPainter);
+      return !this.color._equals(oldPainter.color);
     }
   };
-  (theme._$DeviceKeyboardStyleTearOff.new = function() {
+  (text_selection$._TextSelectionHandlePainter.new = function(opts) {
+    let color = opts && 'color' in opts ? opts.color : null;
+    this.color = color;
+    text_selection$._TextSelectionHandlePainter.__proto__.new.call(this);
     ;
-  }).prototype = theme._$DeviceKeyboardStyleTearOff.prototype;
-  dart.addTypeTests(theme._$DeviceKeyboardStyleTearOff);
-  dart.addTypeCaches(theme._$DeviceKeyboardStyleTearOff);
-  dart.setMethodSignature(theme._$DeviceKeyboardStyleTearOff, () => ({
-    __proto__: dart.getMethods(theme._$DeviceKeyboardStyleTearOff.__proto__),
-    call: dart.fnType(theme._DeviceKeyboardStyle, [], {}, {backgroundColor: ui.Color, button1BackgroundColor: ui.Color, button1ForegroundColor: ui.Color, button2BackgroundColor: ui.Color, button2ForegroundColor: ui.Color})
+  }).prototype = text_selection$._TextSelectionHandlePainter.prototype;
+  dart.addTypeTests(text_selection$._TextSelectionHandlePainter);
+  dart.addTypeCaches(text_selection$._TextSelectionHandlePainter);
+  dart.setMethodSignature(text_selection$._TextSelectionHandlePainter, () => ({
+    __proto__: dart.getMethods(text_selection$._TextSelectionHandlePainter.__proto__),
+    paint: dart.fnType(dart.void, [ui.Canvas, ui.Size]),
+    shouldRepaint: dart.fnType(core.bool, [dart.nullable(core.Object)])
   }));
-  dart.setLibraryUri(theme._$DeviceKeyboardStyleTearOff, I[0]);
-  const _is_$36DeviceKeyboardStyleCopyWith_default = Symbol('_is_$36DeviceKeyboardStyleCopyWith_default');
-  theme.$DeviceKeyboardStyleCopyWith$ = dart.generic($36Res => {
-    class $36DeviceKeyboardStyleCopyWith extends core.Object {}
-    ($36DeviceKeyboardStyleCopyWith[dart.mixinNew] = function() {
-    }).prototype = $36DeviceKeyboardStyleCopyWith.prototype;
-    dart.addTypeTests($36DeviceKeyboardStyleCopyWith);
-    $36DeviceKeyboardStyleCopyWith.prototype[_is_$36DeviceKeyboardStyleCopyWith_default] = true;
-    dart.addTypeCaches($36DeviceKeyboardStyleCopyWith);
-    dart.setLibraryUri($36DeviceKeyboardStyleCopyWith, I[0]);
-    return $36DeviceKeyboardStyleCopyWith;
-  });
-  theme.$DeviceKeyboardStyleCopyWith = theme.$DeviceKeyboardStyleCopyWith$();
-  dart.addTypeTests(theme.$DeviceKeyboardStyleCopyWith, _is_$36DeviceKeyboardStyleCopyWith_default);
-  var _value$0 = dart.privateName(theme, "_$DeviceKeyboardStyleCopyWithImpl._value");
-  const _is__$36DeviceKeyboardStyleCopyWithImpl_default = Symbol('_is__$36DeviceKeyboardStyleCopyWithImpl_default');
-  theme._$DeviceKeyboardStyleCopyWithImpl$ = dart.generic($36Res => {
-    class _$36DeviceKeyboardStyleCopyWithImpl extends core.Object {
-      get [_value]() {
-        return this[_value$0];
-      }
-      set [_value](value) {
-        super[_value] = value;
-      }
-      call(opts) {
-        let t5, t4, t3, t2, t1, t0, t0$;
-        let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C[5] || CT.C5;
-        let button1BackgroundColor = opts && 'button1BackgroundColor' in opts ? opts.button1BackgroundColor : C[5] || CT.C5;
-        let button1ForegroundColor = opts && 'button1ForegroundColor' in opts ? opts.button1ForegroundColor : C[5] || CT.C5;
-        let button2BackgroundColor = opts && 'button2BackgroundColor' in opts ? opts.button2BackgroundColor : C[5] || CT.C5;
-        let button2ForegroundColor = opts && 'button2ForegroundColor' in opts ? opts.button2ForegroundColor : C[5] || CT.C5;
-        t0$ = (t0 = this[_value], t1 = dart.equals(backgroundColor, freezed_annotation.freezed) ? this[_value].backgroundColor : ui.Color.as(backgroundColor), t2 = dart.equals(button1BackgroundColor, freezed_annotation.freezed) ? this[_value].button1BackgroundColor : ui.Color.as(button1BackgroundColor), t3 = dart.equals(button1ForegroundColor, freezed_annotation.freezed) ? this[_value].button1ForegroundColor : ui.Color.as(button1ForegroundColor), t4 = dart.equals(button2BackgroundColor, freezed_annotation.freezed) ? this[_value].button2BackgroundColor : ui.Color.as(button2BackgroundColor), t5 = dart.equals(button2ForegroundColor, freezed_annotation.freezed) ? this[_value].button2ForegroundColor : ui.Color.as(button2ForegroundColor), t0.copyWith.call({backgroundColor: t1, button1BackgroundColor: t2, button1ForegroundColor: t3, button2BackgroundColor: t4, button2ForegroundColor: t5}));
-        return this[_then$](t0$);
-      }
-    }
-    (_$36DeviceKeyboardStyleCopyWithImpl.new = function(_value, _then) {
-      this[_value$0] = _value;
-      this[_then$] = _then;
-      ;
-    }).prototype = _$36DeviceKeyboardStyleCopyWithImpl.prototype;
-    dart.addTypeTests(_$36DeviceKeyboardStyleCopyWithImpl);
-    _$36DeviceKeyboardStyleCopyWithImpl.prototype[_is__$36DeviceKeyboardStyleCopyWithImpl_default] = true;
-    dart.addTypeCaches(_$36DeviceKeyboardStyleCopyWithImpl);
-    _$36DeviceKeyboardStyleCopyWithImpl[dart.implements] = () => [theme.$DeviceKeyboardStyleCopyWith$($36Res)];
-    dart.setMethodSignature(_$36DeviceKeyboardStyleCopyWithImpl, () => ({
-      __proto__: dart.getMethods(_$36DeviceKeyboardStyleCopyWithImpl.__proto__),
-      call: dart.fnType($36Res, [], {backgroundColor: dart.nullable(core.Object), button1BackgroundColor: dart.nullable(core.Object), button1ForegroundColor: dart.nullable(core.Object), button2BackgroundColor: dart.nullable(core.Object), button2ForegroundColor: dart.nullable(core.Object)}, {})
-    }));
-    dart.setLibraryUri(_$36DeviceKeyboardStyleCopyWithImpl, I[0]);
-    dart.setFieldSignature(_$36DeviceKeyboardStyleCopyWithImpl, () => ({
-      __proto__: dart.getFields(_$36DeviceKeyboardStyleCopyWithImpl.__proto__),
-      [_value]: dart.finalFieldType(theme.DeviceKeyboardStyle),
-      [_then$]: dart.finalFieldType(dart.fnType($36Res, [theme.DeviceKeyboardStyle]))
-    }));
-    return _$36DeviceKeyboardStyleCopyWithImpl;
-  });
-  theme._$DeviceKeyboardStyleCopyWithImpl = theme._$DeviceKeyboardStyleCopyWithImpl$();
-  dart.addTypeTests(theme._$DeviceKeyboardStyleCopyWithImpl, _is__$36DeviceKeyboardStyleCopyWithImpl_default);
-  const _is__$36DeviceKeyboardStyleCopyWith_default = Symbol('_is__$36DeviceKeyboardStyleCopyWith_default');
-  theme._$DeviceKeyboardStyleCopyWith$ = dart.generic($36Res => {
-    class _$36DeviceKeyboardStyleCopyWith extends core.Object {}
-    (_$36DeviceKeyboardStyleCopyWith[dart.mixinNew] = function() {
-    }).prototype = _$36DeviceKeyboardStyleCopyWith.prototype;
-    dart.addTypeTests(_$36DeviceKeyboardStyleCopyWith);
-    _$36DeviceKeyboardStyleCopyWith.prototype[_is__$36DeviceKeyboardStyleCopyWith_default] = true;
-    dart.addTypeCaches(_$36DeviceKeyboardStyleCopyWith);
-    _$36DeviceKeyboardStyleCopyWith[dart.implements] = () => [theme.$DeviceKeyboardStyleCopyWith$($36Res)];
-    dart.setLibraryUri(_$36DeviceKeyboardStyleCopyWith, I[0]);
-    return _$36DeviceKeyboardStyleCopyWith;
-  });
-  theme._$DeviceKeyboardStyleCopyWith = theme._$DeviceKeyboardStyleCopyWith$();
-  dart.addTypeTests(theme._$DeviceKeyboardStyleCopyWith, _is__$36DeviceKeyboardStyleCopyWith_default);
-  const _is___$36DeviceKeyboardStyleCopyWithImpl_default = Symbol('_is___$36DeviceKeyboardStyleCopyWithImpl_default');
-  theme.__$DeviceKeyboardStyleCopyWithImpl$ = dart.generic($36Res => {
-    var DeviceKeyboardStyleTo$Res = () => (DeviceKeyboardStyleTo$Res = dart.constFn(dart.fnType($36Res, [theme.DeviceKeyboardStyle])))();
-    class __$36DeviceKeyboardStyleCopyWithImpl extends theme._$DeviceKeyboardStyleCopyWithImpl$($36Res) {
-      get [_value]() {
-        return theme._DeviceKeyboardStyle.as(super[_value]);
-      }
-      call(opts) {
-        let t0;
-        let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C[5] || CT.C5;
-        let button1BackgroundColor = opts && 'button1BackgroundColor' in opts ? opts.button1BackgroundColor : C[5] || CT.C5;
-        let button1ForegroundColor = opts && 'button1ForegroundColor' in opts ? opts.button1ForegroundColor : C[5] || CT.C5;
-        let button2BackgroundColor = opts && 'button2BackgroundColor' in opts ? opts.button2BackgroundColor : C[5] || CT.C5;
-        let button2ForegroundColor = opts && 'button2ForegroundColor' in opts ? opts.button2ForegroundColor : C[5] || CT.C5;
-        t0 = new theme._$_DeviceKeyboardStyle.new({backgroundColor: dart.equals(backgroundColor, freezed_annotation.freezed) ? this[_value].backgroundColor : ui.Color.as(backgroundColor), button1BackgroundColor: dart.equals(button1BackgroundColor, freezed_annotation.freezed) ? this[_value].button1BackgroundColor : ui.Color.as(button1BackgroundColor), button1ForegroundColor: dart.equals(button1ForegroundColor, freezed_annotation.freezed) ? this[_value].button1ForegroundColor : ui.Color.as(button1ForegroundColor), button2BackgroundColor: dart.equals(button2BackgroundColor, freezed_annotation.freezed) ? this[_value].button2BackgroundColor : ui.Color.as(button2BackgroundColor), button2ForegroundColor: dart.equals(button2ForegroundColor, freezed_annotation.freezed) ? this[_value].button2ForegroundColor : ui.Color.as(button2ForegroundColor)});
-        return this[_then$](t0);
-      }
-    }
-    (__$36DeviceKeyboardStyleCopyWithImpl.new = function(_value, _then) {
-      __$36DeviceKeyboardStyleCopyWithImpl.__proto__.new.call(this, _value, dart.fn(v => _then(theme._DeviceKeyboardStyle.as(v)), DeviceKeyboardStyleTo$Res()));
-      ;
-    }).prototype = __$36DeviceKeyboardStyleCopyWithImpl.prototype;
-    dart.addTypeTests(__$36DeviceKeyboardStyleCopyWithImpl);
-    __$36DeviceKeyboardStyleCopyWithImpl.prototype[_is___$36DeviceKeyboardStyleCopyWithImpl_default] = true;
-    dart.addTypeCaches(__$36DeviceKeyboardStyleCopyWithImpl);
-    __$36DeviceKeyboardStyleCopyWithImpl[dart.implements] = () => [theme._$DeviceKeyboardStyleCopyWith$($36Res)];
-    dart.setGetterSignature(__$36DeviceKeyboardStyleCopyWithImpl, () => ({
-      __proto__: dart.getGetters(__$36DeviceKeyboardStyleCopyWithImpl.__proto__),
-      [_value]: theme._DeviceKeyboardStyle
-    }));
-    dart.setLibraryUri(__$36DeviceKeyboardStyleCopyWithImpl, I[0]);
-    return __$36DeviceKeyboardStyleCopyWithImpl;
-  });
-  theme.__$DeviceKeyboardStyleCopyWithImpl = theme.__$DeviceKeyboardStyleCopyWithImpl$();
-  dart.addTypeTests(theme.__$DeviceKeyboardStyleCopyWithImpl, _is___$36DeviceKeyboardStyleCopyWithImpl_default);
-  const backgroundColor$ = _$_DeviceKeyboardStyle_backgroundColor;
-  const button1BackgroundColor$ = _$_DeviceKeyboardStyle_button1BackgroundColor;
-  const button1ForegroundColor$ = _$_DeviceKeyboardStyle_button1ForegroundColor;
-  const button2BackgroundColor$ = _$_DeviceKeyboardStyle_button2BackgroundColor;
-  const button2ForegroundColor$ = _$_DeviceKeyboardStyle_button2ForegroundColor;
-  const Object_DiagnosticableTreeMixin$36$ = class Object_DiagnosticableTreeMixin extends core.Object {};
-  (Object_DiagnosticableTreeMixin$36$.new = function() {
-  }).prototype = Object_DiagnosticableTreeMixin$36$.prototype;
-  dart.applyMixin(Object_DiagnosticableTreeMixin$36$, diagnostics.DiagnosticableTreeMixin);
-  theme._$_DeviceKeyboardStyle = class _$36_DeviceKeyboardStyle extends Object_DiagnosticableTreeMixin$36$ {
-    get backgroundColor() {
-      return this[backgroundColor$];
-    }
-    set backgroundColor(value) {
-      super.backgroundColor = value;
-    }
-    get button1BackgroundColor() {
-      return this[button1BackgroundColor$];
-    }
-    set button1BackgroundColor(value) {
-      super.button1BackgroundColor = value;
-    }
-    get button1ForegroundColor() {
-      return this[button1ForegroundColor$];
-    }
-    set button1ForegroundColor(value) {
-      super.button1ForegroundColor = value;
-    }
-    get button2BackgroundColor() {
-      return this[button2BackgroundColor$];
-    }
-    set button2BackgroundColor(value) {
-      super.button2BackgroundColor = value;
-    }
-    get button2ForegroundColor() {
-      return this[button2ForegroundColor$];
-    }
-    set button2ForegroundColor(value) {
-      super.button2ForegroundColor = value;
-    }
-    toString(opts) {
-      let minLevel = opts && 'minLevel' in opts ? opts.minLevel : C[7] || CT.C7;
-      return "DeviceKeyboardStyle(backgroundColor: " + dart.str(this.backgroundColor) + ", button1BackgroundColor: " + dart.str(this.button1BackgroundColor) + ", button1ForegroundColor: " + dart.str(this.button1ForegroundColor) + ", button2BackgroundColor: " + dart.str(this.button2BackgroundColor) + ", button2ForegroundColor: " + dart.str(this.button2ForegroundColor) + ")";
-    }
-    debugFillProperties(properties) {
-      let t0;
-      super.debugFillProperties(properties);
-      t0 = properties;
-      (() => {
-        t0.add(new (T$.DiagnosticsPropertyOfString()).new("type", "DeviceKeyboardStyle"));
-        t0.add(new (T$.DiagnosticsPropertyOfColor()).new("backgroundColor", this.backgroundColor));
-        t0.add(new (T$.DiagnosticsPropertyOfColor()).new("button1BackgroundColor", this.button1BackgroundColor));
-        t0.add(new (T$.DiagnosticsPropertyOfColor()).new("button1ForegroundColor", this.button1ForegroundColor));
-        t0.add(new (T$.DiagnosticsPropertyOfColor()).new("button2BackgroundColor", this.button2BackgroundColor));
-        t0.add(new (T$.DiagnosticsPropertyOfColor()).new("button2ForegroundColor", this.button2ForegroundColor));
-        return t0;
-      })();
-    }
-    _equals(other) {
-      if (other == null) return false;
-      return this === other || theme._DeviceKeyboardStyle.is(other) && (other.backgroundColor === this.backgroundColor || (C[8] || CT.C8).equals(other.backgroundColor, this.backgroundColor)) && (other.button1BackgroundColor === this.button1BackgroundColor || (C[8] || CT.C8).equals(other.button1BackgroundColor, this.button1BackgroundColor)) && (other.button1ForegroundColor === this.button1ForegroundColor || (C[8] || CT.C8).equals(other.button1ForegroundColor, this.button1ForegroundColor)) && (other.button2BackgroundColor === this.button2BackgroundColor || (C[8] || CT.C8).equals(other.button2BackgroundColor, this.button2BackgroundColor)) && (other.button2ForegroundColor === this.button2ForegroundColor || (C[8] || CT.C8).equals(other.button2ForegroundColor, this.button2ForegroundColor));
-    }
-    get hashCode() {
-      return (this[$runtimeType].hashCode ^ (C[8] || CT.C8).hash(this.backgroundColor) ^ (C[8] || CT.C8).hash(this.button1BackgroundColor) ^ (C[8] || CT.C8).hash(this.button1ForegroundColor) ^ (C[8] || CT.C8).hash(this.button2BackgroundColor) ^ (C[8] || CT.C8).hash(this.button2ForegroundColor)) >>> 0;
-    }
-    get copyWith() {
-      return new (T$.__$DeviceKeyboardStyleCopyWithImplOf_DeviceKeyboardStyle()).new(this, dart.gbind(C[10] || CT.C10, theme._DeviceKeyboardStyle));
-    }
-  };
-  (theme._$_DeviceKeyboardStyle.new = function(opts) {
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let button1BackgroundColor = opts && 'button1BackgroundColor' in opts ? opts.button1BackgroundColor : null;
-    let button1ForegroundColor = opts && 'button1ForegroundColor' in opts ? opts.button1ForegroundColor : null;
-    let button2BackgroundColor = opts && 'button2BackgroundColor' in opts ? opts.button2BackgroundColor : null;
-    let button2ForegroundColor = opts && 'button2ForegroundColor' in opts ? opts.button2ForegroundColor : null;
-    this[backgroundColor$] = backgroundColor;
-    this[button1BackgroundColor$] = button1BackgroundColor;
-    this[button1ForegroundColor$] = button1ForegroundColor;
-    this[button2BackgroundColor$] = button2BackgroundColor;
-    this[button2ForegroundColor$] = button2ForegroundColor;
-    ;
-  }).prototype = theme._$_DeviceKeyboardStyle.prototype;
-  dart.addTypeTests(theme._$_DeviceKeyboardStyle);
-  dart.addTypeCaches(theme._$_DeviceKeyboardStyle);
-  theme._$_DeviceKeyboardStyle[dart.implements] = () => [theme._DeviceKeyboardStyle];
-  dart.setMethodSignature(theme._$_DeviceKeyboardStyle, () => ({
-    __proto__: dart.getMethods(theme._$_DeviceKeyboardStyle.__proto__),
-    _equals: dart.fnType(core.bool, [dart.dynamic]),
-    [$_equals]: dart.fnType(core.bool, [dart.dynamic])
+  dart.setLibraryUri(text_selection$._TextSelectionHandlePainter, I[0]);
+  dart.setFieldSignature(text_selection$._TextSelectionHandlePainter, () => ({
+    __proto__: dart.getFields(text_selection$._TextSelectionHandlePainter.__proto__),
+    color: dart.finalFieldType(ui.Color)
   }));
-  dart.setGetterSignature(theme._$_DeviceKeyboardStyle, () => ({
-    __proto__: dart.getGetters(theme._$_DeviceKeyboardStyle.__proto__),
-    copyWith: theme._$DeviceKeyboardStyleCopyWith$(theme._DeviceKeyboardStyle)
-  }));
-  dart.setLibraryUri(theme._$_DeviceKeyboardStyle, I[0]);
-  dart.setFieldSignature(theme._$_DeviceKeyboardStyle, () => ({
-    __proto__: dart.getFields(theme._$_DeviceKeyboardStyle.__proto__),
-    backgroundColor: dart.finalFieldType(ui.Color),
-    button1BackgroundColor: dart.finalFieldType(ui.Color),
-    button1ForegroundColor: dart.finalFieldType(ui.Color),
-    button2BackgroundColor: dart.finalFieldType(ui.Color),
-    button2ForegroundColor: dart.finalFieldType(ui.Color)
-  }));
-  dart.defineExtensionMethods(theme._$_DeviceKeyboardStyle, ['toString', '_equals']);
-  dart.defineExtensionAccessors(theme._$_DeviceKeyboardStyle, ['hashCode']);
-  theme._DeviceKeyboardStyle = class _DeviceKeyboardStyle extends core.Object {
-    get backgroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button1BackgroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button1ForegroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button2BackgroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get button2ForegroundColor() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-    get copyWith() {
-      return dart.throw(theme._privateConstructorUsedError);
-    }
-  };
-  (theme._DeviceKeyboardStyle[dart.mixinNew] = function() {
-  }).prototype = theme._DeviceKeyboardStyle.prototype;
-  dart.addTypeTests(theme._DeviceKeyboardStyle);
-  dart.addTypeCaches(theme._DeviceKeyboardStyle);
-  theme._DeviceKeyboardStyle[dart.implements] = () => [theme.DeviceKeyboardStyle];
-  dart.setGetterSignature(theme._DeviceKeyboardStyle, () => ({
-    __proto__: dart.getGetters(theme._DeviceKeyboardStyle.__proto__),
-    backgroundColor: ui.Color,
-    button1BackgroundColor: ui.Color,
-    button1ForegroundColor: ui.Color,
-    button2BackgroundColor: ui.Color,
-    button2ForegroundColor: ui.Color,
-    copyWith: theme._$DeviceKeyboardStyleCopyWith$(theme._DeviceKeyboardStyle)
-  }));
-  dart.setLibraryUri(theme._DeviceKeyboardStyle, I[0]);
-  theme._$identity = function _$36identity(T, value) {
-    return value;
-  };
-  dart.defineLazy(theme, {
-    /*theme._privateConstructorUsedError*/get _privateConstructorUsedError() {
-      return new core.UnsupportedError.new("It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods");
+  dart.defineLazy(text_selection$, {
+    /*text_selection$._kHandleSize*/get _kHandleSize() {
+      return 22;
     },
-    /*theme.$DeviceFrameStyle*/get $DeviceFrameStyle() {
-      return C[11] || CT.C11;
+    /*text_selection$._kToolbarContentDistanceBelow*/get _kToolbarContentDistanceBelow() {
+      return 20;
     },
-    /*theme.$DeviceKeyboardStyle*/get $DeviceKeyboardStyle() {
-      return C[12] || CT.C12;
+    /*text_selection$._kToolbarContentDistance*/get _kToolbarContentDistance() {
+      return 8;
+    },
+    /*text_selection$.materialTextSelectionControls*/get materialTextSelectionControls() {
+      return new text_selection$.MaterialTextSelectionControls.new();
     }
   }, false);
-  dart.trackLibraries("packages/device_frame/src/theme.dart", {
-    "package:device_frame/src/theme.dart": theme
+  dart.trackLibraries("packages/flutter/src/material/text_selection.dart", {
+    "package:flutter/src/material/text_selection.dart": text_selection$
   }, {
-    "package:device_frame/src/theme.dart": ["theme.freezed.dart"]
-  }, '{"version":3,"sourceRoot":"","sources":["theme.dart","theme.freezed.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/device_frame/src/theme.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["text_selection.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/material/text_selection.dart.lib.js"}');
   // Exports:
   return {
-    src__theme: theme
+    src__material__text_selection: text_selection$
   };
 }));
 
-//# sourceMappingURL=theme.dart.lib.js.map
+//# sourceMappingURL=text_selection.dart.lib.js.map

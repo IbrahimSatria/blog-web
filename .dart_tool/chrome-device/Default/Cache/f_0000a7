@@ -1,1333 +1,545 @@
-define(['dart_sdk', 'packages/petitparser/src/parser/character/predicate.dart', 'packages/petitparser/src/parser/character/code.dart'], (function load__packages__petitparser__src__parser__combinator__optional_dart(dart_sdk, packages__petitparser__src__parser__character__predicate$46dart, packages__petitparser__src__parser__character__code$46dart) {
+define(['dart_sdk', 'packages/file/src/interface/link.dart', 'packages/path/src/path_set.dart'], (function load__packages__file__src__forwarding__forwarding_link_dart(dart_sdk, packages__file__src__interface__link$46dart, packages__path__src__path_set$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
-  const collection = dart_sdk.collection;
+  const io = dart_sdk.io;
+  const async = dart_sdk.async;
+  const convert = dart_sdk.convert;
+  const typed_data = dart_sdk.typed_data;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const predicate = packages__petitparser__src__parser__character__predicate$46dart.src__parser__character__predicate;
-  const code = packages__petitparser__src__parser__character__code$46dart.src__parser__character__code;
-  var optional = Object.create(dart.library);
-  var parser = Object.create(dart.library);
-  var char$ = Object.create(dart.library);
-  var token$ = Object.create(dart.library);
-  var sequence = Object.create(dart.library);
-  var and = Object.create(dart.library);
-  var matches = Object.create(dart.library);
-  var repeating = Object.create(dart.library);
-  var possessive = Object.create(dart.library);
-  var any = Object.create(dart.library);
-  var list = Object.create(dart.library);
-  var failure_joiner = Object.create(dart.library);
-  var choice = Object.create(dart.library);
-  var delegate = Object.create(dart.library);
-  var map = Object.create(dart.library);
-  var success = Object.create(dart.library);
-  var result = Object.create(dart.library);
-  var exception = Object.create(dart.library);
-  var failure = Object.create(dart.library);
-  var parser$ = Object.create(dart.library);
-  var matches_skipping = Object.create(dart.library);
-  var token$0 = Object.create(dart.library);
-  var context = Object.create(dart.library);
-  var $_equals = dartx._equals;
-  var $runtimeType = dartx.runtimeType;
-  var $length = dartx.length;
-  var $_get = dartx._get;
-  var $codeUnitAt = dartx.codeUnitAt;
-  var $toString = dartx.toString;
-  var $substring = dartx.substring;
-  var $hashCode = dartx.hashCode;
-  var $add = dartx.add;
-  var $_set = dartx._set;
-  var $isEmpty = dartx.isEmpty;
+  const link = packages__file__src__interface__link$46dart.src__interface__link;
+  const file_system_entity = packages__file__src__interface__link$46dart.src__interface__file_system_entity;
+  const directory = packages__file__src__interface__link$46dart.src__interface__directory;
+  const file_system = packages__file__src__interface__link$46dart.src__interface__file_system;
+  const file = packages__file__src__interface__link$46dart.src__interface__file;
+  const context = packages__path__src__path_set$46dart.src__context;
+  var forwarding_link = Object.create(dart.library);
+  var forwarding_file_system_entity = Object.create(dart.library);
+  var forwarding_file_system = Object.create(dart.library);
+  var forwarding_file = Object.create(dart.library);
+  var forwarding_directory = Object.create(dart.library);
+  var forwarding = Object.create(dart.library);
+  var file$ = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
   dart._checkModuleNullSafetyMode(true);
-  var T$ = {
-    JSArrayOfParser: () => (T$.JSArrayOfParser = dart.constFn(_interceptors.JSArray$(parser$.Parser)))(),
-    LinkedHashSetOfParser: () => (T$.LinkedHashSetOfParser = dart.constFn(collection.LinkedHashSet$(parser$.Parser)))(),
-    JSArrayOfint: () => (T$.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
-    ListOfParser: () => (T$.ListOfParser = dart.constFn(core.List$(parser$.Parser)))(),
-    ParserOfList: () => (T$.ParserOfList = dart.constFn(parser$.Parser$(core.List)))(),
-    ParserToParserOfList: () => (T$.ParserToParserOfList = dart.constFn(dart.fnType(T$.ParserOfList(), [parser$.Parser])))(),
-    intN: () => (T$.intN = dart.constFn(dart.nullable(core.int)))(),
-    ObjectN: () => (T$.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
-    FailureOfTAndFailureOfTToFailureOfT: () => (T$.FailureOfTAndFailureOfTToFailureOfT = dart.constFn(dart.gFnType(T => [failure.Failure$(T), [failure.Failure$(T), failure.Failure$(T)]], T => [T$.ObjectN()])))(),
-    FailureAndFailureToFailure: () => (T$.FailureAndFailureToFailure = dart.constFn(dart.fnType(failure.Failure, [failure.Failure, failure.Failure])))(),
-    FailureAndFailureToNFailure: () => (T$.FailureAndFailureToNFailure = dart.constFn(dart.nullable(T$.FailureAndFailureToFailure())))(),
-    Parser__ToChoiceParser: () => (T$.Parser__ToChoiceParser = dart.constFn(dart.fnType(choice.ChoiceParser, [parser$.Parser], {failureJoiner: T$.FailureAndFailureToNFailure()}, {})))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
-      return C[0] = dart.constList([], parser$.Parser);
+      return C[0] = dart.const({
+        __proto__: io.FileMode.prototype,
+        [FileMode__mode]: 0
+      });
     },
     get C1() {
-      return C[1] = dart.fn(failure_joiner.selectLast, T$.FailureOfTAndFailureOfTToFailureOfT());
+      return C[1] = dart.const({
+        __proto__: io.FileMode.prototype,
+        [FileMode__mode]: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: convert.Utf8Codec.prototype,
+        [Utf8Codec__allowMalformed]: false
+      });
     }
   }, false);
-  var C = Array(2).fill(void 0);
+  var C = Array(3).fill(void 0);
   var I = [
-    "package:petitparser/src/core/parser.dart",
-    "package:petitparser/src/parser/combinator/delegate.dart",
-    "package:petitparser/src/parser/combinator/optional.dart",
-    "package:petitparser/src/parser/character/parser.dart",
-    "package:petitparser/src/parser/character/char.dart",
-    "package:petitparser/src/core/token.dart",
-    "package:petitparser/src/parser/action/token.dart",
-    "package:petitparser/src/parser/combinator/list.dart",
-    "package:petitparser/src/parser/combinator/sequence.dart",
-    "package:petitparser/src/parser/combinator/and.dart",
-    "package:petitparser/src/parser/repeater/repeating.dart",
-    "package:petitparser/src/parser/repeater/possessive.dart",
-    "package:petitparser/src/parser/predicate/any.dart",
-    "package:petitparser/src/parser/combinator/choice.dart",
-    "package:petitparser/src/parser/action/map.dart",
-    "package:petitparser/src/context/context.dart",
-    "package:petitparser/src/context/result.dart",
-    "package:petitparser/src/context/success.dart",
-    "package:petitparser/src/core/exception.dart",
-    "package:petitparser/src/context/failure.dart"
+    "package:file/src/forwarding/forwarding_link.dart",
+    "package:file/src/forwarding/forwarding_file_system_entity.dart",
+    "package:file/src/forwarding/forwarding_file_system.dart",
+    "package:file/src/forwarding/forwarding_file.dart",
+    "package:file/src/forwarding/forwarding_directory.dart"
   ];
-  var otherwise$ = dart.privateName(optional, "OptionalParser.otherwise");
-  var delegate$ = dart.privateName(delegate, "DelegateParser.delegate");
-  const _is_Parser_default = Symbol('_is_Parser_default');
-  parser$.Parser$ = dart.generic(R => {
-    class Parser extends core.Object {
-      fastParseOn(buffer, position) {
-        let result = this.parseOn(new context.Context.new(buffer, position));
-        return result.isSuccess ? result.position : -1;
-      }
-      parse(input) {
-        return this.parseOn(new context.Context.new(input, 0));
-      }
-      isEqualTo(other, seen = null) {
-        if (this[$_equals](other)) {
-          return true;
-        }
-        if (!this[$runtimeType]._equals(other[$runtimeType]) || !this.hasEqualProperties(other)) {
-          return false;
-        }
-        seen == null ? seen = T$.LinkedHashSetOfParser().new() : null;
-        return !seen.add(this) || this.hasEqualChildren(other, seen);
-      }
-      hasEqualProperties(other) {
-        parser$.Parser.as(other);
-        return true;
-      }
-      hasEqualChildren(other, seen) {
-        parser$.Parser.as(other);
-        let thisChildren = this.children;
-        let otherChildren = other.children;
-        if (thisChildren[$length] !== otherChildren[$length]) {
-          return false;
-        }
-        for (let i = 0; i < thisChildren[$length]; i = i + 1) {
-          if (!thisChildren[$_get](i).isEqualTo(otherChildren[$_get](i), seen)) {
-            return false;
-          }
-        }
-        return true;
-      }
-      get children() {
-        return C[0] || CT.C0;
-      }
-      replace(source, target) {
-      }
-      captureResultGeneric(T, callback) {
-        return callback(R, this);
-      }
+  forwarding_link.ForwardingLink = class ForwardingLink extends core.Object {
+    wrap(delegate) {
+      io.Link.as(delegate);
+      return forwarding_link.ForwardingLink.as(this.wrapLink(delegate));
     }
-    (Parser.new = function() {
-      ;
-    }).prototype = Parser.prototype;
-    dart.addTypeTests(Parser);
-    Parser.prototype[_is_Parser_default] = true;
-    dart.addTypeCaches(Parser);
-    dart.setMethodSignature(Parser, () => ({
-      __proto__: dart.getMethods(Parser.__proto__),
-      fastParseOn: dart.fnType(core.int, [core.String, core.int]),
-      parse: dart.fnType(result.Result$(R), [core.String]),
-      isEqualTo: dart.fnType(core.bool, [parser$.Parser], [dart.nullable(core.Set$(parser$.Parser))]),
-      hasEqualProperties: dart.fnType(core.bool, [dart.nullable(core.Object)]),
-      hasEqualChildren: dart.fnType(core.bool, [dart.nullable(core.Object), core.Set$(parser$.Parser)]),
-      replace: dart.fnType(dart.void, [parser$.Parser, parser$.Parser]),
-      captureResultGeneric: dart.gFnType(T => [T, [dart.gFnType(R => [T, [parser$.Parser$(R)]], R => [dart.nullable(core.Object)])]], T => [dart.nullable(core.Object)])
-    }));
-    dart.setGetterSignature(Parser, () => ({
-      __proto__: dart.getGetters(Parser.__proto__),
-      children: core.List$(parser$.Parser)
-    }));
-    dart.setLibraryUri(Parser, I[0]);
-    return Parser;
-  });
-  parser$.Parser = parser$.Parser$();
-  dart.addTypeTests(parser$.Parser, _is_Parser_default);
-  const _is_DelegateParser_default = Symbol('_is_DelegateParser_default');
-  delegate.DelegateParser$ = dart.generic((T, R) => {
-    var ParserOfT = () => (ParserOfT = dart.constFn(parser$.Parser$(T)))();
-    class DelegateParser extends parser$.Parser$(R) {
-      get delegate() {
-        return this[delegate$];
-      }
-      set delegate(value) {
-        this[delegate$] = ParserOfT().as(value);
-      }
-      get children() {
-        return T$.JSArrayOfParser().of([this.delegate]);
-      }
-      replace(source, target) {
-        super.replace(source, target);
-        if (this.delegate[$_equals](source)) {
-          this.delegate = ParserOfT().as(target);
-        }
-      }
+    create(target, opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return async.async(link.Link, (function* create() {
+        return this.wrap(yield this.delegate.create(target, {recursive: recursive}));
+      }).bind(this));
     }
-    (DelegateParser.new = function(delegate) {
-      this[delegate$] = delegate;
-      DelegateParser.__proto__.new.call(this);
-      ;
-    }).prototype = DelegateParser.prototype;
-    dart.addTypeTests(DelegateParser);
-    DelegateParser.prototype[_is_DelegateParser_default] = true;
-    dart.addTypeCaches(DelegateParser);
-    dart.setLibraryUri(DelegateParser, I[1]);
-    dart.setFieldSignature(DelegateParser, () => ({
-      __proto__: dart.getFields(DelegateParser.__proto__),
-      delegate: dart.fieldType(parser$.Parser$(T))
-    }));
-    return DelegateParser;
-  });
-  delegate.DelegateParser = delegate.DelegateParser$();
-  dart.addTypeTests(delegate.DelegateParser, _is_DelegateParser_default);
-  const _is_OptionalParser_default = Symbol('_is_OptionalParser_default');
-  optional.OptionalParser$ = dart.generic(R => {
-    var OptionalParserOfR = () => (OptionalParserOfR = dart.constFn(optional.OptionalParser$(R)))();
-    class OptionalParser extends delegate.DelegateParser$(R, R) {
-      get otherwise() {
-        return this[otherwise$];
-      }
-      set otherwise(value) {
-        super.otherwise = value;
-      }
-      parseOn(context) {
-        let result = this.delegate.parseOn(context);
-        if (result.isSuccess) {
-          return result;
-        } else {
-          return context.success(R, this.otherwise);
-        }
-      }
-      fastParseOn(buffer, position) {
-        let result = this.delegate.fastParseOn(buffer, position);
-        return result < 0 ? position : result;
-      }
-      copy() {
-        return new (OptionalParserOfR()).new(this.delegate, this.otherwise);
-      }
-      hasEqualProperties(other) {
-        OptionalParserOfR().as(other);
-        return super.hasEqualProperties(other) && dart.equals(this.otherwise, other.otherwise);
-      }
+    createSync(target, opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return this.delegate.createSync(target, {recursive: recursive});
     }
-    (OptionalParser.new = function(delegate, otherwise) {
-      this[otherwise$] = otherwise;
-      OptionalParser.__proto__.new.call(this, delegate);
-      ;
-    }).prototype = OptionalParser.prototype;
-    dart.addTypeTests(OptionalParser);
-    OptionalParser.prototype[_is_OptionalParser_default] = true;
-    dart.addTypeCaches(OptionalParser);
-    dart.setMethodSignature(OptionalParser, () => ({
-      __proto__: dart.getMethods(OptionalParser.__proto__),
-      parseOn: dart.fnType(result.Result$(R), [context.Context]),
-      copy: dart.fnType(optional.OptionalParser$(R), [])
-    }));
-    dart.setLibraryUri(OptionalParser, I[2]);
-    dart.setFieldSignature(OptionalParser, () => ({
-      __proto__: dart.getFields(OptionalParser.__proto__),
-      otherwise: dart.finalFieldType(R)
-    }));
-    return OptionalParser;
-  });
-  optional.OptionalParser = optional.OptionalParser$();
-  dart.addTypeTests(optional.OptionalParser, _is_OptionalParser_default);
-  optional['OptionalParserExtension|optional'] = function OptionalParserExtension$124optional(T, $this) {
-    return new (optional.OptionalParser$(dart.nullable(T))).new($this, null);
-  };
-  optional['OptionalParserExtension|get#optional'] = function OptionalParserExtension$124get$35optional(T, $this) {
-    return dart.fn(() => optional['OptionalParserExtension|optional'](T, $this), dart.fnType(parser$.Parser$(dart.nullable(T)), []));
-  };
-  optional['OptionalParserExtension|optionalWith'] = function OptionalParserExtension$124optionalWith(T, $this, value) {
-    return new (optional.OptionalParser$(T)).new($this, value);
-  };
-  optional['OptionalParserExtension|get#optionalWith'] = function OptionalParserExtension$124get$35optionalWith(T, $this) {
-    return dart.fn(value => optional['OptionalParserExtension|optionalWith'](T, $this, value), dart.fnType(parser$.Parser$(T), [T]));
-  };
-  var predicate$ = dart.privateName(parser, "CharacterParser.predicate");
-  var message$ = dart.privateName(parser, "CharacterParser.message");
-  parser.CharacterParser = class CharacterParser extends parser$.Parser$(core.String) {
-    get predicate() {
-      return this[predicate$];
+    update(target) {
+      return async.async(link.Link, (function* update() {
+        return this.wrap(yield this.delegate.update(target));
+      }).bind(this));
     }
-    set predicate(value) {
-      super.predicate = value;
+    updateSync(target) {
+      return this.delegate.updateSync(target);
     }
-    get message() {
-      return this[message$];
+    target() {
+      return this.delegate.target();
     }
-    set message(value) {
-      super.message = value;
-    }
-    parseOn(context) {
-      let buffer = context.buffer;
-      let position = context.position;
-      if (position < buffer.length && this.predicate.test(buffer[$codeUnitAt](position))) {
-        return context.success(core.String, buffer[$_get](position), position + 1);
-      }
-      return context.failure(core.String, this.message);
-    }
-    fastParseOn(buffer, position) {
-      return position < buffer.length && this.predicate.test(buffer[$codeUnitAt](position)) ? position + 1 : -1;
-    }
-    toString() {
-      return super[$toString]() + "[" + this.message + "]";
-    }
-    copy() {
-      return new parser.CharacterParser.new(this.predicate, this.message);
-    }
-    hasEqualProperties(other) {
-      parser.CharacterParser.as(other);
-      return super.hasEqualProperties(other) && this.predicate.isEqualTo(other.predicate) && this.message === other.message;
+    targetSync() {
+      return this.delegate.targetSync();
     }
   };
-  (parser.CharacterParser.new = function(predicate, message) {
-    this[predicate$] = predicate;
-    this[message$] = message;
-    parser.CharacterParser.__proto__.new.call(this);
+  (forwarding_link.ForwardingLink.new = function() {
     ;
-  }).prototype = parser.CharacterParser.prototype;
-  dart.addTypeTests(parser.CharacterParser);
-  dart.addTypeCaches(parser.CharacterParser);
-  dart.setMethodSignature(parser.CharacterParser, () => ({
-    __proto__: dart.getMethods(parser.CharacterParser.__proto__),
-    parseOn: dart.fnType(result.Result$(core.String), [context.Context]),
-    copy: dart.fnType(parser.CharacterParser, [])
+  }).prototype = forwarding_link.ForwardingLink.prototype;
+  dart.addTypeTests(forwarding_link.ForwardingLink);
+  dart.addTypeCaches(forwarding_link.ForwardingLink);
+  forwarding_link.ForwardingLink[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(link.Link, io.Link), link.Link];
+  dart.setMethodSignature(forwarding_link.ForwardingLink, () => ({
+    __proto__: dart.getMethods(forwarding_link.ForwardingLink.__proto__),
+    wrap: dart.fnType(forwarding_link.ForwardingLink, [dart.nullable(core.Object)]),
+    create: dart.fnType(async.Future$(link.Link), [core.String], {recursive: core.bool}, {}),
+    createSync: dart.fnType(dart.void, [core.String], {recursive: core.bool}, {}),
+    update: dart.fnType(async.Future$(link.Link), [core.String]),
+    updateSync: dart.fnType(dart.void, [core.String]),
+    target: dart.fnType(async.Future$(core.String), []),
+    targetSync: dart.fnType(core.String, [])
   }));
-  dart.setLibraryUri(parser.CharacterParser, I[3]);
-  dart.setFieldSignature(parser.CharacterParser, () => ({
-    __proto__: dart.getFields(parser.CharacterParser.__proto__),
-    predicate: dart.finalFieldType(predicate.CharacterPredicate),
-    message: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(parser.CharacterParser, ['toString']);
-  var value$ = dart.privateName(char$, "SingleCharPredicate.value");
-  char$.SingleCharPredicate = class SingleCharPredicate extends predicate.CharacterPredicate {
-    get value() {
-      return this[value$];
+  dart.setLibraryUri(forwarding_link.ForwardingLink, I[0]);
+  const _is_ForwardingFileSystemEntity_default = Symbol('_is_ForwardingFileSystemEntity_default');
+  forwarding_file_system_entity.ForwardingFileSystemEntity$ = dart.generic((T, D) => {
+    class ForwardingFileSystemEntity extends core.Object {
+      get uri() {
+        return this.delegate.uri;
+      }
+      exists() {
+        return this.delegate.exists();
+      }
+      existsSync() {
+        return this.delegate.existsSync();
+      }
+      rename(newPath) {
+        return async.async(T, (function* rename() {
+          return this.wrap(D.as(yield this.delegate.rename(newPath)));
+        }).bind(this));
+      }
+      renameSync(newPath) {
+        return this.wrap(D.as(this.delegate.renameSync(newPath)));
+      }
+      resolveSymbolicLinks() {
+        return this.delegate.resolveSymbolicLinks();
+      }
+      resolveSymbolicLinksSync() {
+        return this.delegate.resolveSymbolicLinksSync();
+      }
+      stat() {
+        return this.delegate.stat();
+      }
+      statSync() {
+        return this.delegate.statSync();
+      }
+      delete(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return async.async(T, (function* $delete() {
+          return this.wrap(D.as(yield this.delegate.delete({recursive: recursive})));
+        }).bind(this));
+      }
+      deleteSync(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return this.delegate.deleteSync({recursive: recursive});
+      }
+      watch(opts) {
+        let events = opts && 'events' in opts ? opts.events : 15;
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return this.delegate.watch({events: events, recursive: recursive});
+      }
+      get isAbsolute() {
+        return this.delegate.isAbsolute;
+      }
+      get absolute() {
+        return this.wrap(D.as(this.delegate.absolute));
+      }
+      get parent() {
+        return this.wrapDirectory(this.delegate.parent);
+      }
+      get path() {
+        return this.delegate.path;
+      }
+      get basename() {
+        return this.fileSystem.path.basename(this.path);
+      }
+      get dirname() {
+        return this.fileSystem.path.dirname(this.path);
+      }
     }
-    set value(value) {
-      super.value = value;
+    (ForwardingFileSystemEntity.new = function() {
+      ;
+    }).prototype = ForwardingFileSystemEntity.prototype;
+    dart.addTypeTests(ForwardingFileSystemEntity);
+    ForwardingFileSystemEntity.prototype[_is_ForwardingFileSystemEntity_default] = true;
+    dart.addTypeCaches(ForwardingFileSystemEntity);
+    ForwardingFileSystemEntity[dart.implements] = () => [file_system_entity.FileSystemEntity];
+    dart.setMethodSignature(ForwardingFileSystemEntity, () => ({
+      __proto__: dart.getMethods(ForwardingFileSystemEntity.__proto__),
+      exists: dart.fnType(async.Future$(core.bool), []),
+      existsSync: dart.fnType(core.bool, []),
+      rename: dart.fnType(async.Future$(T), [core.String]),
+      renameSync: dart.fnType(T, [core.String]),
+      resolveSymbolicLinks: dart.fnType(async.Future$(core.String), []),
+      resolveSymbolicLinksSync: dart.fnType(core.String, []),
+      stat: dart.fnType(async.Future$(io.FileStat), []),
+      statSync: dart.fnType(io.FileStat, []),
+      delete: dart.fnType(async.Future$(T), [], {recursive: core.bool}, {}),
+      deleteSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
+      watch: dart.fnType(async.Stream$(io.FileSystemEvent), [], {events: core.int, recursive: core.bool}, {})
+    }));
+    dart.setGetterSignature(ForwardingFileSystemEntity, () => ({
+      __proto__: dart.getGetters(ForwardingFileSystemEntity.__proto__),
+      uri: core.Uri,
+      isAbsolute: core.bool,
+      absolute: T,
+      parent: directory.Directory,
+      path: core.String,
+      basename: core.String,
+      dirname: core.String
+    }));
+    dart.setLibraryUri(ForwardingFileSystemEntity, I[1]);
+    return ForwardingFileSystemEntity;
+  });
+  forwarding_file_system_entity.ForwardingFileSystemEntity = forwarding_file_system_entity.ForwardingFileSystemEntity$();
+  dart.addTypeTests(forwarding_file_system_entity.ForwardingFileSystemEntity, _is_ForwardingFileSystemEntity_default);
+  var delegate$ = dart.privateName(forwarding_file_system, "ForwardingFileSystem.delegate");
+  forwarding_file_system.ForwardingFileSystem = class ForwardingFileSystem extends file_system.FileSystem {
+    get delegate() {
+      return this[delegate$];
     }
-    test(value) {
-      return this.value === value;
+    set delegate(value) {
+      super.delegate = value;
     }
-    isEqualTo(other) {
-      return char$.SingleCharPredicate.is(other) && other.value === this.value;
+    directory(path) {
+      return this.delegate.directory(path);
+    }
+    file(path) {
+      return this.delegate.file(path);
+    }
+    link(path) {
+      return this.delegate.link(path);
+    }
+    get path() {
+      return this.delegate.path;
+    }
+    get systemTempDirectory() {
+      return this.delegate.systemTempDirectory;
+    }
+    get currentDirectory() {
+      return this.delegate.currentDirectory;
+    }
+    set currentDirectory(path) {
+      return this.delegate.currentDirectory = path;
+    }
+    stat(path) {
+      return this.delegate.stat(path);
+    }
+    statSync(path) {
+      return this.delegate.statSync(path);
+    }
+    identical(path1, path2) {
+      return this.delegate.identical(path1, path2);
+    }
+    identicalSync(path1, path2) {
+      return this.delegate.identicalSync(path1, path2);
+    }
+    get isWatchSupported() {
+      return this.delegate.isWatchSupported;
+    }
+    type(path, opts) {
+      let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+      return this.delegate.type(path, {followLinks: followLinks});
+    }
+    typeSync(path, opts) {
+      let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+      return this.delegate.typeSync(path, {followLinks: followLinks});
     }
   };
-  (char$.SingleCharPredicate.new = function(value) {
-    this[value$] = value;
-    char$.SingleCharPredicate.__proto__.new.call(this);
+  (forwarding_file_system.ForwardingFileSystem.new = function(delegate) {
+    this[delegate$] = delegate;
+    forwarding_file_system.ForwardingFileSystem.__proto__.new.call(this);
     ;
-  }).prototype = char$.SingleCharPredicate.prototype;
-  dart.addTypeTests(char$.SingleCharPredicate);
-  dart.addTypeCaches(char$.SingleCharPredicate);
-  dart.setMethodSignature(char$.SingleCharPredicate, () => ({
-    __proto__: dart.getMethods(char$.SingleCharPredicate.__proto__),
-    test: dart.fnType(core.bool, [core.int]),
-    isEqualTo: dart.fnType(core.bool, [predicate.CharacterPredicate])
+  }).prototype = forwarding_file_system.ForwardingFileSystem.prototype;
+  dart.addTypeTests(forwarding_file_system.ForwardingFileSystem);
+  dart.addTypeCaches(forwarding_file_system.ForwardingFileSystem);
+  dart.setMethodSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getMethods(forwarding_file_system.ForwardingFileSystem.__proto__),
+    directory: dart.fnType(directory.Directory, [dart.dynamic]),
+    file: dart.fnType(file.File, [dart.dynamic]),
+    link: dart.fnType(link.Link, [dart.dynamic]),
+    stat: dart.fnType(async.Future$(io.FileStat), [core.String]),
+    statSync: dart.fnType(io.FileStat, [core.String]),
+    identical: dart.fnType(async.Future$(core.bool), [core.String, core.String]),
+    identicalSync: dart.fnType(core.bool, [core.String, core.String]),
+    type: dart.fnType(async.Future$(io.FileSystemEntityType), [core.String], {followLinks: core.bool}, {}),
+    typeSync: dart.fnType(io.FileSystemEntityType, [core.String], {followLinks: core.bool}, {})
   }));
-  dart.setLibraryUri(char$.SingleCharPredicate, I[4]);
-  dart.setFieldSignature(char$.SingleCharPredicate, () => ({
-    __proto__: dart.getFields(char$.SingleCharPredicate.__proto__),
-    value: dart.finalFieldType(core.int)
+  dart.setGetterSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getGetters(forwarding_file_system.ForwardingFileSystem.__proto__),
+    path: context.Context,
+    systemTempDirectory: directory.Directory,
+    currentDirectory: directory.Directory,
+    isWatchSupported: core.bool
   }));
-  char$.char = function char(char, message = null) {
-    let t4;
-    return new parser.CharacterParser.new(new char$.SingleCharPredicate.new(code.toCharCode(char)), (t4 = message, t4 == null ? "\"" + code.toReadableString(char) + "\" expected" : t4));
-  };
-  var value$0 = dart.privateName(token$0, "Token.value");
-  var buffer$ = dart.privateName(token$0, "Token.buffer");
-  var start$ = dart.privateName(token$0, "Token.start");
-  var stop$ = dart.privateName(token$0, "Token.stop");
-  const _is_Token_default = Symbol('_is_Token_default');
-  token$0.Token$ = dart.generic(T => {
-    class Token extends core.Object {
-      get value() {
-        return this[value$0];
-      }
-      set value(value) {
-        super.value = value;
-      }
-      get buffer() {
-        return this[buffer$];
-      }
-      set buffer(value) {
-        super.buffer = value;
-      }
-      get start() {
-        return this[start$];
-      }
-      set start(value) {
-        super.start = value;
-      }
-      get stop() {
-        return this[stop$];
-      }
-      set stop(value) {
-        super.stop = value;
-      }
-      get input() {
-        return this.buffer[$substring](this.start, this.stop);
-      }
-      get length() {
-        return this.stop - this.start;
-      }
-      get line() {
-        return token$0.Token.lineAndColumnOf(this.buffer, this.start)[$_get](0);
-      }
-      get column() {
-        return token$0.Token.lineAndColumnOf(this.buffer, this.start)[$_get](1);
-      }
-      toString() {
-        return "Token[" + token$0.Token.positionString(this.buffer, this.start) + "]: " + dart.str(this.value);
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return token$0.Token.is(other) && dart.equals(this.value, other.value) && this.start === other.start && this.stop === other.stop;
-      }
-      get hashCode() {
-        return dart.hashCode(this.value) + this.start[$hashCode] + this.stop[$hashCode];
-      }
-      static newlineParser() {
-        return token$0.Token._newlineParser;
-      }
-      static lineAndColumnOf(buffer, position) {
-        let line = 1;
-        let offset = 0;
-        let iter = matches_skipping['MatchesSkippingParser|matchesSkipping'](token$0.Token, token$['TokenParserExtension|token'](dart.dynamic, token$0.Token.newlineParser()), buffer);
-        for (let token of iter) {
-          if (position < token.stop) {
-            return T$.JSArrayOfint().of([line, position - offset + 1]);
-          }
-          line = line + 1;
-          offset = token.stop;
-        }
-        return T$.JSArrayOfint().of([line, position - offset + 1]);
-      }
-      static positionString(buffer, position) {
-        let lineAndColumn = token$0.Token.lineAndColumnOf(buffer, position);
-        return dart.str(lineAndColumn[$_get](0)) + ":" + dart.str(lineAndColumn[$_get](1));
-      }
+  dart.setSetterSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getSetters(forwarding_file_system.ForwardingFileSystem.__proto__),
+    currentDirectory: dart.dynamic
+  }));
+  dart.setLibraryUri(forwarding_file_system.ForwardingFileSystem, I[2]);
+  dart.setFieldSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getFields(forwarding_file_system.ForwardingFileSystem.__proto__),
+    delegate: dart.finalFieldType(file_system.FileSystem)
+  }));
+  var FileMode__mode = dart.privateName(io, "FileMode._mode");
+  var Utf8Codec__allowMalformed = dart.privateName(convert, "Utf8Codec._allowMalformed");
+  forwarding_file.ForwardingFile = class ForwardingFile extends core.Object {
+    wrap(delegate) {
+      io.File.as(delegate);
+      return forwarding_file.ForwardingFile.as(this.wrapFile(delegate));
     }
-    (Token.new = function(value, buffer, start, stop) {
-      this[value$0] = value;
-      this[buffer$] = buffer;
-      this[start$] = start;
-      this[stop$] = stop;
-      ;
-    }).prototype = Token.prototype;
-    dart.addTypeTests(Token);
-    Token.prototype[_is_Token_default] = true;
-    dart.addTypeCaches(Token);
-    dart.setGetterSignature(Token, () => ({
-      __proto__: dart.getGetters(Token.__proto__),
-      input: core.String,
-      length: core.int,
-      line: core.int,
-      column: core.int
-    }));
-    dart.setLibraryUri(Token, I[5]);
-    dart.setFieldSignature(Token, () => ({
-      __proto__: dart.getFields(Token.__proto__),
-      value: dart.finalFieldType(T),
-      buffer: dart.finalFieldType(core.String),
-      start: dart.finalFieldType(core.int),
-      stop: dart.finalFieldType(core.int)
-    }));
-    dart.defineExtensionMethods(Token, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Token, ['hashCode']);
-    return Token;
-  });
-  token$0.Token = token$0.Token$();
-  dart.defineLazy(token$0.Token, {
-    /*token$0.Token._newlineParser*/get _newlineParser() {
-      return choice['ChoiceParserExtension||'](char$.char("\n"), sequence['SequenceParserExtension|&'](char$.char("\r"), optional['OptionalParserExtension|optional'](core.String, char$.char("\n"))));
+    create(opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return async.async(file.File, (function* create() {
+        return this.wrap(yield this.delegate.create({recursive: recursive}));
+      }).bind(this));
     }
-  }, false);
-  dart.addTypeTests(token$0.Token, _is_Token_default);
-  const _is_TokenParser_default = Symbol('_is_TokenParser_default');
-  token$.TokenParser$ = dart.generic(R => {
-    var TokenOfR = () => (TokenOfR = dart.constFn(token$0.Token$(R)))();
-    var TokenParserOfR = () => (TokenParserOfR = dart.constFn(token$.TokenParser$(R)))();
-    class TokenParser extends delegate.DelegateParser$(R, token$0.Token$(R)) {
-      parseOn(context) {
-        let result = this.delegate.parseOn(context);
-        if (result.isSuccess) {
-          let token = new (TokenOfR()).new(result.value, context.buffer, context.position, result.position);
-          return result.success(TokenOfR(), token);
-        } else {
-          return result.failure(TokenOfR(), result.message);
-        }
-      }
-      copy() {
-        return new (TokenParserOfR()).new(this.delegate);
-      }
-      fastParseOn(buffer, position) {
-        return this.delegate.fastParseOn(buffer, position);
-      }
+    createSync(opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return this.delegate.createSync({recursive: recursive});
     }
-    (TokenParser.new = function(delegate) {
-      TokenParser.__proto__.new.call(this, delegate);
-      ;
-    }).prototype = TokenParser.prototype;
-    dart.addTypeTests(TokenParser);
-    TokenParser.prototype[_is_TokenParser_default] = true;
-    dart.addTypeCaches(TokenParser);
-    dart.setMethodSignature(TokenParser, () => ({
-      __proto__: dart.getMethods(TokenParser.__proto__),
-      parseOn: dart.fnType(result.Result$(token$0.Token$(R)), [context.Context]),
-      copy: dart.fnType(token$.TokenParser$(R), [])
-    }));
-    dart.setLibraryUri(TokenParser, I[6]);
-    return TokenParser;
-  });
-  token$.TokenParser = token$.TokenParser$();
-  dart.addTypeTests(token$.TokenParser, _is_TokenParser_default);
-  token$['TokenParserExtension|token'] = function TokenParserExtension$124token(T, $this) {
-    return new (token$.TokenParser$(T)).new($this);
-  };
-  token$['TokenParserExtension|get#token'] = function TokenParserExtension$124get$35token(T, $this) {
-    return dart.fn(() => token$['TokenParserExtension|token'](T, $this), dart.fnType(parser$.Parser$(token$0.Token$(T)), []));
-  };
-  var children$ = dart.privateName(list, "ListParser.children");
-  const _is_ListParser_default = Symbol('_is_ListParser_default');
-  list.ListParser$ = dart.generic((T, R) => {
-    var ParserOfT = () => (ParserOfT = dart.constFn(parser$.Parser$(T)))();
-    var ListOfParserOfT = () => (ListOfParserOfT = dart.constFn(core.List$(ParserOfT())))();
-    class ListParser extends parser$.Parser$(R) {
-      get children() {
-        return this[children$];
-      }
-      set children(value) {
-        super.children = value;
-      }
-      replace(source, target) {
-        super.replace(source, target);
-        for (let i = 0; i < this.children[$length]; i = i + 1) {
-          if (this.children[$_get](i)[$_equals](source)) {
-            this.children[$_set](i, ParserOfT().as(target));
-          }
-        }
-      }
+    copy(newPath) {
+      return async.async(file.File, (function* copy() {
+        return this.wrap(yield this.delegate.copy(newPath));
+      }).bind(this));
     }
-    (ListParser.new = function(children) {
-      this[children$] = ListOfParserOfT().of(children, {growable: false});
-      ListParser.__proto__.new.call(this);
-      ;
-    }).prototype = ListParser.prototype;
-    dart.addTypeTests(ListParser);
-    ListParser.prototype[_is_ListParser_default] = true;
-    dart.addTypeCaches(ListParser);
-    dart.setLibraryUri(ListParser, I[7]);
-    dart.setFieldSignature(ListParser, () => ({
-      __proto__: dart.getFields(ListParser.__proto__),
-      children: dart.finalFieldType(core.List$(parser$.Parser$(T)))
-    }));
-    return ListParser;
-  });
-  list.ListParser = list.ListParser$();
-  dart.addTypeTests(list.ListParser, _is_ListParser_default);
-  const _is_SequenceParser_default = Symbol('_is_SequenceParser_default');
-  sequence.SequenceParser$ = dart.generic(T => {
-    var JSArrayOfT = () => (JSArrayOfT = dart.constFn(_interceptors.JSArray$(T)))();
-    var ListOfT = () => (ListOfT = dart.constFn(core.List$(T)))();
-    var SequenceParserOfT = () => (SequenceParserOfT = dart.constFn(sequence.SequenceParser$(T)))();
-    class SequenceParser extends list.ListParser$(T, core.List$(T)) {
-      parseOn(context) {
-        let current = context;
-        let elements = JSArrayOfT().of([]);
-        for (let i = 0; i < this.children[$length]; i = i + 1) {
-          let result = this.children[$_get](i).parseOn(current);
-          if (result.isFailure) {
-            return result.failure(ListOfT(), result.message);
-          }
-          elements[$add](result.value);
-          current = result;
-        }
-        return current.success(ListOfT(), elements);
-      }
-      fastParseOn(buffer, position) {
-        for (let i = 0; i < this.children[$length]; i = i + 1) {
-          position = this.children[$_get](i).fastParseOn(buffer, position);
-          if (position < 0) {
-            return position;
-          }
-        }
-        return position;
-      }
-      copy() {
-        return new (SequenceParserOfT()).new(this.children);
-      }
+    copySync(newPath) {
+      return this.wrap(this.delegate.copySync(newPath));
     }
-    (SequenceParser.new = function(children) {
-      SequenceParser.__proto__.new.call(this, children);
-      ;
-    }).prototype = SequenceParser.prototype;
-    dart.addTypeTests(SequenceParser);
-    SequenceParser.prototype[_is_SequenceParser_default] = true;
-    dart.addTypeCaches(SequenceParser);
-    dart.setMethodSignature(SequenceParser, () => ({
-      __proto__: dart.getMethods(SequenceParser.__proto__),
-      parseOn: dart.fnType(result.Result$(core.List$(T)), [context.Context]),
-      copy: dart.fnType(sequence.SequenceParser$(T), [])
-    }));
-    dart.setLibraryUri(SequenceParser, I[8]);
-    return SequenceParser;
-  });
-  sequence.SequenceParser = sequence.SequenceParser$();
-  dart.addTypeTests(sequence.SequenceParser, _is_SequenceParser_default);
-  sequence['SequenceParserExtension|seq'] = function SequenceParserExtension$124seq($this, other) {
-    return sequence.SequenceParser.is($this) ? new sequence.SequenceParser.new((() => {
-      let t7 = T$.ListOfParser().of($this.children);
-      t7[$add](other);
-      return t7;
-    })()) : new sequence.SequenceParser.new(T$.JSArrayOfParser().of([$this, other]));
-  };
-  sequence['SequenceParserExtension|get#seq'] = function SequenceParserExtension$124get$35seq($this) {
-    return dart.fn(other => sequence['SequenceParserExtension|seq']($this, other), T$.ParserToParserOfList());
-  };
-  sequence['SequenceParserExtension|&'] = function SequenceParserExtension$124$38($this, other) {
-    return sequence['SequenceParserExtension|seq']($this, other);
-  };
-  sequence['SequenceIterableExtension|toSequenceParser'] = function SequenceIterableExtension$124toSequenceParser(T, $this) {
-    return new (sequence.SequenceParser$(T)).new($this);
-  };
-  sequence['SequenceIterableExtension|get#toSequenceParser'] = function SequenceIterableExtension$124get$35toSequenceParser(T, $this) {
-    return dart.fn(() => sequence['SequenceIterableExtension|toSequenceParser'](T, $this), dart.fnType(parser$.Parser$(core.List$(T)), []));
-  };
-  const _is_AndParser_default = Symbol('_is_AndParser_default');
-  and.AndParser$ = dart.generic(R => {
-    var AndParserOfR = () => (AndParserOfR = dart.constFn(and.AndParser$(R)))();
-    class AndParser extends delegate.DelegateParser$(R, R) {
-      parseOn(context) {
-        let result = this.delegate.parseOn(context);
-        if (result.isSuccess) {
-          return context.success(R, result.value);
-        } else {
-          return result;
-        }
-      }
-      fastParseOn(buffer, position) {
-        let result = this.delegate.fastParseOn(buffer, position);
-        return result < 0 ? -1 : position;
-      }
-      copy() {
-        return new (AndParserOfR()).new(this.delegate);
-      }
+    length() {
+      return this.delegate.length();
     }
-    (AndParser.new = function(delegate) {
-      AndParser.__proto__.new.call(this, delegate);
-      ;
-    }).prototype = AndParser.prototype;
-    dart.addTypeTests(AndParser);
-    AndParser.prototype[_is_AndParser_default] = true;
-    dart.addTypeCaches(AndParser);
-    dart.setMethodSignature(AndParser, () => ({
-      __proto__: dart.getMethods(AndParser.__proto__),
-      parseOn: dart.fnType(result.Result$(R), [context.Context]),
-      copy: dart.fnType(and.AndParser$(R), [])
-    }));
-    dart.setLibraryUri(AndParser, I[9]);
-    return AndParser;
-  });
-  and.AndParser = and.AndParser$();
-  dart.addTypeTests(and.AndParser, _is_AndParser_default);
-  and['AndParserExtension|and'] = function AndParserExtension$124and(T, $this) {
-    return new (and.AndParser$(T)).new($this);
-  };
-  and['AndParserExtension|get#and'] = function AndParserExtension$124get$35and(T, $this) {
-    return dart.fn(() => and['AndParserExtension|and'](T, $this), dart.fnType(parser$.Parser$(T), []));
-  };
-  matches['MatchesParser|matches'] = function MatchesParser$124matches(T, $this, input) {
-    let list = _interceptors.JSArray$(T).of([]);
-    possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, choice['ChoiceParserExtension|or'](sequence['SequenceParserExtension|seq'](map['MapParserExtension|map'](T, dart.void, and['AndParserExtension|and'](T, $this), dart.bind(list, $add), {hasSideEffects: true}), any.any()), any.any())).fastParseOn(input, 0);
-    return list;
-  };
-  matches['MatchesParser|get#matches'] = function MatchesParser$124get$35matches(T, $this) {
-    return dart.fn(input => matches['MatchesParser|matches'](T, $this, input), dart.fnType(core.List$(T), [core.String]));
-  };
-  var min$ = dart.privateName(repeating, "RepeatingParser.min");
-  var max$ = dart.privateName(repeating, "RepeatingParser.max");
-  const _is_RepeatingParser_default = Symbol('_is_RepeatingParser_default');
-  repeating.RepeatingParser$ = dart.generic(R => {
-    var RepeatingParserOfR = () => (RepeatingParserOfR = dart.constFn(repeating.RepeatingParser$(R)))();
-    class RepeatingParser extends delegate.DelegateParser$(R, core.List$(R)) {
-      get min() {
-        return this[min$];
-      }
-      set min(value) {
-        super.min = value;
-      }
-      get max() {
-        return this[max$];
-      }
-      set max(value) {
-        super.max = value;
-      }
-      toString() {
-        return super[$toString]() + "[" + dart.str(this.min) + ".." + dart.str(this.max === -1 ? "*" : this.max) + "]";
-      }
-      hasEqualProperties(other) {
-        RepeatingParserOfR().as(other);
-        return super.hasEqualProperties(other) && this.min === other.min && this.max === other.max;
-      }
+    lengthSync() {
+      return this.delegate.lengthSync();
     }
-    (RepeatingParser.new = function(parser, min, max) {
-      this[min$] = min;
-      this[max$] = max;
-      RepeatingParser.__proto__.new.call(this, parser);
-      if (this.min < 0) {
-        dart.throw(new core.ArgumentError.new("Minimum repetitions must be positive, but got " + dart.str(this.min) + "."));
-      }
-      if (this.max !== -1 && this.max < this.min) {
-        dart.throw(new core.ArgumentError.new("Maximum repetitions must be larger than " + dart.str(this.min) + ", but got " + dart.str(this.max) + "."));
-      }
-    }).prototype = RepeatingParser.prototype;
-    dart.addTypeTests(RepeatingParser);
-    RepeatingParser.prototype[_is_RepeatingParser_default] = true;
-    dart.addTypeCaches(RepeatingParser);
-    dart.setLibraryUri(RepeatingParser, I[10]);
-    dart.setFieldSignature(RepeatingParser, () => ({
-      __proto__: dart.getFields(RepeatingParser.__proto__),
-      min: dart.finalFieldType(core.int),
-      max: dart.finalFieldType(core.int)
-    }));
-    dart.defineExtensionMethods(RepeatingParser, ['toString']);
-    return RepeatingParser;
-  });
-  repeating.RepeatingParser = repeating.RepeatingParser$();
-  dart.addTypeTests(repeating.RepeatingParser, _is_RepeatingParser_default);
-  const _is_PossessiveRepeatingParser_default = Symbol('_is_PossessiveRepeatingParser_default');
-  possessive.PossessiveRepeatingParser$ = dart.generic(R => {
-    var JSArrayOfR = () => (JSArrayOfR = dart.constFn(_interceptors.JSArray$(R)))();
-    var ListOfR = () => (ListOfR = dart.constFn(core.List$(R)))();
-    var PossessiveRepeatingParserOfR = () => (PossessiveRepeatingParserOfR = dart.constFn(possessive.PossessiveRepeatingParser$(R)))();
-    class PossessiveRepeatingParser extends repeating.RepeatingParser$(R) {
-      parseOn(context) {
-        let elements = JSArrayOfR().of([]);
-        let current = context;
-        while (elements[$length] < this.min) {
-          let result = this.delegate.parseOn(current);
-          if (result.isFailure) {
-            return result.failure(ListOfR(), result.message);
-          }
-          elements[$add](result.value);
-          current = result;
-        }
-        while (this.max === -1 || elements[$length] < this.max) {
-          let result = this.delegate.parseOn(current);
-          if (result.isFailure) {
-            return current.success(ListOfR(), elements);
-          }
-          elements[$add](result.value);
-          current = result;
-        }
-        return current.success(ListOfR(), elements);
-      }
-      fastParseOn(buffer, position) {
-        let count = 0;
-        let current = position;
-        while (count < this.min) {
-          let result = this.delegate.fastParseOn(buffer, current);
-          if (result < 0) {
-            return -1;
-          }
-          current = result;
-          count = count + 1;
-        }
-        while (this.max === -1 || count < this.max) {
-          let result = this.delegate.fastParseOn(buffer, current);
-          if (result < 0) {
-            return current;
-          }
-          current = result;
-          count = count + 1;
-        }
-        return current;
-      }
-      copy() {
-        return new (PossessiveRepeatingParserOfR()).new(this.delegate, this.min, this.max);
-      }
+    lastAccessed() {
+      return this.delegate.lastAccessed();
     }
-    (PossessiveRepeatingParser.new = function(parser, min, max) {
-      PossessiveRepeatingParser.__proto__.new.call(this, parser, min, max);
-      ;
-    }).prototype = PossessiveRepeatingParser.prototype;
-    dart.addTypeTests(PossessiveRepeatingParser);
-    PossessiveRepeatingParser.prototype[_is_PossessiveRepeatingParser_default] = true;
-    dart.addTypeCaches(PossessiveRepeatingParser);
-    dart.setMethodSignature(PossessiveRepeatingParser, () => ({
-      __proto__: dart.getMethods(PossessiveRepeatingParser.__proto__),
-      parseOn: dart.fnType(result.Result$(core.List$(R)), [context.Context]),
-      copy: dart.fnType(possessive.PossessiveRepeatingParser$(R), [])
-    }));
-    dart.setLibraryUri(PossessiveRepeatingParser, I[11]);
-    return PossessiveRepeatingParser;
-  });
-  possessive.PossessiveRepeatingParser = possessive.PossessiveRepeatingParser$();
-  dart.addTypeTests(possessive.PossessiveRepeatingParser, _is_PossessiveRepeatingParser_default);
-  possessive['PossessiveRepeatingParserExtension|star'] = function PossessiveRepeatingParserExtension$124star(T, $this) {
-    return possessive['PossessiveRepeatingParserExtension|repeat'](T, $this, 0, -1);
-  };
-  possessive['PossessiveRepeatingParserExtension|get#star'] = function PossessiveRepeatingParserExtension$124get$35star(T, $this) {
-    return dart.fn(() => possessive['PossessiveRepeatingParserExtension|star'](T, $this), dart.fnType(parser$.Parser$(core.List$(T)), []));
-  };
-  possessive['PossessiveRepeatingParserExtension|plus'] = function PossessiveRepeatingParserExtension$124plus(T, $this) {
-    return possessive['PossessiveRepeatingParserExtension|repeat'](T, $this, 1, -1);
-  };
-  possessive['PossessiveRepeatingParserExtension|get#plus'] = function PossessiveRepeatingParserExtension$124get$35plus(T, $this) {
-    return dart.fn(() => possessive['PossessiveRepeatingParserExtension|plus'](T, $this), dart.fnType(parser$.Parser$(core.List$(T)), []));
-  };
-  possessive['PossessiveRepeatingParserExtension|times'] = function PossessiveRepeatingParserExtension$124times(T, $this, count) {
-    return possessive['PossessiveRepeatingParserExtension|repeat'](T, $this, count, count);
-  };
-  possessive['PossessiveRepeatingParserExtension|get#times'] = function PossessiveRepeatingParserExtension$124get$35times(T, $this) {
-    return dart.fn(count => possessive['PossessiveRepeatingParserExtension|times'](T, $this, count), dart.fnType(parser$.Parser$(core.List$(T)), [core.int]));
-  };
-  possessive['PossessiveRepeatingParserExtension|repeat'] = function PossessiveRepeatingParserExtension$124repeat(T, $this, min, max = null) {
-    let t23;
-    return new (possessive.PossessiveRepeatingParser$(T)).new($this, min, (t23 = max, t23 == null ? min : t23));
-  };
-  possessive['PossessiveRepeatingParserExtension|get#repeat'] = function PossessiveRepeatingParserExtension$124get$35repeat(T, $this) {
-    return dart.fn((min, max = null) => possessive['PossessiveRepeatingParserExtension|repeat'](T, $this, min, max), dart.fnType(parser$.Parser$(core.List$(T)), [core.int], [T$.intN()]));
-  };
-  var message$0 = dart.privateName(any, "AnyParser.message");
-  any.AnyParser = class AnyParser extends parser$.Parser$(core.String) {
-    get message() {
-      return this[message$0];
+    lastAccessedSync() {
+      return this.delegate.lastAccessedSync();
     }
-    set message(value) {
-      super.message = value;
+    setLastAccessed(time) {
+      return this.delegate.setLastAccessed(time);
     }
-    parseOn(context) {
-      let buffer = context.buffer;
-      let position = context.position;
-      return position < buffer.length ? context.success(core.String, buffer[$_get](position), position + 1) : context.failure(core.String, this.message);
+    setLastAccessedSync(time) {
+      return this.delegate.setLastAccessedSync(time);
     }
-    fastParseOn(buffer, position) {
-      return position < buffer.length ? position + 1 : -1;
+    lastModified() {
+      return this.delegate.lastModified();
     }
-    copy() {
-      return new any.AnyParser.new(this.message);
+    lastModifiedSync() {
+      return this.delegate.lastModifiedSync();
     }
-    hasEqualProperties(other) {
-      any.AnyParser.as(other);
-      return super.hasEqualProperties(other) && this.message === other.message;
+    setLastModified(time) {
+      return this.delegate.setLastModified(time);
+    }
+    setLastModifiedSync(time) {
+      return this.delegate.setLastModifiedSync(time);
+    }
+    open(opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[0] || CT.C0;
+      return this.delegate.open({mode: mode});
+    }
+    openSync(opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[0] || CT.C0;
+      return this.delegate.openSync({mode: mode});
+    }
+    openRead(start = null, end = null) {
+      return this.delegate.openRead(start, end);
+    }
+    openWrite(opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.openWrite({mode: mode, encoding: encoding});
+    }
+    readAsBytes() {
+      return this.delegate.readAsBytes();
+    }
+    readAsBytesSync() {
+      return this.delegate.readAsBytesSync();
+    }
+    readAsString(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsString({encoding: encoding});
+    }
+    readAsStringSync(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsStringSync({encoding: encoding});
+    }
+    readAsLines(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsLines({encoding: encoding});
+    }
+    readAsLinesSync(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsLinesSync({encoding: encoding});
+    }
+    writeAsBytes(bytes, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return async.async(file.File, (function* writeAsBytes() {
+        return this.wrap(yield this.delegate.writeAsBytes(bytes, {mode: mode, flush: flush}));
+      }).bind(this));
+    }
+    writeAsBytesSync(bytes, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return this.delegate.writeAsBytesSync(bytes, {mode: mode, flush: flush});
+    }
+    writeAsString(contents, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return async.async(file.File, (function* writeAsString() {
+        return this.wrap(yield this.delegate.writeAsString(contents, {mode: mode, encoding: encoding, flush: flush}));
+      }).bind(this));
+    }
+    writeAsStringSync(contents, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return this.delegate.writeAsStringSync(contents, {mode: mode, encoding: encoding, flush: flush});
     }
   };
-  (any.AnyParser.new = function(message) {
-    this[message$0] = message;
-    any.AnyParser.__proto__.new.call(this);
+  (forwarding_file.ForwardingFile.new = function() {
     ;
-  }).prototype = any.AnyParser.prototype;
-  dart.addTypeTests(any.AnyParser);
-  dart.addTypeCaches(any.AnyParser);
-  dart.setMethodSignature(any.AnyParser, () => ({
-    __proto__: dart.getMethods(any.AnyParser.__proto__),
-    parseOn: dart.fnType(result.Result$(core.String), [context.Context]),
-    copy: dart.fnType(any.AnyParser, [])
+  }).prototype = forwarding_file.ForwardingFile.prototype;
+  dart.addTypeTests(forwarding_file.ForwardingFile);
+  dart.addTypeCaches(forwarding_file.ForwardingFile);
+  forwarding_file.ForwardingFile[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(file.File, io.File), file.File];
+  dart.setMethodSignature(forwarding_file.ForwardingFile, () => ({
+    __proto__: dart.getMethods(forwarding_file.ForwardingFile.__proto__),
+    wrap: dart.fnType(forwarding_file.ForwardingFile, [dart.nullable(core.Object)]),
+    create: dart.fnType(async.Future$(file.File), [], {recursive: core.bool}, {}),
+    createSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
+    copy: dart.fnType(async.Future$(file.File), [core.String]),
+    copySync: dart.fnType(file.File, [core.String]),
+    length: dart.fnType(async.Future$(core.int), []),
+    lengthSync: dart.fnType(core.int, []),
+    lastAccessed: dart.fnType(async.Future$(core.DateTime), []),
+    lastAccessedSync: dart.fnType(core.DateTime, []),
+    setLastAccessed: dart.fnType(async.Future, [core.DateTime]),
+    setLastAccessedSync: dart.fnType(dart.void, [core.DateTime]),
+    lastModified: dart.fnType(async.Future$(core.DateTime), []),
+    lastModifiedSync: dart.fnType(core.DateTime, []),
+    setLastModified: dart.fnType(async.Future, [core.DateTime]),
+    setLastModifiedSync: dart.fnType(dart.void, [core.DateTime]),
+    open: dart.fnType(async.Future$(io.RandomAccessFile), [], {mode: io.FileMode}, {}),
+    openSync: dart.fnType(io.RandomAccessFile, [], {mode: io.FileMode}, {}),
+    openRead: dart.fnType(async.Stream$(core.List$(core.int)), [], [dart.nullable(core.int), dart.nullable(core.int)]),
+    openWrite: dart.fnType(io.IOSink, [], {encoding: convert.Encoding, mode: io.FileMode}, {}),
+    readAsBytes: dart.fnType(async.Future$(typed_data.Uint8List), []),
+    readAsBytesSync: dart.fnType(typed_data.Uint8List, []),
+    readAsString: dart.fnType(async.Future$(core.String), [], {encoding: convert.Encoding}, {}),
+    readAsStringSync: dart.fnType(core.String, [], {encoding: convert.Encoding}, {}),
+    readAsLines: dart.fnType(async.Future$(core.List$(core.String)), [], {encoding: convert.Encoding}, {}),
+    readAsLinesSync: dart.fnType(core.List$(core.String), [], {encoding: convert.Encoding}, {}),
+    writeAsBytes: dart.fnType(async.Future$(file.File), [core.List$(core.int)], {flush: core.bool, mode: io.FileMode}, {}),
+    writeAsBytesSync: dart.fnType(dart.void, [core.List$(core.int)], {flush: core.bool, mode: io.FileMode}, {}),
+    writeAsString: dart.fnType(async.Future$(file.File), [core.String], {encoding: convert.Encoding, flush: core.bool, mode: io.FileMode}, {}),
+    writeAsStringSync: dart.fnType(dart.void, [core.String], {encoding: convert.Encoding, flush: core.bool, mode: io.FileMode}, {})
   }));
-  dart.setLibraryUri(any.AnyParser, I[12]);
-  dart.setFieldSignature(any.AnyParser, () => ({
-    __proto__: dart.getFields(any.AnyParser.__proto__),
-    message: dart.finalFieldType(core.String)
-  }));
-  any.any = function any$(message = "input expected") {
-    return new any.AnyParser.new(message);
-  };
-  failure_joiner.selectFirst = function selectFirst(T, first, second) {
-    return first;
-  };
-  failure_joiner.selectLast = function selectLast(T, first, second) {
-    return second;
-  };
-  failure_joiner.selectFarthest = function selectFarthest(T, first, second) {
-    return first.position <= second.position ? second : first;
-  };
-  failure_joiner.selectFarthestJoined = function selectFarthestJoined(T, first, second) {
-    return first.position > second.position ? first : first.position < second.position ? second : first.failure(T, first.message + " OR " + second.message);
-  };
-  var failureJoiner$ = dart.privateName(choice, "ChoiceParser.failureJoiner");
-  const _is_ChoiceParser_default = Symbol('_is_ChoiceParser_default');
-  choice.ChoiceParser$ = dart.generic(T => {
-    var FailureOfT = () => (FailureOfT = dart.constFn(failure.Failure$(T)))();
-    var FailureOfTAndFailureOfTToFailureOfT = () => (FailureOfTAndFailureOfTToFailureOfT = dart.constFn(dart.fnType(FailureOfT(), [FailureOfT(), FailureOfT()])))();
-    var ChoiceParserOfT = () => (ChoiceParserOfT = dart.constFn(choice.ChoiceParser$(T)))();
-    class ChoiceParser extends list.ListParser$(T, T) {
-      get failureJoiner() {
-        return this[failureJoiner$];
+  dart.setLibraryUri(forwarding_file.ForwardingFile, I[3]);
+  var _wrap = dart.privateName(forwarding_directory, "_wrap");
+  const _is_ForwardingDirectory_default = Symbol('_is_ForwardingDirectory_default');
+  forwarding_directory.ForwardingDirectory$ = dart.generic(T => {
+    class ForwardingDirectory extends core.Object {
+      wrap(delegate) {
+        io.Directory.as(delegate);
+        return T.as(this.wrapDirectory(delegate));
       }
-      set failureJoiner(value) {
-        super.failureJoiner = value;
+      create(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return async.async(directory.Directory, (function* create() {
+          return this.wrap(yield this.delegate.create({recursive: recursive}));
+        }).bind(this));
       }
-      withFailureJoiner(failureJoiner) {
-        FailureOfTAndFailureOfTToFailureOfT().as(failureJoiner);
-        return new (ChoiceParserOfT()).new(this.children, {failureJoiner: failureJoiner});
+      createSync(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return this.delegate.createSync({recursive: recursive});
       }
-      parseOn(context) {
-        let t25, t24;
-        let failure = null;
-        for (let i = 0; i < this.children[$length]; i = i + 1) {
-          let result = this.children[$_get](i).parseOn(context);
-          if (FailureOfT().is(result)) {
-            failure = failure == null ? result : (t24 = failure, t25 = result, this.failureJoiner(t24, t25));
-          } else {
-            return result;
-          }
+      createTemp(prefix = null) {
+        return async.async(directory.Directory, (function* createTemp() {
+          return this.wrap(yield this.delegate.createTemp(prefix));
+        }).bind(this));
+      }
+      createTempSync(prefix = null) {
+        return this.wrap(this.delegate.createTempSync(prefix));
+      }
+      list(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+        return this.delegate.list({recursive: recursive, followLinks: followLinks}).map(file_system_entity.FileSystemEntity, dart.bind(this, _wrap));
+      }
+      listSync(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+        return this.delegate.listSync({recursive: recursive, followLinks: followLinks})[$map](file_system_entity.FileSystemEntity, dart.bind(this, _wrap))[$toList]();
+      }
+      [_wrap](entity) {
+        if (io.File.is(entity)) {
+          return this.wrapFile(entity);
+        } else if (io.Directory.is(entity)) {
+          return this.wrapDirectory(entity);
+        } else if (io.Link.is(entity)) {
+          return this.wrapLink(entity);
         }
-        return dart.nullCheck(failure);
-      }
-      fastParseOn(buffer, position) {
-        let result = -1;
-        for (let i = 0; i < this.children[$length]; i = i + 1) {
-          result = this.children[$_get](i).fastParseOn(buffer, position);
-          if (result >= 0) {
-            return result;
-          }
-        }
-        return result;
-      }
-      hasEqualProperties(other) {
-        ChoiceParserOfT().as(other);
-        return super.hasEqualProperties(other) && this.failureJoiner[$_equals](FailureOfTAndFailureOfTToFailureOfT().as(other.failureJoiner));
-      }
-      copy() {
-        return new (ChoiceParserOfT()).new(this.children, {failureJoiner: this.failureJoiner});
+        dart.throw(new io.FileSystemException.new("Unsupported type: " + dart.str(entity), entity.path));
       }
     }
-    (ChoiceParser.new = function(children, opts) {
-      let t24;
-      let failureJoiner = opts && 'failureJoiner' in opts ? opts.failureJoiner : null;
-      this[failureJoiner$] = (t24 = failureJoiner, t24 == null ? dart.gbind(C[1] || CT.C1, T) : t24);
-      ChoiceParser.__proto__.new.call(this, children);
-      if (children[$isEmpty]) {
-        dart.throw(new core.ArgumentError.new("Choice parser cannot be empty."));
-      }
-    }).prototype = ChoiceParser.prototype;
-    dart.addTypeTests(ChoiceParser);
-    ChoiceParser.prototype[_is_ChoiceParser_default] = true;
-    dart.addTypeCaches(ChoiceParser);
-    dart.setMethodSignature(ChoiceParser, () => ({
-      __proto__: dart.getMethods(ChoiceParser.__proto__),
-      withFailureJoiner: dart.fnType(choice.ChoiceParser$(T), [dart.nullable(core.Object)]),
-      parseOn: dart.fnType(result.Result$(T), [context.Context]),
-      copy: dart.fnType(choice.ChoiceParser$(T), [])
-    }));
-    dart.setLibraryUri(ChoiceParser, I[13]);
-    dart.setFieldSignature(ChoiceParser, () => ({
-      __proto__: dart.getFields(ChoiceParser.__proto__),
-      failureJoiner: dart.finalFieldType(dart.fnType(failure.Failure$(T), [failure.Failure$(T), failure.Failure$(T)]))
-    }));
-    return ChoiceParser;
-  });
-  choice.ChoiceParser = choice.ChoiceParser$();
-  dart.addTypeTests(choice.ChoiceParser, _is_ChoiceParser_default);
-  choice['ChoiceParserExtension|or'] = function ChoiceParserExtension$124or($this, other, opts) {
-    let t26;
-    let failureJoiner = opts && 'failureJoiner' in opts ? opts.failureJoiner : null;
-    let self = $this;
-    return choice.ChoiceParser.is(self) ? new choice.ChoiceParser.new((() => {
-      let t25 = T$.ListOfParser().of(self.children);
-      t25[$add](other);
-      return t25;
-    })(), {failureJoiner: (t26 = failureJoiner, t26 == null ? T$.FailureAndFailureToFailure().as(self.failureJoiner) : t26)}) : new choice.ChoiceParser.new(T$.JSArrayOfParser().of([$this, other]), {failureJoiner: failureJoiner});
-  };
-  choice['ChoiceParserExtension|get#or'] = function ChoiceParserExtension$124get$35or($this) {
-    return dart.fn((other, opts) => {
-      let failureJoiner = opts && 'failureJoiner' in opts ? opts.failureJoiner : null;
-      return choice['ChoiceParserExtension|or']($this, other, {failureJoiner: failureJoiner});
-    }, T$.Parser__ToChoiceParser());
-  };
-  choice['ChoiceParserExtension||'] = function ChoiceParserExtension$124$124($this, other) {
-    return choice['ChoiceParserExtension|or']($this, other);
-  };
-  choice['ChoiceIterableExtension|toChoiceParser'] = function ChoiceIterableExtension$124toChoiceParser(T, $this, opts) {
-    let failureJoiner = opts && 'failureJoiner' in opts ? opts.failureJoiner : null;
-    return new (choice.ChoiceParser$(T)).new($this, {failureJoiner: failureJoiner});
-  };
-  choice['ChoiceIterableExtension|get#toChoiceParser'] = function ChoiceIterableExtension$124get$35toChoiceParser(T, $this) {
-    return dart.fn(opts => {
-      let failureJoiner = opts && 'failureJoiner' in opts ? opts.failureJoiner : null;
-      return choice['ChoiceIterableExtension|toChoiceParser'](T, $this, {failureJoiner: failureJoiner});
-    }, dart.fnType(choice.ChoiceParser$(T), [], {failureJoiner: dart.nullable(dart.fnType(failure.Failure$(T), [failure.Failure$(T), failure.Failure$(T)]))}, {}));
-  };
-  var callback$ = dart.privateName(map, "MapParser.callback");
-  var hasSideEffects$ = dart.privateName(map, "MapParser.hasSideEffects");
-  const _is_MapParser_default = Symbol('_is_MapParser_default');
-  map.MapParser$ = dart.generic((T, R) => {
-    var MapParserOfT$R = () => (MapParserOfT$R = dart.constFn(map.MapParser$(T, R)))();
-    var TToR = () => (TToR = dart.constFn(dart.fnType(R, [T])))();
-    class MapParser extends delegate.DelegateParser$(T, R) {
-      get callback() {
-        return this[callback$];
-      }
-      set callback(value) {
-        super.callback = value;
-      }
-      get hasSideEffects() {
-        return this[hasSideEffects$];
-      }
-      set hasSideEffects(value) {
-        super.hasSideEffects = value;
-      }
-      parseOn(context) {
-        let t30;
-        let result = this.delegate.parseOn(context);
-        if (result.isSuccess) {
-          return result.success(R, (t30 = result.value, this.callback(t30)));
-        } else {
-          return result.failure(R, result.message);
-        }
-      }
-      fastParseOn(buffer, position) {
-        return this.hasSideEffects ? super.fastParseOn(buffer, position) : this.delegate.fastParseOn(buffer, position);
-      }
-      hasEqualProperties(other) {
-        MapParserOfT$R().as(other);
-        return super.hasEqualProperties(other) && this.callback[$_equals](TToR().as(other.callback)) && this.hasSideEffects === other.hasSideEffects;
-      }
-      copy() {
-        return new (MapParserOfT$R()).new(this.delegate, this.callback, this.hasSideEffects);
-      }
-    }
-    (MapParser.new = function(delegate, callback, hasSideEffects = false) {
-      this[callback$] = callback;
-      this[hasSideEffects$] = hasSideEffects;
-      MapParser.__proto__.new.call(this, delegate);
+    (ForwardingDirectory.new = function() {
       ;
-    }).prototype = MapParser.prototype;
-    dart.addTypeTests(MapParser);
-    MapParser.prototype[_is_MapParser_default] = true;
-    dart.addTypeCaches(MapParser);
-    dart.setMethodSignature(MapParser, () => ({
-      __proto__: dart.getMethods(MapParser.__proto__),
-      parseOn: dart.fnType(result.Result$(R), [context.Context]),
-      copy: dart.fnType(map.MapParser$(T, R), [])
+    }).prototype = ForwardingDirectory.prototype;
+    dart.addTypeTests(ForwardingDirectory);
+    ForwardingDirectory.prototype[_is_ForwardingDirectory_default] = true;
+    dart.addTypeCaches(ForwardingDirectory);
+    ForwardingDirectory[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(T, io.Directory), directory.Directory];
+    dart.setMethodSignature(ForwardingDirectory, () => ({
+      __proto__: dart.getMethods(ForwardingDirectory.__proto__),
+      wrap: dart.fnType(T, [dart.nullable(core.Object)]),
+      create: dart.fnType(async.Future$(directory.Directory), [], {recursive: core.bool}, {}),
+      createSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
+      createTemp: dart.fnType(async.Future$(directory.Directory), [], [dart.nullable(core.String)]),
+      createTempSync: dart.fnType(directory.Directory, [], [dart.nullable(core.String)]),
+      list: dart.fnType(async.Stream$(file_system_entity.FileSystemEntity), [], {followLinks: core.bool, recursive: core.bool}, {}),
+      listSync: dart.fnType(core.List$(file_system_entity.FileSystemEntity), [], {followLinks: core.bool, recursive: core.bool}, {}),
+      [_wrap]: dart.fnType(file_system_entity.FileSystemEntity, [io.FileSystemEntity])
     }));
-    dart.setLibraryUri(MapParser, I[14]);
-    dart.setFieldSignature(MapParser, () => ({
-      __proto__: dart.getFields(MapParser.__proto__),
-      callback: dart.finalFieldType(dart.fnType(R, [T])),
-      hasSideEffects: dart.finalFieldType(core.bool)
-    }));
-    return MapParser;
+    dart.setLibraryUri(ForwardingDirectory, I[4]);
+    return ForwardingDirectory;
   });
-  map.MapParser = map.MapParser$();
-  dart.addTypeTests(map.MapParser, _is_MapParser_default);
-  map['MapParserExtension|map'] = function MapParserExtension$124map(T, R, $this, callback, opts) {
-    let hasSideEffects = opts && 'hasSideEffects' in opts ? opts.hasSideEffects : false;
-    return new (map.MapParser$(T, R)).new($this, callback, hasSideEffects);
-  };
-  map['MapParserExtension|get#map'] = function MapParserExtension$124get$35map(T, $this) {
-    return dart.fn((R, callback, opts) => {
-      let hasSideEffects = opts && 'hasSideEffects' in opts ? opts.hasSideEffects : false;
-      return map['MapParserExtension|map'](T, R, $this, callback, {hasSideEffects: hasSideEffects});
-    }, dart.gFnType(R => {
-      var ParserOfR = () => (ParserOfR = dart.constFn(parser$.Parser$(R)))();
-      return [ParserOfR(), [dart.fnType(R, [T])], {hasSideEffects: core.bool}, {}];
-    }, R => {
-      var ParserOfR = () => (ParserOfR = dart.constFn(parser$.Parser$(R)))();
-      return [T$.ObjectN()];
-    }));
-  };
-  var value$1 = dart.privateName(success, "Success.value");
-  var buffer$0 = dart.privateName(context, "Context.buffer");
-  var position$ = dart.privateName(context, "Context.position");
-  context.Context = class Context extends core.Object {
-    get buffer() {
-      return this[buffer$0];
-    }
-    set buffer(value) {
-      super.buffer = value;
-    }
-    get position() {
-      return this[position$];
-    }
-    set position(value) {
-      super.position = value;
-    }
-    success(R, result, position = null) {
-      let t32;
-      return new (success.Success$(R)).new(this.buffer, (t32 = position, t32 == null ? this.position : t32), result);
-    }
-    failure(R, message, position = null) {
-      let t32;
-      return new (failure.Failure$(R)).new(this.buffer, (t32 = position, t32 == null ? this.position : t32), message);
-    }
-    toPositionString() {
-      return token$0.Token.positionString(this.buffer, this.position);
-    }
-    toString() {
-      return "Context[" + this.toPositionString() + "]";
-    }
-  };
-  (context.Context.new = function(buffer, position) {
-    this[buffer$0] = buffer;
-    this[position$] = position;
-    ;
-  }).prototype = context.Context.prototype;
-  dart.addTypeTests(context.Context);
-  dart.addTypeCaches(context.Context);
-  dart.setMethodSignature(context.Context, () => ({
-    __proto__: dart.getMethods(context.Context.__proto__),
-    success: dart.gFnType(R => [success.Success$(R), [R], [dart.nullable(core.int)]], R => [dart.nullable(core.Object)]),
-    failure: dart.gFnType(R => [failure.Failure$(R), [core.String], [dart.nullable(core.int)]], R => [dart.nullable(core.Object)]),
-    toPositionString: dart.fnType(core.String, [])
-  }));
-  dart.setLibraryUri(context.Context, I[15]);
-  dart.setFieldSignature(context.Context, () => ({
-    __proto__: dart.getFields(context.Context.__proto__),
-    buffer: dart.finalFieldType(core.String),
-    position: dart.finalFieldType(core.int)
-  }));
-  dart.defineExtensionMethods(context.Context, ['toString']);
-  const _is_Result_default = Symbol('_is_Result_default');
-  result.Result$ = dart.generic(R => {
-    class Result extends context.Context {
-      get isSuccess() {
-        return false;
-      }
-      get isFailure() {
-        return false;
-      }
-    }
-    (Result.new = function(buffer, position) {
-      Result.__proto__.new.call(this, buffer, position);
-      ;
-    }).prototype = Result.prototype;
-    dart.addTypeTests(Result);
-    Result.prototype[_is_Result_default] = true;
-    dart.addTypeCaches(Result);
-    dart.setGetterSignature(Result, () => ({
-      __proto__: dart.getGetters(Result.__proto__),
-      isSuccess: core.bool,
-      isFailure: core.bool
-    }));
-    dart.setLibraryUri(Result, I[16]);
-    return Result;
-  });
-  result.Result = result.Result$();
-  dart.addTypeTests(result.Result, _is_Result_default);
-  const _is_Success_default = Symbol('_is_Success_default');
-  success.Success$ = dart.generic(R => {
-    class Success extends result.Result$(R) {
-      get value() {
-        return this[value$1];
-      }
-      set value(value) {
-        super.value = value;
-      }
-      get isSuccess() {
-        return true;
-      }
-      get message() {
-        return dart.throw(new core.UnsupportedError.new("Successful parse results do not have a message."));
-      }
-      map(T, callback) {
-        return this.success(T, callback(this.value));
-      }
-      toString() {
-        return "Success[" + this.toPositionString() + "]: " + dart.str(this.value);
-      }
-    }
-    (Success.new = function(buffer, position, value) {
-      this[value$1] = value;
-      Success.__proto__.new.call(this, buffer, position);
-      ;
-    }).prototype = Success.prototype;
-    dart.addTypeTests(Success);
-    Success.prototype[_is_Success_default] = true;
-    dart.addTypeCaches(Success);
-    dart.setMethodSignature(Success, () => ({
-      __proto__: dart.getMethods(Success.__proto__),
-      map: dart.gFnType(T => [result.Result$(T), [dart.fnType(T, [R])]], T => [dart.nullable(core.Object)])
-    }));
-    dart.setGetterSignature(Success, () => ({
-      __proto__: dart.getGetters(Success.__proto__),
-      message: core.String
-    }));
-    dart.setLibraryUri(Success, I[17]);
-    dart.setFieldSignature(Success, () => ({
-      __proto__: dart.getFields(Success.__proto__),
-      value: dart.finalFieldType(R)
-    }));
-    dart.defineExtensionMethods(Success, ['toString']);
-    return Success;
-  });
-  success.Success = success.Success$();
-  dart.addTypeTests(success.Success, _is_Success_default);
-  var failure$ = dart.privateName(exception, "ParserException.failure");
-  exception.ParserException = class ParserException extends core.Object {
-    get failure() {
-      return this[failure$];
-    }
-    set failure(value) {
-      super.failure = value;
-    }
-    get message() {
-      return this.failure.message;
-    }
-    get offset() {
-      return this.failure.position;
-    }
-    get source() {
-      return this.failure.buffer;
-    }
-    toString() {
-      return this.failure.message + " at " + this.failure.toPositionString();
-    }
-  };
-  (exception.ParserException.new = function(failure) {
-    this[failure$] = failure;
-    ;
-  }).prototype = exception.ParserException.prototype;
-  dart.addTypeTests(exception.ParserException);
-  dart.addTypeCaches(exception.ParserException);
-  exception.ParserException[dart.implements] = () => [core.FormatException];
-  dart.setGetterSignature(exception.ParserException, () => ({
-    __proto__: dart.getGetters(exception.ParserException.__proto__),
-    message: core.String,
-    offset: core.int,
-    source: core.String
-  }));
-  dart.setLibraryUri(exception.ParserException, I[18]);
-  dart.setFieldSignature(exception.ParserException, () => ({
-    __proto__: dart.getFields(exception.ParserException.__proto__),
-    failure: dart.finalFieldType(failure.Failure)
-  }));
-  dart.defineExtensionMethods(exception.ParserException, ['toString']);
-  var message$1 = dart.privateName(failure, "Failure.message");
-  const _is_Failure_default = Symbol('_is_Failure_default');
-  failure.Failure$ = dart.generic(R => {
-    class Failure extends result.Result$(R) {
-      get message() {
-        return this[message$1];
-      }
-      set message(value) {
-        super.message = value;
-      }
-      get isFailure() {
-        return true;
-      }
-      get value() {
-        return dart.throw(new exception.ParserException.new(this));
-      }
-      map(T, callback) {
-        return this.failure(T, this.message);
-      }
-      toString() {
-        return "Failure[" + this.toPositionString() + "]: " + this.message;
-      }
-    }
-    (Failure.new = function(buffer, position, message) {
-      this[message$1] = message;
-      Failure.__proto__.new.call(this, buffer, position);
-      ;
-    }).prototype = Failure.prototype;
-    dart.addTypeTests(Failure);
-    Failure.prototype[_is_Failure_default] = true;
-    dart.addTypeCaches(Failure);
-    dart.setMethodSignature(Failure, () => ({
-      __proto__: dart.getMethods(Failure.__proto__),
-      map: dart.gFnType(T => [result.Result$(T), [dart.fnType(T, [R])]], T => [dart.nullable(core.Object)])
-    }));
-    dart.setGetterSignature(Failure, () => ({
-      __proto__: dart.getGetters(Failure.__proto__),
-      value: R
-    }));
-    dart.setLibraryUri(Failure, I[19]);
-    dart.setFieldSignature(Failure, () => ({
-      __proto__: dart.getFields(Failure.__proto__),
-      message: dart.finalFieldType(core.String)
-    }));
-    dart.defineExtensionMethods(Failure, ['toString']);
-    return Failure;
-  });
-  failure.Failure = failure.Failure$();
-  dart.addTypeTests(failure.Failure, _is_Failure_default);
-  matches_skipping['MatchesSkippingParser|matchesSkipping'] = function MatchesSkippingParser$124matchesSkipping(T, $this, input) {
-    let list = _interceptors.JSArray$(T).of([]);
-    possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, choice['ChoiceParserExtension|or'](map['MapParserExtension|map'](T, dart.void, $this, dart.bind(list, $add), {hasSideEffects: true}), any.any())).fastParseOn(input, 0);
-    return list;
-  };
-  matches_skipping['MatchesSkippingParser|get#matchesSkipping'] = function MatchesSkippingParser$124get$35matchesSkipping(T, $this) {
-    return dart.fn(input => matches_skipping['MatchesSkippingParser|matchesSkipping'](T, $this, input), dart.fnType(core.List$(T), [core.String]));
-  };
-  dart.trackLibraries("packages/petitparser/src/parser/combinator/optional.dart", {
-    "package:petitparser/src/parser/combinator/optional.dart": optional,
-    "package:petitparser/src/parser/character/parser.dart": parser,
-    "package:petitparser/src/parser/character/char.dart": char$,
-    "package:petitparser/src/parser/action/token.dart": token$,
-    "package:petitparser/src/parser/combinator/sequence.dart": sequence,
-    "package:petitparser/src/parser/combinator/and.dart": and,
-    "package:petitparser/src/matcher/matches.dart": matches,
-    "package:petitparser/src/parser/repeater/repeating.dart": repeating,
-    "package:petitparser/src/parser/repeater/possessive.dart": possessive,
-    "package:petitparser/src/parser/predicate/any.dart": any,
-    "package:petitparser/src/parser/combinator/list.dart": list,
-    "package:petitparser/src/parser/utils/failure_joiner.dart": failure_joiner,
-    "package:petitparser/src/parser/combinator/choice.dart": choice,
-    "package:petitparser/src/parser/combinator/delegate.dart": delegate,
-    "package:petitparser/src/parser/action/map.dart": map,
-    "package:petitparser/src/context/success.dart": success,
-    "package:petitparser/src/context/result.dart": result,
-    "package:petitparser/src/core/exception.dart": exception,
-    "package:petitparser/src/context/failure.dart": failure,
-    "package:petitparser/src/core/parser.dart": parser$,
-    "package:petitparser/src/matcher/matches_skipping.dart": matches_skipping,
-    "package:petitparser/src/core/token.dart": token$0,
-    "package:petitparser/src/context/context.dart": context
+  forwarding_directory.ForwardingDirectory = forwarding_directory.ForwardingDirectory$();
+  dart.addTypeTests(forwarding_directory.ForwardingDirectory, _is_ForwardingDirectory_default);
+  dart.trackLibraries("packages/file/src/forwarding/forwarding_link.dart", {
+    "package:file/src/forwarding/forwarding_link.dart": forwarding_link,
+    "package:file/src/forwarding/forwarding_file_system_entity.dart": forwarding_file_system_entity,
+    "package:file/src/forwarding/forwarding_file_system.dart": forwarding_file_system,
+    "package:file/src/forwarding/forwarding_file.dart": forwarding_file,
+    "package:file/src/forwarding/forwarding_directory.dart": forwarding_directory,
+    "package:file/src/forwarding.dart": forwarding,
+    "package:file/file.dart": file$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["../../core/parser.dart","delegate.dart","optional.dart","../character/parser.dart","../character/char.dart","../../core/token.dart","../action/token.dart","list.dart","sequence.dart","and.dart","../../matcher/matches.dart","../repeater/repeating.dart","../repeater/possessive.dart","../predicate/any.dart","../utils/failure_joiner.dart","choice.dart","../action/map.dart","../../context/context.dart","../../context/result.dart","../../context/success.dart","../../core/exception.dart","../../context/failure.dart","../../matcher/matches_skipping.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/petitparser/src/parser/combinator/optional.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["forwarding_link.dart","forwarding_file_system_entity.dart","forwarding_file_system.dart","forwarding_file.dart","forwarding_directory.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iBAW8B;AAAa,YAAmB,mCAAnB,cAAS,QAAQ;IAAmB;WAGlD;UAAc;AAAtB;AACf,yBAAK,MAAM,AAAS,qBAAO,MAAM,cAAa,SAAS;MAAE;;eAGtC;UAAc;AACjC,YAAA,AAAS,0BAAW,MAAM,cAAa,SAAS;IAAC;WAG1B;AAAR;AACf,yBAAK,MAAM,AAAS,qBAAO,MAAM;MAAE;;eAGhB;AAAW,YAAA,AAAS,0BAAW,MAAM;IAAC;;AAGlC,YAAA,AAAS;IAAQ;;AAGrB,YAAA,AAAS;IAAY;;;;EAC9C;;;;;;;;;;;;;;;;;;;ACGiB,cAAA,AAAS;MAAG;;AAGF,cAAA,AAAS;MAAQ;;AAGrB,cAAA,AAAS;MAAY;aAGlB;AAAR;AACZ,2BAAoC,KAA/B,MAAM,AAAS,qBAAO,OAAO;QAAO;;iBAGzB;AAAY,yBAAkC,KAA7B,AAAS,yBAAW,OAAO;MAAO;;AAG9B,cAAA,AAAS;MAAsB;;AAGnC,cAAA,AAAS;MAA0B;;AAG1C,cAAA,AAAS;MAAM;;AAGnB,cAAA,AAAS;MAAU;;YAGtB;AAAP;AACZ,2BAAiD,KAA5C,MAAM,AAAS,iCAAkB,SAAS;QAAO;;;YAGpC;AAClB,cAAA,AAAS,sCAAsB,SAAS;MAAC;;YAIvC;YACC;AAEH,cAAA,AAAS,8BAAc,MAAM,aAAa,SAAS;MAAC;;AAGjC,cAAA,AAAS;MAAU;;AAGxB,yBAAuB,KAAlB,AAAS;MAAc;;AAGtB,kCAAc,AAAS;MAAO;;AAGnC,cAAA,AAAS;MAAI;;AAGT,cAAA,AAAW,AAAK,+BAAS;MAAK;;AAG/B,cAAA,AAAW,AAAK,8BAAQ;MAAK;;;;IACrD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IC9EmB;;;;;;cAGW;AAAS,YAAA,AAAS,yBAAU,IAAI;IAAC;SAG3C;AAAS,YAAA,AAAS,oBAAK,IAAI;IAAC;SAG5B;AAAS,YAAA,AAAS,oBAAK,IAAI;IAAC;;AAGxB,YAAA,AAAS;IAAI;;AAGE,YAAA,AAAS;IAAmB;;AAG/B,YAAA,AAAS;IAAgB;yBAG9B;AAAS,YAAA,AAAS,kCAAmB,IAAI;;SAGtC;AAAS,YAAA,AAAS,oBAAK,IAAI;IAAC;aAGhC;AAAS,YAAA,AAAS,wBAAS,IAAI;IAAC;cAG9B,OAAc;AACxC,YAAA,AAAS,yBAAU,KAAK,EAAE,KAAK;IAAC;kBAGV,OAAc;AACpC,YAAA,AAAS,6BAAc,KAAK,EAAE,KAAK;IAAC;;AAGX,YAAA,AAAS;IAAgB;SAGV;UAC9B;AACV,YAAA,AAAS,oBAAK,IAAI,gBAAe,WAAW;IAAC;aAGT;UAAY;AAChD,YAAA,AAAS,wBAAS,IAAI,gBAAe,WAAW;IAAC;;;IAnD3B;AAA1B;;EAAmC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iBCCP;AAAa,YAAmB,mCAAnB,cAAS,QAAQ;IAAmB;;UAGnD;AAAP;AACf,yBAAK,MAAM,AAAS,iCAAkB,SAAS;MAAE;;;UAG/B;AAClB,YAAA,AAAS,sCAAsB,SAAS;IAAC;SAGpB;AAAR;AAA0B,yBAAK,MAAM,AAAS,mBAAK,OAAO;MAAE;;aAGxD;AAAY,uBAAK,AAAS,uBAAS,OAAO;IAAE;;AAGzC,YAAA,AAAS;IAAQ;;AAGrB,YAAA,AAAS;IAAY;;AAGN,YAAA,AAAS;IAAc;;AAG3B,YAAA,AAAS;IAAkB;oBAGjB;AACrC,YAAA,AAAS,+BAAgB,IAAI;IAAC;wBAGA;AAAS,YAAA,AAAS,mCAAoB,IAAI;IAAC;;AAG1C,YAAA,AAAS;IAAc;;AAG3B,YAAA,AAAS;IAAkB;oBAGjB;AACrC,YAAA,AAAS,+BAAgB,IAAI;IAAC;wBAGA;AAAS,YAAA,AAAS,mCAAoB,IAAI;IAAC;;UAIlE;AAEP,YAAA,AAAS,2BAAW,IAAI;IAAC;;UAGO;AAChC,YAAA,AAAS,+BAAe,IAAI;IAAC;aAGA,cAAY;AACzC,YAAA,AAAS,wBAAS,KAAK,EAAE,GAAG;IAAC;;UAItB;UACA;AAEP,YAAA,AAAS,gCAAgB,IAAI,YAAY,QAAQ;IAAC;;AAGnB,YAAA,AAAS;IAAa;;AAG1B,YAAA,AAAS;IAAiB;;UAGnB;AAClC,YAAA,AAAS,uCAAuB,QAAQ;IAAC;;UAGX;AAC9B,YAAA,AAAS,2CAA2B,QAAQ;IAAC;;UAGN;AACvC,YAAA,AAAS,sCAAsB,QAAQ;IAAC;;UAGL;AACnC,YAAA,AAAS,0CAA0B,QAAQ;IAAC;iBAIpC;UACD;UACJ;AAHkB;AAKrB,yBAAK,MAAM,AAAS,2BAClB,KAAK,SACC,IAAI,SACH,KAAK;MACZ;;qBAIM;UACD;UACJ;AAEH,YAAA,AAAS,gCAAiB,KAAK,SAAQ,IAAI,SAAS,KAAK;IAAC;kBAIrD;UACE;UACA;UACJ;AAJmB;AAMtB,yBAAK,MAAM,AAAS,4BAClB,QAAQ,SACF,IAAI,YACA,QAAQ,SACX,KAAK;MACZ;;sBAIG;UACE;UACA;UACJ;AAEH,YAAA,AAAS,iCACP,QAAQ,SACF,IAAI,YACA,QAAQ,SACX,KAAK;IACb;;;;EACP;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;wBC7IsB;AAAa,cAAwB,MAAxB,mBAAc,QAAQ;MAAM;;YAG9B;AAAP;AACpB,2BAAK,MAAM,AAAS,iCAAkB,SAAS;QAAE;;;YAG/B;AAClB,cAAA,AAAS,sCAAsB,SAAS;MAAC;iBAGP;AAAV;AACxB,2BAAK,MAAM,AAAS,yBAAW,MAAM;QAAE;;qBAGT;AAC9B,yBAAK,AAAS,6BAAe,MAAM;MAAE;;YAIlC;YACA;AAEH,cAAA,AAAS,AAAqD,gCAArC,SAAS,eAAe,WAAW,sDAAM;MAAM;;YAIrE;YACA;AAEH,cAAA,AACK,AACA,AACA,oCAFoB,SAAS,eAAe,WAAW,wDACnD;MACI;cAE0B;AACzC,YAAW,WAAP,MAAM;AACR,gBAAO,eAAS,MAAM;cACjB,KAAW,gBAAP,MAAM;AACf,gBAAO,oBAAc,MAAM;cACtB,KAAW,WAAP,MAAM;AACf,gBAAO,eAAS,MAAM;;AAE2C,QAAnE,WAAM,+BAAoB,AAA2B,gCAAP,MAAM,GAAG,AAAO,MAAD;MAC/D;;;;IACF","file":"../../../../../../../../../packages/file/src/forwarding/forwarding_link.dart.lib.js"}');
   // Exports:
   return {
-    src__parser__combinator__optional: optional,
-    src__parser__character__parser: parser,
-    src__parser__character__char: char$,
-    src__parser__action__token: token$,
-    src__parser__combinator__sequence: sequence,
-    src__parser__combinator__and: and,
-    src__matcher__matches: matches,
-    src__parser__repeater__repeating: repeating,
-    src__parser__repeater__possessive: possessive,
-    src__parser__predicate__any: any,
-    src__parser__combinator__list: list,
-    src__parser__utils__failure_joiner: failure_joiner,
-    src__parser__combinator__choice: choice,
-    src__parser__combinator__delegate: delegate,
-    src__parser__action__map: map,
-    src__context__success: success,
-    src__context__result: result,
-    src__core__exception: exception,
-    src__context__failure: failure,
-    src__core__parser: parser$,
-    src__matcher__matches_skipping: matches_skipping,
-    src__core__token: token$0,
-    src__context__context: context
+    src__forwarding__forwarding_link: forwarding_link,
+    src__forwarding__forwarding_file_system_entity: forwarding_file_system_entity,
+    src__forwarding__forwarding_file_system: forwarding_file_system,
+    src__forwarding__forwarding_file: forwarding_file,
+    src__forwarding__forwarding_directory: forwarding_directory,
+    src__forwarding: forwarding,
+    file: file$
   };
 }));
 
-//# sourceMappingURL=optional.dart.lib.js.map
+//# sourceMappingURL=forwarding_link.dart.lib.js.map

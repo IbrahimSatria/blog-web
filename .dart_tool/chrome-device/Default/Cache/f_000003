@@ -19,16 +19,16 @@ define("main_module.bootstrap", ["web_entrypoint.dart", "dart_sdk"], function(ap
          main();
       });
     }
-    window.$dartAppId = "lqwYGA8h8ZVxN9UwOPk0mQ==";
+    window.$dartAppId = "rEwbN94Zrss1MRBahmNXcw==";
 window.$dartReloadConfiguration = "ReloadConfiguration.none";
 window.$dartModuleStrategy = "require-js";
 window.$loadModuleConfig = require;
 window.$dwdsVersion = "11.0.2";
-window.$dwdsDevHandlerPath = "http://localhost:50855/$dwdsSseHandler";
+window.$dwdsDevHandlerPath = "http://localhost:52247/$dwdsSseHandler";
 window.$dwdsEnableDevtoolsLaunch = true;
 window.$dartEntrypointPath = "main_module.bootstrap.js";
 window.$requireLoader.forceLoadModule("dwds/src/injected/client");
-window.$dartExtensionUri = "http://127.0.0.1:50857/$debug";
+window.$dartExtensionUri = "http://127.0.0.1:52250/$debug";
 
   } else {
     if(window.$dartMainExecuted){
@@ -190,11 +190,8 @@ let modulePaths = {
  "packages/shared_preferences_web/shared_preferences_web.dart": "packages/shared_preferences_web/shared_preferences_web.dart.lib",
  "packages/shared_preferences_platform_interface/method_channel_shared_preferences.dart": "packages/shared_preferences_platform_interface/method_channel_shared_preferences.dart.lib",
  "packages/blog_web/main.dart": "packages/blog_web/main.dart.lib",
- "packages/blog_web/screens/home_screen.dart": "packages/blog_web/screens/home_screen.dart.lib",
- "packages/provider/provider.dart": "packages/provider/provider.dart.lib",
- "packages/provider/src/value_listenable_provider.dart": "packages/provider/src/value_listenable_provider.dart.lib",
- "packages/provider/src/provider.dart": "packages/provider/src/provider.dart.lib",
- "packages/provider/src/reassemble_handler.dart": "packages/provider/src/reassemble_handler.dart.lib",
+ "packages/blog_web/screens/home/home_screen.dart": "packages/blog_web/screens/home/home_screen.dart.lib",
+ "packages/flutter/material.dart": "packages/flutter/material.dart.lib",
  "packages/flutter/widgets.dart": "packages/flutter/widgets.dart.lib",
  "packages/flutter/src/widgets/will_pop_scope.dart": "packages/flutter/src/widgets/will_pop_scope.dart.lib",
  "packages/flutter/src/widgets/widget_span.dart": "packages/flutter/src/widgets/widget_span.dart.lib",
@@ -344,8 +341,6 @@ let modulePaths = {
  "packages/flutter/src/widgets/animated_size.dart": "packages/flutter/src/widgets/animated_size.dart.lib",
  "packages/flutter/src/widgets/animated_list.dart": "packages/flutter/src/widgets/animated_list.dart.lib",
  "packages/flutter/src/widgets/animated_cross_fade.dart": "packages/flutter/src/widgets/animated_cross_fade.dart.lib",
- "packages/nested/nested.dart": "packages/nested/nested.dart.lib",
- "packages/flutter/material.dart": "packages/flutter/material.dart.lib",
  "packages/flutter/src/material/user_accounts_drawer_header.dart": "packages/flutter/src/material/user_accounts_drawer_header.dart.lib",
  "packages/flutter/src/material/icon_button.dart": "packages/flutter/src/material/icon_button.dart.lib",
  "packages/flutter/src/material/typography.dart": "packages/flutter/src/material/typography.dart.lib",
@@ -454,16 +449,27 @@ let modulePaths = {
  "packages/flutter/src/material/app.dart": "packages/flutter/src/material/app.dart.lib",
  "packages/flutter/src/material/animated_icons.dart": "packages/flutter/src/material/animated_icons.dart.lib",
  "packages/flutter/src/material/about.dart": "packages/flutter/src/material/about.dart.lib",
+ "packages/blog_web/screens/home/home_screen_tablet.dart": "packages/blog_web/screens/home/home_screen_tablet.dart.lib",
+ "packages/blog_web/screens/home/home_screen_mobile.dart": "packages/blog_web/screens/home/home_screen_mobile.dart.lib",
+ "packages/blog_web/widgets/custom_drawer.dart": "packages/blog_web/widgets/custom_drawer.dart.lib",
+ "packages/blog_web/screens/home/home_screen_desktop.dart": "packages/blog_web/screens/home/home_screen_desktop.dart.lib",
+ "packages/blog_web/responsive/screen_type_layout.dart": "packages/blog_web/responsive/screen_type_layout.dart.lib",
+ "packages/responsive_builder/src/widget_builders.dart": "packages/responsive_builder/src/widget_builders.dart.lib",
+ "packages/responsive_builder/src/device_screen_type.dart": "packages/responsive_builder/src/device_screen_type.dart.lib",
+ "packages/responsive_builder/src/sizing_information.dart": "packages/responsive_builder/src/sizing_information.dart.lib",
+ "packages/blog_web/responsive/orientation_layout.dart": "packages/blog_web/responsive/orientation_layout.dart.lib",
+ "packages/device_preview/src/storage/file.dart": "packages/device_preview/src/storage/file.dart.lib",
+ "packages/device_preview/src/locales/default_locales.dart": "packages/device_preview/src/locales/default_locales.dart.lib",
+ "packages/device_preview/src/locales/locales.dart": "packages/device_preview/src/locales/locales.dart.lib",
+ "packages/provider/provider.dart": "packages/provider/provider.dart.lib",
+ "packages/provider/src/value_listenable_provider.dart": "packages/provider/src/value_listenable_provider.dart.lib",
+ "packages/provider/src/provider.dart": "packages/provider/src/provider.dart.lib",
+ "packages/provider/src/reassemble_handler.dart": "packages/provider/src/reassemble_handler.dart.lib",
+ "packages/nested/nested.dart": "packages/nested/nested.dart.lib",
  "packages/provider/src/selector.dart": "packages/provider/src/selector.dart.lib",
  "packages/provider/src/proxy_provider.dart": "packages/provider/src/proxy_provider.dart.lib",
  "packages/provider/src/listenable_provider.dart": "packages/provider/src/listenable_provider.dart.lib",
  "packages/provider/src/async_provider.dart": "packages/provider/src/async_provider.dart.lib",
- "packages/blog_web/widgets/change_theme_button_widget.dart": "packages/blog_web/widgets/change_theme_button_widget.dart.lib",
- "packages/blog_web/provider/theme_provider.dart": "packages/blog_web/provider/theme_provider.dart.lib",
- "packages/blog_web/constants/constant.dart": "packages/blog_web/constants/constant.dart.lib",
- "packages/device_preview/src/storage/file.dart": "packages/device_preview/src/storage/file.dart.lib",
- "packages/device_preview/src/locales/default_locales.dart": "packages/device_preview/src/locales/default_locales.dart.lib",
- "packages/device_preview/src/locales/locales.dart": "packages/device_preview/src/locales/locales.dart.lib",
  "packages/freezed_annotation/freezed_annotation.dart": "packages/freezed_annotation/freezed_annotation.dart.lib",
  "packages/json_annotation/json_annotation.dart": "packages/json_annotation/json_annotation.dart.lib",
  "packages/json_annotation/src/json_value.dart": "packages/json_annotation/src/json_value.dart.lib",
@@ -763,11 +769,8 @@ let moduleNames = {
  "packages/shared_preferences_web/shared_preferences_web.dart.lib": "packages/shared_preferences_web/shared_preferences_web.dart",
  "packages/shared_preferences_platform_interface/method_channel_shared_preferences.dart.lib": "packages/shared_preferences_platform_interface/method_channel_shared_preferences.dart",
  "packages/blog_web/main.dart.lib": "packages/blog_web/main.dart",
- "packages/blog_web/screens/home_screen.dart.lib": "packages/blog_web/screens/home_screen.dart",
- "packages/provider/provider.dart.lib": "packages/provider/provider.dart",
- "packages/provider/src/value_listenable_provider.dart.lib": "packages/provider/src/value_listenable_provider.dart",
- "packages/provider/src/provider.dart.lib": "packages/provider/src/provider.dart",
- "packages/provider/src/reassemble_handler.dart.lib": "packages/provider/src/reassemble_handler.dart",
+ "packages/blog_web/screens/home/home_screen.dart.lib": "packages/blog_web/screens/home/home_screen.dart",
+ "packages/flutter/material.dart.lib": "packages/flutter/material.dart",
  "packages/flutter/widgets.dart.lib": "packages/flutter/widgets.dart",
  "packages/flutter/src/widgets/will_pop_scope.dart.lib": "packages/flutter/src/widgets/will_pop_scope.dart",
  "packages/flutter/src/widgets/widget_span.dart.lib": "packages/flutter/src/widgets/widget_span.dart",
@@ -917,8 +920,6 @@ let moduleNames = {
  "packages/flutter/src/widgets/animated_size.dart.lib": "packages/flutter/src/widgets/animated_size.dart",
  "packages/flutter/src/widgets/animated_list.dart.lib": "packages/flutter/src/widgets/animated_list.dart",
  "packages/flutter/src/widgets/animated_cross_fade.dart.lib": "packages/flutter/src/widgets/animated_cross_fade.dart",
- "packages/nested/nested.dart.lib": "packages/nested/nested.dart",
- "packages/flutter/material.dart.lib": "packages/flutter/material.dart",
  "packages/flutter/src/material/user_accounts_drawer_header.dart.lib": "packages/flutter/src/material/user_accounts_drawer_header.dart",
  "packages/flutter/src/material/icon_button.dart.lib": "packages/flutter/src/material/icon_button.dart",
  "packages/flutter/src/material/typography.dart.lib": "packages/flutter/src/material/typography.dart",
@@ -1027,16 +1028,27 @@ let moduleNames = {
  "packages/flutter/src/material/app.dart.lib": "packages/flutter/src/material/app.dart",
  "packages/flutter/src/material/animated_icons.dart.lib": "packages/flutter/src/material/animated_icons.dart",
  "packages/flutter/src/material/about.dart.lib": "packages/flutter/src/material/about.dart",
+ "packages/blog_web/screens/home/home_screen_tablet.dart.lib": "packages/blog_web/screens/home/home_screen_tablet.dart",
+ "packages/blog_web/screens/home/home_screen_mobile.dart.lib": "packages/blog_web/screens/home/home_screen_mobile.dart",
+ "packages/blog_web/widgets/custom_drawer.dart.lib": "packages/blog_web/widgets/custom_drawer.dart",
+ "packages/blog_web/screens/home/home_screen_desktop.dart.lib": "packages/blog_web/screens/home/home_screen_desktop.dart",
+ "packages/blog_web/responsive/screen_type_layout.dart.lib": "packages/blog_web/responsive/screen_type_layout.dart",
+ "packages/responsive_builder/src/widget_builders.dart.lib": "packages/responsive_builder/src/widget_builders.dart",
+ "packages/responsive_builder/src/device_screen_type.dart.lib": "packages/responsive_builder/src/device_screen_type.dart",
+ "packages/responsive_builder/src/sizing_information.dart.lib": "packages/responsive_builder/src/sizing_information.dart",
+ "packages/blog_web/responsive/orientation_layout.dart.lib": "packages/blog_web/responsive/orientation_layout.dart",
+ "packages/device_preview/src/storage/file.dart.lib": "packages/device_preview/src/storage/file.dart",
+ "packages/device_preview/src/locales/default_locales.dart.lib": "packages/device_preview/src/locales/default_locales.dart",
+ "packages/device_preview/src/locales/locales.dart.lib": "packages/device_preview/src/locales/locales.dart",
+ "packages/provider/provider.dart.lib": "packages/provider/provider.dart",
+ "packages/provider/src/value_listenable_provider.dart.lib": "packages/provider/src/value_listenable_provider.dart",
+ "packages/provider/src/provider.dart.lib": "packages/provider/src/provider.dart",
+ "packages/provider/src/reassemble_handler.dart.lib": "packages/provider/src/reassemble_handler.dart",
+ "packages/nested/nested.dart.lib": "packages/nested/nested.dart",
  "packages/provider/src/selector.dart.lib": "packages/provider/src/selector.dart",
  "packages/provider/src/proxy_provider.dart.lib": "packages/provider/src/proxy_provider.dart",
  "packages/provider/src/listenable_provider.dart.lib": "packages/provider/src/listenable_provider.dart",
  "packages/provider/src/async_provider.dart.lib": "packages/provider/src/async_provider.dart",
- "packages/blog_web/widgets/change_theme_button_widget.dart.lib": "packages/blog_web/widgets/change_theme_button_widget.dart",
- "packages/blog_web/provider/theme_provider.dart.lib": "packages/blog_web/provider/theme_provider.dart",
- "packages/blog_web/constants/constant.dart.lib": "packages/blog_web/constants/constant.dart",
- "packages/device_preview/src/storage/file.dart.lib": "packages/device_preview/src/storage/file.dart",
- "packages/device_preview/src/locales/default_locales.dart.lib": "packages/device_preview/src/locales/default_locales.dart",
- "packages/device_preview/src/locales/locales.dart.lib": "packages/device_preview/src/locales/locales.dart",
  "packages/freezed_annotation/freezed_annotation.dart.lib": "packages/freezed_annotation/freezed_annotation.dart",
  "packages/json_annotation/json_annotation.dart.lib": "packages/json_annotation/json_annotation.dart",
  "packages/json_annotation/src/json_value.dart.lib": "packages/json_annotation/src/json_value.dart",

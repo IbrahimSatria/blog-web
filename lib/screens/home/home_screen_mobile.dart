@@ -1,56 +1,86 @@
-import 'dart:ui';
+// Contains the widgets that will be used for mobile layout of home
+// portrait and landscape mobile orientation
 
-import 'package:blog_web/constants/constant.dart';
-import 'package:blog_web/provider/theme_provider.dart';
-import 'package:blog_web/widgets/change_theme_button_widget.dart';
+import 'package:blog_web/widgets/custom_drawer_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreenMobilePortrait extends StatelessWidget {
+  const HomeScreenMobilePortrait({Key? key}) : super(key: key);
 
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final text = Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark
-        ? 'DarkTheme'
-        : 'LightTheme';
-
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   leading: Icon(
-      //     Icons.menu,
-      //     color: Colors.white,
-      //   ),
-      //   title: Row(
-      //     crossAxisAlignment: CrossAxisAlignment.stretch,
-      //     children: [
-      //       Column(
-      //         children: [
-      //           Text(
-      //             'TAKAHASHI RYÜJI',
-      //             style: TextStyle(color: Colors.white),
-      //           ),
-      //           Text(
-      //             "Growth occurs when one goes beyond one's limits",
-      //             style: TextStyle(
-      //               color: Colors.white,
-      //               fontSize: 10.0,
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //       // Image(image: image)
-      //     ],
-      //   ),
-      //   actions: [],
-      // ),
+      appBar: AppBar(
+        brightness: Brightness.dark,
+        toolbarHeight: 65.0,
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        // leading: Icon(
+        //   Icons.menu,
+        //   color: Colors.white,
+        //   // size: 15.0,
+        // ),
+        title: Text(
+          'TAKAHASHI RYÜJI',
+          style: TextStyle(
+            color: Colors.white,
+            // fontSize: 20.0,
+            letterSpacing: 2.0,
+          ),
+        ),
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.all(10.0),
+        //     child: Container(
+        //       child: Image.asset('assets/images/logo.png'),
+        //     ),
+        //   ),
+        // ],
+      ),
+      drawer: CustomDrawer(),
+      body: SingleChildScrollView(),
+    );
+  }
+}
+
+class HomeScreenMobileLandscape extends StatelessWidget {
+  const HomeScreenMobileLandscape({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        // leading: Icon(
+        //   Icons.menu,
+        //   color: Colors.white,
+        // ),
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Column(
+              children: [
+                Text(
+                  'TAKAHASHI RYÜJI',
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  "Growth occurs when one goes beyond one's limits",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10.0,
+                  ),
+                ),
+              ],
+            ),
+            // Image(image: image)
+          ],
+        ),
+        actions: [],
+      ),
+      drawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Container(
           height: mediaQuery.size.height,
