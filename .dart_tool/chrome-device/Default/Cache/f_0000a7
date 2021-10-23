@@ -1,545 +1,939 @@
-define(['dart_sdk', 'packages/file/src/interface/link.dart', 'packages/path/src/path_set.dart'], (function load__packages__file__src__forwarding__forwarding_link_dart(dart_sdk, packages__file__src__interface__link$46dart, packages__path__src__path_set$46dart) {
+define(['dart_sdk', 'packages/xml/src/xml/utils/node_type.dart', 'packages/xml/src/xml_events/utils/list_converter.dart', 'packages/xml/src/xml/utils/simple_name.dart', 'packages/collection/src/equality.dart', 'packages/xml/src/xml/utils/attribute_type.dart', 'packages/xml/src/xml/entities/default_mapping.dart', 'packages/xml/src/xml_events/utils/conversion_sink.dart', 'packages/xml/src/xml/entities/entity_mapping.dart'], (function load__packages__xml__src__xml_events__events__text_dart(dart_sdk, packages__xml__src__xml__utils__node_type$46dart, packages__xml__src__xml_events__utils__list_converter$46dart, packages__xml__src__xml__utils__simple_name$46dart, packages__collection__src__equality$46dart, packages__xml__src__xml__utils__attribute_type$46dart, packages__xml__src__xml__entities__default_mapping$46dart, packages__xml__src__xml_events__utils__conversion_sink$46dart, packages__xml__src__xml__entities__entity_mapping$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const io = dart_sdk.io;
-  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
   const convert = dart_sdk.convert;
-  const typed_data = dart_sdk.typed_data;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const link = packages__file__src__interface__link$46dart.src__interface__link;
-  const file_system_entity = packages__file__src__interface__link$46dart.src__interface__file_system_entity;
-  const directory = packages__file__src__interface__link$46dart.src__interface__directory;
-  const file_system = packages__file__src__interface__link$46dart.src__interface__file_system;
-  const file = packages__file__src__interface__link$46dart.src__interface__file;
-  const context = packages__path__src__path_set$46dart.src__context;
-  var forwarding_link = Object.create(dart.library);
-  var forwarding_file_system_entity = Object.create(dart.library);
-  var forwarding_file_system = Object.create(dart.library);
-  var forwarding_file = Object.create(dart.library);
-  var forwarding_directory = Object.create(dart.library);
-  var forwarding = Object.create(dart.library);
-  var file$ = Object.create(dart.library);
-  var $map = dartx.map;
-  var $toList = dartx.toList;
+  const node_type = packages__xml__src__xml__utils__node_type$46dart.src__xml__utils__node_type;
+  const list_converter = packages__xml__src__xml_events__utils__list_converter$46dart.src__xml_events__utils__list_converter;
+  const exceptions = packages__xml__src__xml__utils__simple_name$46dart.src__xml__utils__exceptions;
+  const equality = packages__collection__src__equality$46dart.src__equality;
+  const attribute_type = packages__xml__src__xml__utils__attribute_type$46dart.src__xml__utils__attribute_type;
+  const default_mapping = packages__xml__src__xml__entities__default_mapping$46dart.src__xml__entities__default_mapping;
+  const conversion_sink = packages__xml__src__xml_events__utils__conversion_sink$46dart.src__xml_events__utils__conversion_sink;
+  const entity_mapping = packages__xml__src__xml__entities__entity_mapping$46dart.src__xml__entities__entity_mapping;
+  var text$ = Object.create(dart.library);
+  var processing = Object.create(dart.library);
+  var end_element = Object.create(dart.library);
+  var doctype = Object.create(dart.library);
+  var with_parent = Object.create(dart.library);
+  var parented = Object.create(dart.library);
+  var start_element = Object.create(dart.library);
+  var named = Object.create(dart.library);
+  var event_attribute = Object.create(dart.library);
+  var declaration = Object.create(dart.library);
+  var comment = Object.create(dart.library);
+  var visitor = Object.create(dart.library);
+  var cdata = Object.create(dart.library);
+  var event_encoder = Object.create(dart.library);
+  var event = Object.create(dart.library);
+  var $hashCode = dartx.hashCode;
+  var $indexOf = dartx.indexOf;
+  var $substring = dartx.substring;
+  var $forEach = dartx.forEach;
+  var $isNotEmpty = dartx.isNotEmpty;
   dart._checkModuleNullSafetyMode(true);
+  var T = {
+    JSArrayOfXmlEvent: () => (T.JSArrayOfXmlEvent = dart.constFn(_interceptors.JSArray$(event.XmlEvent)))(),
+    ListOfXmlEvent: () => (T.ListOfXmlEvent = dart.constFn(core.List$(event.XmlEvent)))(),
+    SinkOfListOfXmlEvent: () => (T.SinkOfListOfXmlEvent = dart.constFn(core.Sink$(T.ListOfXmlEvent())))(),
+    StreamOfListOfXmlEvent: () => (T.StreamOfListOfXmlEvent = dart.constFn(async.Stream$(T.ListOfXmlEvent())))(),
+    VoidToStreamOfListOfXmlEvent: () => (T.VoidToStreamOfListOfXmlEvent = dart.constFn(dart.fnType(T.StreamOfListOfXmlEvent(), [])))(),
+    DefaultEqualityOfNever: () => (T.DefaultEqualityOfNever = dart.constFn(equality.DefaultEquality$(dart.Never)))(),
+    ConversionSinkOfString: () => (T.ConversionSinkOfString = dart.constFn(conversion_sink.ConversionSink$(core.String)))(),
+    SinkOfString: () => (T.SinkOfString = dart.constFn(core.Sink$(core.String)))(),
+    StreamOfString: () => (T.StreamOfString = dart.constFn(async.Stream$(core.String)))(),
+    XmlEntityMappingN: () => (T.XmlEntityMappingN = dart.constFn(dart.nullable(entity_mapping.XmlEntityMapping)))(),
+    __ToStreamOfString: () => (T.__ToStreamOfString = dart.constFn(dart.fnType(T.StreamOfString(), [], {entityMapping: T.XmlEntityMappingN()}, {})))()
+  };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: io.FileMode.prototype,
-        [FileMode__mode]: 0
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: io.FileMode.prototype,
-        [FileMode__mode]: 1
+        __proto__: with_parent.XmlWithParentEvents.prototype
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: convert.Utf8Codec.prototype,
-        [Utf8Codec__allowMalformed]: false
+        __proto__: T.DefaultEqualityOfNever().prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: equality.ListEquality.prototype,
+        [ListEquality__elementEquality]: C[2] || CT.C2
       });
     }
   }, false);
   var C = Array(3).fill(void 0);
   var I = [
-    "package:file/src/forwarding/forwarding_link.dart",
-    "package:file/src/forwarding/forwarding_file_system_entity.dart",
-    "package:file/src/forwarding/forwarding_file_system.dart",
-    "package:file/src/forwarding/forwarding_file.dart",
-    "package:file/src/forwarding/forwarding_directory.dart"
+    "package:xml/src/xml_events/utils/parented.dart",
+    "package:xml/src/xml_events/event.dart",
+    "package:xml/src/xml_events/events/text.dart",
+    "package:xml/src/xml_events/events/processing.dart",
+    "package:xml/src/xml_events/utils/named.dart",
+    "package:xml/src/xml_events/events/end_element.dart",
+    "package:xml/src/xml_events/events/doctype.dart",
+    "package:xml/src/xml_events/streams/with_parent.dart",
+    "package:xml/src/xml_events/visitor.dart",
+    "package:xml/src/xml_events/events/start_element.dart",
+    "package:xml/src/xml_events/utils/event_attribute.dart",
+    "package:xml/src/xml_events/events/declaration.dart",
+    "package:xml/src/xml_events/events/comment.dart",
+    "package:xml/src/xml_events/events/cdata.dart",
+    "package:xml/src/xml_events/converters/event_encoder.dart"
   ];
-  forwarding_link.ForwardingLink = class ForwardingLink extends core.Object {
-    wrap(delegate) {
-      io.Link.as(delegate);
-      return forwarding_link.ForwardingLink.as(this.wrapLink(delegate));
+  var text$0 = dart.privateName(text$, "XmlTextEvent.text");
+  var _parentEvent = dart.privateName(parented, "_parentEvent");
+  parented.XmlParented = class XmlParented extends core.Object {};
+  parented.XmlParented[dart.mixinOn] = Object => class XmlParented extends Object {
+    get parentEvent() {
+      return this[_parentEvent];
     }
-    create(target, opts) {
-      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-      return async.async(link.Link, (function* create() {
-        return this.wrap(yield this.delegate.create(target, {recursive: recursive}));
-      }).bind(this));
-    }
-    createSync(target, opts) {
-      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-      return this.delegate.createSync(target, {recursive: recursive});
-    }
-    update(target) {
-      return async.async(link.Link, (function* update() {
-        return this.wrap(yield this.delegate.update(target));
-      }).bind(this));
-    }
-    updateSync(target) {
-      return this.delegate.updateSync(target);
-    }
-    target() {
-      return this.delegate.target();
-    }
-    targetSync() {
-      return this.delegate.targetSync();
+    attachParentEvent(parentEvent) {
+      if (this[_parentEvent] != null) {
+        dart.throw(new core.StateError.new("Parent event already resolved."));
+      }
+      this[_parentEvent] = parentEvent;
     }
   };
-  (forwarding_link.ForwardingLink.new = function() {
-    ;
-  }).prototype = forwarding_link.ForwardingLink.prototype;
-  dart.addTypeTests(forwarding_link.ForwardingLink);
-  dart.addTypeCaches(forwarding_link.ForwardingLink);
-  forwarding_link.ForwardingLink[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(link.Link, io.Link), link.Link];
-  dart.setMethodSignature(forwarding_link.ForwardingLink, () => ({
-    __proto__: dart.getMethods(forwarding_link.ForwardingLink.__proto__),
-    wrap: dart.fnType(forwarding_link.ForwardingLink, [dart.nullable(core.Object)]),
-    create: dart.fnType(async.Future$(link.Link), [core.String], {recursive: core.bool}, {}),
-    createSync: dart.fnType(dart.void, [core.String], {recursive: core.bool}, {}),
-    update: dart.fnType(async.Future$(link.Link), [core.String]),
-    updateSync: dart.fnType(dart.void, [core.String]),
-    target: dart.fnType(async.Future$(core.String), []),
-    targetSync: dart.fnType(core.String, [])
+  (parented.XmlParented[dart.mixinNew] = function() {
+    this[_parentEvent] = null;
+  }).prototype = parented.XmlParented.prototype;
+  dart.addTypeTests(parented.XmlParented);
+  dart.addTypeCaches(parented.XmlParented);
+  parented.XmlParented[dart.implements] = () => [core.Object];
+  dart.setMethodSignature(parented.XmlParented, () => ({
+    __proto__: dart.getMethods(parented.XmlParented.__proto__),
+    attachParentEvent: dart.fnType(dart.void, [dart.nullable(start_element.XmlStartElementEvent)])
   }));
-  dart.setLibraryUri(forwarding_link.ForwardingLink, I[0]);
-  const _is_ForwardingFileSystemEntity_default = Symbol('_is_ForwardingFileSystemEntity_default');
-  forwarding_file_system_entity.ForwardingFileSystemEntity$ = dart.generic((T, D) => {
-    class ForwardingFileSystemEntity extends core.Object {
-      get uri() {
-        return this.delegate.uri;
-      }
-      exists() {
-        return this.delegate.exists();
-      }
-      existsSync() {
-        return this.delegate.existsSync();
-      }
-      rename(newPath) {
-        return async.async(T, (function* rename() {
-          return this.wrap(D.as(yield this.delegate.rename(newPath)));
-        }).bind(this));
-      }
-      renameSync(newPath) {
-        return this.wrap(D.as(this.delegate.renameSync(newPath)));
-      }
-      resolveSymbolicLinks() {
-        return this.delegate.resolveSymbolicLinks();
-      }
-      resolveSymbolicLinksSync() {
-        return this.delegate.resolveSymbolicLinksSync();
-      }
-      stat() {
-        return this.delegate.stat();
-      }
-      statSync() {
-        return this.delegate.statSync();
-      }
-      delete(opts) {
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        return async.async(T, (function* $delete() {
-          return this.wrap(D.as(yield this.delegate.delete({recursive: recursive})));
-        }).bind(this));
-      }
-      deleteSync(opts) {
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        return this.delegate.deleteSync({recursive: recursive});
-      }
-      watch(opts) {
-        let events = opts && 'events' in opts ? opts.events : 15;
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        return this.delegate.watch({events: events, recursive: recursive});
-      }
-      get isAbsolute() {
-        return this.delegate.isAbsolute;
-      }
-      get absolute() {
-        return this.wrap(D.as(this.delegate.absolute));
-      }
-      get parent() {
-        return this.wrapDirectory(this.delegate.parent);
-      }
-      get path() {
-        return this.delegate.path;
-      }
-      get basename() {
-        return this.fileSystem.path.basename(this.path);
-      }
-      get dirname() {
-        return this.fileSystem.path.dirname(this.path);
-      }
-    }
-    (ForwardingFileSystemEntity.new = function() {
-      ;
-    }).prototype = ForwardingFileSystemEntity.prototype;
-    dart.addTypeTests(ForwardingFileSystemEntity);
-    ForwardingFileSystemEntity.prototype[_is_ForwardingFileSystemEntity_default] = true;
-    dart.addTypeCaches(ForwardingFileSystemEntity);
-    ForwardingFileSystemEntity[dart.implements] = () => [file_system_entity.FileSystemEntity];
-    dart.setMethodSignature(ForwardingFileSystemEntity, () => ({
-      __proto__: dart.getMethods(ForwardingFileSystemEntity.__proto__),
-      exists: dart.fnType(async.Future$(core.bool), []),
-      existsSync: dart.fnType(core.bool, []),
-      rename: dart.fnType(async.Future$(T), [core.String]),
-      renameSync: dart.fnType(T, [core.String]),
-      resolveSymbolicLinks: dart.fnType(async.Future$(core.String), []),
-      resolveSymbolicLinksSync: dart.fnType(core.String, []),
-      stat: dart.fnType(async.Future$(io.FileStat), []),
-      statSync: dart.fnType(io.FileStat, []),
-      delete: dart.fnType(async.Future$(T), [], {recursive: core.bool}, {}),
-      deleteSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
-      watch: dart.fnType(async.Stream$(io.FileSystemEvent), [], {events: core.int, recursive: core.bool}, {})
-    }));
-    dart.setGetterSignature(ForwardingFileSystemEntity, () => ({
-      __proto__: dart.getGetters(ForwardingFileSystemEntity.__proto__),
-      uri: core.Uri,
-      isAbsolute: core.bool,
-      absolute: T,
-      parent: directory.Directory,
-      path: core.String,
-      basename: core.String,
-      dirname: core.String
-    }));
-    dart.setLibraryUri(ForwardingFileSystemEntity, I[1]);
-    return ForwardingFileSystemEntity;
-  });
-  forwarding_file_system_entity.ForwardingFileSystemEntity = forwarding_file_system_entity.ForwardingFileSystemEntity$();
-  dart.addTypeTests(forwarding_file_system_entity.ForwardingFileSystemEntity, _is_ForwardingFileSystemEntity_default);
-  var delegate$ = dart.privateName(forwarding_file_system, "ForwardingFileSystem.delegate");
-  forwarding_file_system.ForwardingFileSystem = class ForwardingFileSystem extends file_system.FileSystem {
-    get delegate() {
-      return this[delegate$];
-    }
-    set delegate(value) {
-      super.delegate = value;
-    }
-    directory(path) {
-      return this.delegate.directory(path);
-    }
-    file(path) {
-      return this.delegate.file(path);
-    }
-    link(path) {
-      return this.delegate.link(path);
-    }
-    get path() {
-      return this.delegate.path;
-    }
-    get systemTempDirectory() {
-      return this.delegate.systemTempDirectory;
-    }
-    get currentDirectory() {
-      return this.delegate.currentDirectory;
-    }
-    set currentDirectory(path) {
-      return this.delegate.currentDirectory = path;
-    }
-    stat(path) {
-      return this.delegate.stat(path);
-    }
-    statSync(path) {
-      return this.delegate.statSync(path);
-    }
-    identical(path1, path2) {
-      return this.delegate.identical(path1, path2);
-    }
-    identicalSync(path1, path2) {
-      return this.delegate.identicalSync(path1, path2);
-    }
-    get isWatchSupported() {
-      return this.delegate.isWatchSupported;
-    }
-    type(path, opts) {
-      let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
-      return this.delegate.type(path, {followLinks: followLinks});
-    }
-    typeSync(path, opts) {
-      let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
-      return this.delegate.typeSync(path, {followLinks: followLinks});
+  dart.setGetterSignature(parented.XmlParented, () => ({
+    __proto__: dart.getGetters(parented.XmlParented.__proto__),
+    parentEvent: dart.nullable(start_element.XmlStartElementEvent)
+  }));
+  dart.setLibraryUri(parented.XmlParented, I[0]);
+  dart.setFieldSignature(parented.XmlParented, () => ({
+    __proto__: dart.getFields(parented.XmlParented.__proto__),
+    [_parentEvent]: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent))
+  }));
+  const Object_XmlParented$36 = class Object_XmlParented extends core.Object {};
+  (Object_XmlParented$36.new = function() {
+    parented.XmlParented[dart.mixinNew].call(this);
+  }).prototype = Object_XmlParented$36.prototype;
+  dart.applyMixin(Object_XmlParented$36, parented.XmlParented);
+  event.XmlEvent = class XmlEvent extends Object_XmlParented$36 {
+    toString() {
+      return new event_encoder.XmlEventEncoder.new().convert(T.JSArrayOfXmlEvent().of([this]));
     }
   };
-  (forwarding_file_system.ForwardingFileSystem.new = function(delegate) {
-    this[delegate$] = delegate;
-    forwarding_file_system.ForwardingFileSystem.__proto__.new.call(this);
+  (event.XmlEvent.new = function() {
+    event.XmlEvent.__proto__.new.call(this);
     ;
-  }).prototype = forwarding_file_system.ForwardingFileSystem.prototype;
-  dart.addTypeTests(forwarding_file_system.ForwardingFileSystem);
-  dart.addTypeCaches(forwarding_file_system.ForwardingFileSystem);
-  dart.setMethodSignature(forwarding_file_system.ForwardingFileSystem, () => ({
-    __proto__: dart.getMethods(forwarding_file_system.ForwardingFileSystem.__proto__),
-    directory: dart.fnType(directory.Directory, [dart.dynamic]),
-    file: dart.fnType(file.File, [dart.dynamic]),
-    link: dart.fnType(link.Link, [dart.dynamic]),
-    stat: dart.fnType(async.Future$(io.FileStat), [core.String]),
-    statSync: dart.fnType(io.FileStat, [core.String]),
-    identical: dart.fnType(async.Future$(core.bool), [core.String, core.String]),
-    identicalSync: dart.fnType(core.bool, [core.String, core.String]),
-    type: dart.fnType(async.Future$(io.FileSystemEntityType), [core.String], {followLinks: core.bool}, {}),
-    typeSync: dart.fnType(io.FileSystemEntityType, [core.String], {followLinks: core.bool}, {})
-  }));
-  dart.setGetterSignature(forwarding_file_system.ForwardingFileSystem, () => ({
-    __proto__: dart.getGetters(forwarding_file_system.ForwardingFileSystem.__proto__),
-    path: context.Context,
-    systemTempDirectory: directory.Directory,
-    currentDirectory: directory.Directory,
-    isWatchSupported: core.bool
-  }));
-  dart.setSetterSignature(forwarding_file_system.ForwardingFileSystem, () => ({
-    __proto__: dart.getSetters(forwarding_file_system.ForwardingFileSystem.__proto__),
-    currentDirectory: dart.dynamic
-  }));
-  dart.setLibraryUri(forwarding_file_system.ForwardingFileSystem, I[2]);
-  dart.setFieldSignature(forwarding_file_system.ForwardingFileSystem, () => ({
-    __proto__: dart.getFields(forwarding_file_system.ForwardingFileSystem.__proto__),
-    delegate: dart.finalFieldType(file_system.FileSystem)
-  }));
-  var FileMode__mode = dart.privateName(io, "FileMode._mode");
-  var Utf8Codec__allowMalformed = dart.privateName(convert, "Utf8Codec._allowMalformed");
-  forwarding_file.ForwardingFile = class ForwardingFile extends core.Object {
-    wrap(delegate) {
-      io.File.as(delegate);
-      return forwarding_file.ForwardingFile.as(this.wrapFile(delegate));
+  }).prototype = event.XmlEvent.prototype;
+  dart.addTypeTests(event.XmlEvent);
+  dart.addTypeCaches(event.XmlEvent);
+  dart.setLibraryUri(event.XmlEvent, I[1]);
+  dart.defineExtensionMethods(event.XmlEvent, ['toString']);
+  text$.XmlTextEvent = class XmlTextEvent extends event.XmlEvent {
+    get text() {
+      return this[text$0];
     }
-    create(opts) {
-      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-      return async.async(file.File, (function* create() {
-        return this.wrap(yield this.delegate.create({recursive: recursive}));
-      }).bind(this));
+    set text(value) {
+      super.text = value;
     }
-    createSync(opts) {
-      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-      return this.delegate.createSync({recursive: recursive});
+    get nodeType() {
+      return node_type.XmlNodeType.TEXT;
     }
-    copy(newPath) {
-      return async.async(file.File, (function* copy() {
-        return this.wrap(yield this.delegate.copy(newPath));
-      }).bind(this));
+    accept(visitor) {
+      return visitor.visitTextEvent(this);
     }
-    copySync(newPath) {
-      return this.wrap(this.delegate.copySync(newPath));
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.text[$hashCode]) >>> 0;
     }
-    length() {
-      return this.delegate.length();
-    }
-    lengthSync() {
-      return this.delegate.lengthSync();
-    }
-    lastAccessed() {
-      return this.delegate.lastAccessed();
-    }
-    lastAccessedSync() {
-      return this.delegate.lastAccessedSync();
-    }
-    setLastAccessed(time) {
-      return this.delegate.setLastAccessed(time);
-    }
-    setLastAccessedSync(time) {
-      return this.delegate.setLastAccessedSync(time);
-    }
-    lastModified() {
-      return this.delegate.lastModified();
-    }
-    lastModifiedSync() {
-      return this.delegate.lastModifiedSync();
-    }
-    setLastModified(time) {
-      return this.delegate.setLastModified(time);
-    }
-    setLastModifiedSync(time) {
-      return this.delegate.setLastModifiedSync(time);
-    }
-    open(opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[0] || CT.C0;
-      return this.delegate.open({mode: mode});
-    }
-    openSync(opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[0] || CT.C0;
-      return this.delegate.openSync({mode: mode});
-    }
-    openRead(start = null, end = null) {
-      return this.delegate.openRead(start, end);
-    }
-    openWrite(opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      return this.delegate.openWrite({mode: mode, encoding: encoding});
-    }
-    readAsBytes() {
-      return this.delegate.readAsBytes();
-    }
-    readAsBytesSync() {
-      return this.delegate.readAsBytesSync();
-    }
-    readAsString(opts) {
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      return this.delegate.readAsString({encoding: encoding});
-    }
-    readAsStringSync(opts) {
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      return this.delegate.readAsStringSync({encoding: encoding});
-    }
-    readAsLines(opts) {
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      return this.delegate.readAsLines({encoding: encoding});
-    }
-    readAsLinesSync(opts) {
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      return this.delegate.readAsLinesSync({encoding: encoding});
-    }
-    writeAsBytes(bytes, opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
-      let flush = opts && 'flush' in opts ? opts.flush : false;
-      return async.async(file.File, (function* writeAsBytes() {
-        return this.wrap(yield this.delegate.writeAsBytes(bytes, {mode: mode, flush: flush}));
-      }).bind(this));
-    }
-    writeAsBytesSync(bytes, opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
-      let flush = opts && 'flush' in opts ? opts.flush : false;
-      return this.delegate.writeAsBytesSync(bytes, {mode: mode, flush: flush});
-    }
-    writeAsString(contents, opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      let flush = opts && 'flush' in opts ? opts.flush : false;
-      return async.async(file.File, (function* writeAsString() {
-        return this.wrap(yield this.delegate.writeAsString(contents, {mode: mode, encoding: encoding, flush: flush}));
-      }).bind(this));
-    }
-    writeAsStringSync(contents, opts) {
-      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
-      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
-      let flush = opts && 'flush' in opts ? opts.flush : false;
-      return this.delegate.writeAsStringSync(contents, {mode: mode, encoding: encoding, flush: flush});
+    _equals(other) {
+      if (other == null) return false;
+      return text$.XmlTextEvent.is(other) && other.text === this.text;
     }
   };
-  (forwarding_file.ForwardingFile.new = function() {
+  (text$.XmlTextEvent.new = function(text) {
+    this[text$0] = text;
+    text$.XmlTextEvent.__proto__.new.call(this);
     ;
-  }).prototype = forwarding_file.ForwardingFile.prototype;
-  dart.addTypeTests(forwarding_file.ForwardingFile);
-  dart.addTypeCaches(forwarding_file.ForwardingFile);
-  forwarding_file.ForwardingFile[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(file.File, io.File), file.File];
-  dart.setMethodSignature(forwarding_file.ForwardingFile, () => ({
-    __proto__: dart.getMethods(forwarding_file.ForwardingFile.__proto__),
-    wrap: dart.fnType(forwarding_file.ForwardingFile, [dart.nullable(core.Object)]),
-    create: dart.fnType(async.Future$(file.File), [], {recursive: core.bool}, {}),
-    createSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
-    copy: dart.fnType(async.Future$(file.File), [core.String]),
-    copySync: dart.fnType(file.File, [core.String]),
-    length: dart.fnType(async.Future$(core.int), []),
-    lengthSync: dart.fnType(core.int, []),
-    lastAccessed: dart.fnType(async.Future$(core.DateTime), []),
-    lastAccessedSync: dart.fnType(core.DateTime, []),
-    setLastAccessed: dart.fnType(async.Future, [core.DateTime]),
-    setLastAccessedSync: dart.fnType(dart.void, [core.DateTime]),
-    lastModified: dart.fnType(async.Future$(core.DateTime), []),
-    lastModifiedSync: dart.fnType(core.DateTime, []),
-    setLastModified: dart.fnType(async.Future, [core.DateTime]),
-    setLastModifiedSync: dart.fnType(dart.void, [core.DateTime]),
-    open: dart.fnType(async.Future$(io.RandomAccessFile), [], {mode: io.FileMode}, {}),
-    openSync: dart.fnType(io.RandomAccessFile, [], {mode: io.FileMode}, {}),
-    openRead: dart.fnType(async.Stream$(core.List$(core.int)), [], [dart.nullable(core.int), dart.nullable(core.int)]),
-    openWrite: dart.fnType(io.IOSink, [], {encoding: convert.Encoding, mode: io.FileMode}, {}),
-    readAsBytes: dart.fnType(async.Future$(typed_data.Uint8List), []),
-    readAsBytesSync: dart.fnType(typed_data.Uint8List, []),
-    readAsString: dart.fnType(async.Future$(core.String), [], {encoding: convert.Encoding}, {}),
-    readAsStringSync: dart.fnType(core.String, [], {encoding: convert.Encoding}, {}),
-    readAsLines: dart.fnType(async.Future$(core.List$(core.String)), [], {encoding: convert.Encoding}, {}),
-    readAsLinesSync: dart.fnType(core.List$(core.String), [], {encoding: convert.Encoding}, {}),
-    writeAsBytes: dart.fnType(async.Future$(file.File), [core.List$(core.int)], {flush: core.bool, mode: io.FileMode}, {}),
-    writeAsBytesSync: dart.fnType(dart.void, [core.List$(core.int)], {flush: core.bool, mode: io.FileMode}, {}),
-    writeAsString: dart.fnType(async.Future$(file.File), [core.String], {encoding: convert.Encoding, flush: core.bool, mode: io.FileMode}, {}),
-    writeAsStringSync: dart.fnType(dart.void, [core.String], {encoding: convert.Encoding, flush: core.bool, mode: io.FileMode}, {})
+  }).prototype = text$.XmlTextEvent.prototype;
+  dart.addTypeTests(text$.XmlTextEvent);
+  dart.addTypeCaches(text$.XmlTextEvent);
+  dart.setMethodSignature(text$.XmlTextEvent, () => ({
+    __proto__: dart.getMethods(text$.XmlTextEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
   }));
-  dart.setLibraryUri(forwarding_file.ForwardingFile, I[3]);
-  var _wrap = dart.privateName(forwarding_directory, "_wrap");
-  const _is_ForwardingDirectory_default = Symbol('_is_ForwardingDirectory_default');
-  forwarding_directory.ForwardingDirectory$ = dart.generic(T => {
-    class ForwardingDirectory extends core.Object {
-      wrap(delegate) {
-        io.Directory.as(delegate);
-        return T.as(this.wrapDirectory(delegate));
-      }
-      create(opts) {
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        return async.async(directory.Directory, (function* create() {
-          return this.wrap(yield this.delegate.create({recursive: recursive}));
-        }).bind(this));
-      }
-      createSync(opts) {
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        return this.delegate.createSync({recursive: recursive});
-      }
-      createTemp(prefix = null) {
-        return async.async(directory.Directory, (function* createTemp() {
-          return this.wrap(yield this.delegate.createTemp(prefix));
-        }).bind(this));
-      }
-      createTempSync(prefix = null) {
-        return this.wrap(this.delegate.createTempSync(prefix));
-      }
-      list(opts) {
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
-        return this.delegate.list({recursive: recursive, followLinks: followLinks}).map(file_system_entity.FileSystemEntity, dart.bind(this, _wrap));
-      }
-      listSync(opts) {
-        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
-        let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
-        return this.delegate.listSync({recursive: recursive, followLinks: followLinks})[$map](file_system_entity.FileSystemEntity, dart.bind(this, _wrap))[$toList]();
-      }
-      [_wrap](entity) {
-        if (io.File.is(entity)) {
-          return this.wrapFile(entity);
-        } else if (io.Directory.is(entity)) {
-          return this.wrapDirectory(entity);
-        } else if (io.Link.is(entity)) {
-          return this.wrapLink(entity);
+  dart.setGetterSignature(text$.XmlTextEvent, () => ({
+    __proto__: dart.getGetters(text$.XmlTextEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(text$.XmlTextEvent, I[2]);
+  dart.setFieldSignature(text$.XmlTextEvent, () => ({
+    __proto__: dart.getFields(text$.XmlTextEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(text$.XmlTextEvent, ['_equals']);
+  dart.defineExtensionAccessors(text$.XmlTextEvent, ['hashCode']);
+  var target$ = dart.privateName(processing, "XmlProcessingEvent.target");
+  var text$1 = dart.privateName(processing, "XmlProcessingEvent.text");
+  processing.XmlProcessingEvent = class XmlProcessingEvent extends event.XmlEvent {
+    get target() {
+      return this[target$];
+    }
+    set target(value) {
+      super.target = value;
+    }
+    get text() {
+      return this[text$1];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.PROCESSING;
+    }
+    accept(visitor) {
+      return visitor.visitProcessingEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.text[$hashCode] ^ this.target[$hashCode]) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return processing.XmlProcessingEvent.is(other) && other.target === this.target && other.text === this.text;
+    }
+  };
+  (processing.XmlProcessingEvent.new = function(target, text) {
+    this[target$] = target;
+    this[text$1] = text;
+    processing.XmlProcessingEvent.__proto__.new.call(this);
+    ;
+  }).prototype = processing.XmlProcessingEvent.prototype;
+  dart.addTypeTests(processing.XmlProcessingEvent);
+  dart.addTypeCaches(processing.XmlProcessingEvent);
+  dart.setMethodSignature(processing.XmlProcessingEvent, () => ({
+    __proto__: dart.getMethods(processing.XmlProcessingEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(processing.XmlProcessingEvent, () => ({
+    __proto__: dart.getGetters(processing.XmlProcessingEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(processing.XmlProcessingEvent, I[3]);
+  dart.setFieldSignature(processing.XmlProcessingEvent, () => ({
+    __proto__: dart.getFields(processing.XmlProcessingEvent.__proto__),
+    target: dart.finalFieldType(core.String),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(processing.XmlProcessingEvent, ['_equals']);
+  dart.defineExtensionAccessors(processing.XmlProcessingEvent, ['hashCode']);
+  var name$ = dart.privateName(end_element, "XmlEndElementEvent.name");
+  named.XmlNamed = class XmlNamed extends core.Object {};
+  named.XmlNamed[dart.mixinOn] = Object => class XmlNamed extends Object {
+    get qualifiedName() {
+      return this.name;
+    }
+    get namespacePrefix() {
+      let index = this.name[$indexOf](":");
+      return index > 0 ? this.name[$substring](0, index) : null;
+    }
+    get namespaceUri() {
+      let index = this.name[$indexOf](":");
+      let prefix = index < 0 ? null : "xmlns";
+      let local = index < 0 ? "xmlns" : this.name[$substring](0, index);
+      let start = start_element.XmlStartElementEvent.is(this) ? start_element.XmlStartElementEvent.as(this) : this.parentEvent;
+      for (let event = start; event != null; event = event.parentEvent) {
+        for (let attribute of event.attributes) {
+          if (attribute.namespacePrefix == prefix && attribute.localName === local) {
+            return attribute.value;
+          }
         }
-        dart.throw(new io.FileSystemException.new("Unsupported type: " + dart.str(entity), entity.path));
+      }
+      return null;
+    }
+    get localName() {
+      let index = this.name[$indexOf](":");
+      return index > 0 ? this.name[$substring](index + 1) : this.name;
+    }
+  };
+  (named.XmlNamed[dart.mixinNew] = function() {
+  }).prototype = named.XmlNamed.prototype;
+  dart.addTypeTests(named.XmlNamed);
+  dart.addTypeCaches(named.XmlNamed);
+  named.XmlNamed[dart.implements] = () => [parented.XmlParented, core.Object];
+  dart.setGetterSignature(named.XmlNamed, () => ({
+    __proto__: dart.getGetters(named.XmlNamed.__proto__),
+    qualifiedName: core.String,
+    namespacePrefix: dart.nullable(core.String),
+    namespaceUri: dart.nullable(core.String),
+    localName: core.String
+  }));
+  dart.setLibraryUri(named.XmlNamed, I[4]);
+  const XmlEvent_XmlNamed$36 = class XmlEvent_XmlNamed extends event.XmlEvent {};
+  (XmlEvent_XmlNamed$36.new = function() {
+    XmlEvent_XmlNamed$36.__proto__.new.call(this);
+  }).prototype = XmlEvent_XmlNamed$36.prototype;
+  dart.applyMixin(XmlEvent_XmlNamed$36, named.XmlNamed);
+  end_element.XmlEndElementEvent = class XmlEndElementEvent extends XmlEvent_XmlNamed$36 {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.ELEMENT;
+    }
+    accept(visitor) {
+      return visitor.visitEndElementEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.name[$hashCode]) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return end_element.XmlEndElementEvent.is(other) && other.name === this.name;
+    }
+  };
+  (end_element.XmlEndElementEvent.new = function(name) {
+    this[name$] = name;
+    end_element.XmlEndElementEvent.__proto__.new.call(this);
+    ;
+  }).prototype = end_element.XmlEndElementEvent.prototype;
+  dart.addTypeTests(end_element.XmlEndElementEvent);
+  dart.addTypeCaches(end_element.XmlEndElementEvent);
+  dart.setMethodSignature(end_element.XmlEndElementEvent, () => ({
+    __proto__: dart.getMethods(end_element.XmlEndElementEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(end_element.XmlEndElementEvent, () => ({
+    __proto__: dart.getGetters(end_element.XmlEndElementEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(end_element.XmlEndElementEvent, I[5]);
+  dart.setFieldSignature(end_element.XmlEndElementEvent, () => ({
+    __proto__: dart.getFields(end_element.XmlEndElementEvent.__proto__),
+    name: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(end_element.XmlEndElementEvent, ['_equals']);
+  dart.defineExtensionAccessors(end_element.XmlEndElementEvent, ['hashCode']);
+  var text$2 = dart.privateName(doctype, "XmlDoctypeEvent.text");
+  doctype.XmlDoctypeEvent = class XmlDoctypeEvent extends event.XmlEvent {
+    get text() {
+      return this[text$2];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.DOCUMENT_TYPE;
+    }
+    accept(visitor) {
+      return visitor.visitDoctypeEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.text[$hashCode]) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return doctype.XmlDoctypeEvent.is(other) && other.text === this.text;
+    }
+  };
+  (doctype.XmlDoctypeEvent.new = function(text) {
+    this[text$2] = text;
+    doctype.XmlDoctypeEvent.__proto__.new.call(this);
+    ;
+  }).prototype = doctype.XmlDoctypeEvent.prototype;
+  dart.addTypeTests(doctype.XmlDoctypeEvent);
+  dart.addTypeCaches(doctype.XmlDoctypeEvent);
+  dart.setMethodSignature(doctype.XmlDoctypeEvent, () => ({
+    __proto__: dart.getMethods(doctype.XmlDoctypeEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(doctype.XmlDoctypeEvent, () => ({
+    __proto__: dart.getGetters(doctype.XmlDoctypeEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(doctype.XmlDoctypeEvent, I[6]);
+  dart.setFieldSignature(doctype.XmlDoctypeEvent, () => ({
+    __proto__: dart.getFields(doctype.XmlDoctypeEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(doctype.XmlDoctypeEvent, ['_equals']);
+  dart.defineExtensionAccessors(doctype.XmlDoctypeEvent, ['hashCode']);
+  with_parent.XmlWithParentEvents = class XmlWithParentEvents extends list_converter.XmlListConverter$(event.XmlEvent, event.XmlEvent) {
+    startChunkedConversion(sink) {
+      T.SinkOfListOfXmlEvent().as(sink);
+      return new with_parent._XmlWithParentEventsSink.new(sink);
+    }
+  };
+  (with_parent.XmlWithParentEvents.new = function() {
+    with_parent.XmlWithParentEvents.__proto__.new.call(this);
+    ;
+  }).prototype = with_parent.XmlWithParentEvents.prototype;
+  dart.addTypeTests(with_parent.XmlWithParentEvents);
+  dart.addTypeCaches(with_parent.XmlWithParentEvents);
+  dart.setMethodSignature(with_parent.XmlWithParentEvents, () => ({
+    __proto__: dart.getMethods(with_parent.XmlWithParentEvents.__proto__),
+    startChunkedConversion: dart.fnType(convert.ChunkedConversionSink$(core.List$(event.XmlEvent)), [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(with_parent.XmlWithParentEvents, I[7]);
+  visitor.XmlEventVisitor = class XmlEventVisitor extends core.Object {};
+  visitor.XmlEventVisitor[dart.mixinOn] = Object => class XmlEventVisitor extends Object {
+    visit(event) {
+      return event.accept(this);
+    }
+  };
+  (visitor.XmlEventVisitor[dart.mixinNew] = function() {
+  }).prototype = visitor.XmlEventVisitor.prototype;
+  dart.addTypeTests(visitor.XmlEventVisitor);
+  dart.addTypeCaches(visitor.XmlEventVisitor);
+  visitor.XmlEventVisitor[dart.implements] = () => [core.Object];
+  dart.setMethodSignature(visitor.XmlEventVisitor, () => ({
+    __proto__: dart.getMethods(visitor.XmlEventVisitor.__proto__),
+    visit: dart.fnType(dart.void, [event.XmlEvent])
+  }));
+  dart.setLibraryUri(visitor.XmlEventVisitor, I[8]);
+  const ChunkedConversionSink_XmlEventVisitor$36 = class ChunkedConversionSink_XmlEventVisitor extends convert.ChunkedConversionSink$(core.List$(event.XmlEvent)) {};
+  (ChunkedConversionSink_XmlEventVisitor$36.new = function() {
+    ChunkedConversionSink_XmlEventVisitor$36.__proto__.new.call(this);
+  }).prototype = ChunkedConversionSink_XmlEventVisitor$36.prototype;
+  dart.applyMixin(ChunkedConversionSink_XmlEventVisitor$36, visitor.XmlEventVisitor);
+  with_parent._XmlWithParentEventsSink = class _XmlWithParentEventsSink extends ChunkedConversionSink_XmlEventVisitor$36 {
+    add(events) {
+      T.ListOfXmlEvent().as(events);
+      events[$forEach](dart.bind(this, 'visit'));
+      this.sink.add(events);
+    }
+    close() {
+      if (this.currentParent != null) {
+        dart.throw(exceptions.XmlTagException.missingClosingTag(dart.nullCheck(this.currentParent).name));
+      }
+      this.sink.close();
+    }
+    visitCDATAEvent(event) {
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitCommentEvent(event) {
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitDeclarationEvent(event) {
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitDoctypeEvent(event) {
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitEndElementEvent(event) {
+      if (this.currentParent == null) {
+        dart.throw(exceptions.XmlTagException.unexpectedClosingTag(event.name));
+      } else if (dart.nullCheck(this.currentParent).name !== event.name) {
+        dart.throw(exceptions.XmlTagException.mismatchClosingTag(dart.nullCheck(this.currentParent).name, event.name));
+      }
+      event.attachParentEvent(this.currentParent);
+      this.currentParent = dart.nullCheck(this.currentParent).parentEvent;
+    }
+    visitProcessingEvent(event) {
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitStartElementEvent(event) {
+      event.attachParentEvent(this.currentParent);
+      for (let attribute of event.attributes) {
+        attribute.attachParentEvent(event);
+      }
+      if (!event.isSelfClosing) {
+        this.currentParent = event;
       }
     }
-    (ForwardingDirectory.new = function() {
-      ;
-    }).prototype = ForwardingDirectory.prototype;
-    dart.addTypeTests(ForwardingDirectory);
-    ForwardingDirectory.prototype[_is_ForwardingDirectory_default] = true;
-    dart.addTypeCaches(ForwardingDirectory);
-    ForwardingDirectory[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(T, io.Directory), directory.Directory];
-    dart.setMethodSignature(ForwardingDirectory, () => ({
-      __proto__: dart.getMethods(ForwardingDirectory.__proto__),
-      wrap: dart.fnType(T, [dart.nullable(core.Object)]),
-      create: dart.fnType(async.Future$(directory.Directory), [], {recursive: core.bool}, {}),
-      createSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
-      createTemp: dart.fnType(async.Future$(directory.Directory), [], [dart.nullable(core.String)]),
-      createTempSync: dart.fnType(directory.Directory, [], [dart.nullable(core.String)]),
-      list: dart.fnType(async.Stream$(file_system_entity.FileSystemEntity), [], {followLinks: core.bool, recursive: core.bool}, {}),
-      listSync: dart.fnType(core.List$(file_system_entity.FileSystemEntity), [], {followLinks: core.bool, recursive: core.bool}, {}),
-      [_wrap]: dart.fnType(file_system_entity.FileSystemEntity, [io.FileSystemEntity])
-    }));
-    dart.setLibraryUri(ForwardingDirectory, I[4]);
-    return ForwardingDirectory;
-  });
-  forwarding_directory.ForwardingDirectory = forwarding_directory.ForwardingDirectory$();
-  dart.addTypeTests(forwarding_directory.ForwardingDirectory, _is_ForwardingDirectory_default);
-  dart.trackLibraries("packages/file/src/forwarding/forwarding_link.dart", {
-    "package:file/src/forwarding/forwarding_link.dart": forwarding_link,
-    "package:file/src/forwarding/forwarding_file_system_entity.dart": forwarding_file_system_entity,
-    "package:file/src/forwarding/forwarding_file_system.dart": forwarding_file_system,
-    "package:file/src/forwarding/forwarding_file.dart": forwarding_file,
-    "package:file/src/forwarding/forwarding_directory.dart": forwarding_directory,
-    "package:file/src/forwarding.dart": forwarding,
-    "package:file/file.dart": file$
+    visitTextEvent(event) {
+      return event.attachParentEvent(this.currentParent);
+    }
+  };
+  (with_parent._XmlWithParentEventsSink.new = function(sink) {
+    this.currentParent = null;
+    this.sink = sink;
+    with_parent._XmlWithParentEventsSink.__proto__.new.call(this);
+    ;
+  }).prototype = with_parent._XmlWithParentEventsSink.prototype;
+  dart.addTypeTests(with_parent._XmlWithParentEventsSink);
+  dart.addTypeCaches(with_parent._XmlWithParentEventsSink);
+  dart.setMethodSignature(with_parent._XmlWithParentEventsSink, () => ({
+    __proto__: dart.getMethods(with_parent._XmlWithParentEventsSink.__proto__),
+    add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+    close: dart.fnType(dart.void, []),
+    visitCDATAEvent: dart.fnType(dart.void, [cdata.XmlCDATAEvent]),
+    visitCommentEvent: dart.fnType(dart.void, [comment.XmlCommentEvent]),
+    visitDeclarationEvent: dart.fnType(dart.void, [declaration.XmlDeclarationEvent]),
+    visitDoctypeEvent: dart.fnType(dart.void, [doctype.XmlDoctypeEvent]),
+    visitEndElementEvent: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
+    visitProcessingEvent: dart.fnType(dart.void, [processing.XmlProcessingEvent]),
+    visitStartElementEvent: dart.fnType(dart.void, [start_element.XmlStartElementEvent]),
+    visitTextEvent: dart.fnType(dart.void, [text$.XmlTextEvent])
+  }));
+  dart.setLibraryUri(with_parent._XmlWithParentEventsSink, I[7]);
+  dart.setFieldSignature(with_parent._XmlWithParentEventsSink, () => ({
+    __proto__: dart.getFields(with_parent._XmlWithParentEventsSink.__proto__),
+    sink: dart.finalFieldType(core.Sink$(core.List$(event.XmlEvent))),
+    currentParent: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent))
+  }));
+  with_parent['XmlWithParentEventsExtension|withParentEvents'] = function XmlWithParentEventsExtension$124withParentEvents($this) {
+    return $this.transform(T.ListOfXmlEvent(), C[0] || CT.C0);
+  };
+  with_parent['XmlWithParentEventsExtension|get#withParentEvents'] = function XmlWithParentEventsExtension$124get$35withParentEvents($this) {
+    return dart.fn(() => with_parent['XmlWithParentEventsExtension|withParentEvents']($this), T.VoidToStreamOfListOfXmlEvent());
+  };
+  var name$0 = dart.privateName(start_element, "XmlStartElementEvent.name");
+  var attributes$ = dart.privateName(start_element, "XmlStartElementEvent.attributes");
+  var isSelfClosing$ = dart.privateName(start_element, "XmlStartElementEvent.isSelfClosing");
+  var ListEquality__elementEquality = dart.privateName(equality, "ListEquality._elementEquality");
+  const XmlEvent_XmlNamed$36$ = class XmlEvent_XmlNamed extends event.XmlEvent {};
+  (XmlEvent_XmlNamed$36$.new = function() {
+    XmlEvent_XmlNamed$36$.__proto__.new.call(this);
+  }).prototype = XmlEvent_XmlNamed$36$.prototype;
+  dart.applyMixin(XmlEvent_XmlNamed$36$, named.XmlNamed);
+  start_element.XmlStartElementEvent = class XmlStartElementEvent extends XmlEvent_XmlNamed$36$ {
+    get name() {
+      return this[name$0];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get attributes() {
+      return this[attributes$];
+    }
+    set attributes(value) {
+      super.attributes = value;
+    }
+    get isSelfClosing() {
+      return this[isSelfClosing$];
+    }
+    set isSelfClosing(value) {
+      super.isSelfClosing = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.ELEMENT;
+    }
+    accept(visitor) {
+      return visitor.visitStartElementEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.name[$hashCode] ^ this.isSelfClosing[$hashCode] ^ (C[1] || CT.C1).hash(this.attributes)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return start_element.XmlStartElementEvent.is(other) && other.name === this.name && other.isSelfClosing === this.isSelfClosing && (C[1] || CT.C1).equals(other.attributes, this.attributes);
+    }
+  };
+  (start_element.XmlStartElementEvent.new = function(name, attributes, isSelfClosing) {
+    this[name$0] = name;
+    this[attributes$] = attributes;
+    this[isSelfClosing$] = isSelfClosing;
+    start_element.XmlStartElementEvent.__proto__.new.call(this);
+    ;
+  }).prototype = start_element.XmlStartElementEvent.prototype;
+  dart.addTypeTests(start_element.XmlStartElementEvent);
+  dart.addTypeCaches(start_element.XmlStartElementEvent);
+  dart.setMethodSignature(start_element.XmlStartElementEvent, () => ({
+    __proto__: dart.getMethods(start_element.XmlStartElementEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(start_element.XmlStartElementEvent, () => ({
+    __proto__: dart.getGetters(start_element.XmlStartElementEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(start_element.XmlStartElementEvent, I[9]);
+  dart.setFieldSignature(start_element.XmlStartElementEvent, () => ({
+    __proto__: dart.getFields(start_element.XmlStartElementEvent.__proto__),
+    name: dart.finalFieldType(core.String),
+    attributes: dart.finalFieldType(core.List$(event_attribute.XmlEventAttribute)),
+    isSelfClosing: dart.finalFieldType(core.bool)
+  }));
+  dart.defineExtensionMethods(start_element.XmlStartElementEvent, ['_equals']);
+  dart.defineExtensionAccessors(start_element.XmlStartElementEvent, ['hashCode']);
+  var name$1 = dart.privateName(event_attribute, "XmlEventAttribute.name");
+  var value$ = dart.privateName(event_attribute, "XmlEventAttribute.value");
+  var attributeType$ = dart.privateName(event_attribute, "XmlEventAttribute.attributeType");
+  const Object_XmlNamed$36 = class Object_XmlNamed extends core.Object {};
+  (Object_XmlNamed$36.new = function() {
+  }).prototype = Object_XmlNamed$36.prototype;
+  dart.applyMixin(Object_XmlNamed$36, named.XmlNamed);
+  const Object_XmlParented$36$ = class Object_XmlParented extends Object_XmlNamed$36 {};
+  (Object_XmlParented$36$.new = function() {
+    parented.XmlParented[dart.mixinNew].call(this);
+  }).prototype = Object_XmlParented$36$.prototype;
+  dart.applyMixin(Object_XmlParented$36$, parented.XmlParented);
+  event_attribute.XmlEventAttribute = class XmlEventAttribute extends Object_XmlParented$36$ {
+    get name() {
+      return this[name$1];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    get attributeType() {
+      return this[attributeType$];
+    }
+    set attributeType(value) {
+      super.attributeType = value;
+    }
+    get hashCode() {
+      return (this.name[$hashCode] ^ this.value[$hashCode]) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return event_attribute.XmlEventAttribute.is(other) && other.name === this.name && other.value === this.value && other.attributeType === this.attributeType;
+    }
+  };
+  (event_attribute.XmlEventAttribute.new = function(name, value, attributeType) {
+    this[name$1] = name;
+    this[value$] = value;
+    this[attributeType$] = attributeType;
+    event_attribute.XmlEventAttribute.__proto__.new.call(this);
+    ;
+  }).prototype = event_attribute.XmlEventAttribute.prototype;
+  dart.addTypeTests(event_attribute.XmlEventAttribute);
+  dart.addTypeCaches(event_attribute.XmlEventAttribute);
+  dart.setLibraryUri(event_attribute.XmlEventAttribute, I[10]);
+  dart.setFieldSignature(event_attribute.XmlEventAttribute, () => ({
+    __proto__: dart.getFields(event_attribute.XmlEventAttribute.__proto__),
+    name: dart.finalFieldType(core.String),
+    value: dart.finalFieldType(core.String),
+    attributeType: dart.finalFieldType(attribute_type.XmlAttributeType)
+  }));
+  dart.defineExtensionMethods(event_attribute.XmlEventAttribute, ['_equals']);
+  dart.defineExtensionAccessors(event_attribute.XmlEventAttribute, ['hashCode']);
+  var attributes$0 = dart.privateName(declaration, "XmlDeclarationEvent.attributes");
+  declaration.XmlDeclarationEvent = class XmlDeclarationEvent extends event.XmlEvent {
+    get attributes() {
+      return this[attributes$0];
+    }
+    set attributes(value) {
+      super.attributes = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.DECLARATION;
+    }
+    accept(visitor) {
+      return visitor.visitDeclarationEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ (C[1] || CT.C1).hash(this.attributes)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return declaration.XmlDeclarationEvent.is(other) && (C[1] || CT.C1).equals(other.attributes, this.attributes);
+    }
+  };
+  (declaration.XmlDeclarationEvent.new = function(attributes) {
+    this[attributes$0] = attributes;
+    declaration.XmlDeclarationEvent.__proto__.new.call(this);
+    ;
+  }).prototype = declaration.XmlDeclarationEvent.prototype;
+  dart.addTypeTests(declaration.XmlDeclarationEvent);
+  dart.addTypeCaches(declaration.XmlDeclarationEvent);
+  dart.setMethodSignature(declaration.XmlDeclarationEvent, () => ({
+    __proto__: dart.getMethods(declaration.XmlDeclarationEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(declaration.XmlDeclarationEvent, () => ({
+    __proto__: dart.getGetters(declaration.XmlDeclarationEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(declaration.XmlDeclarationEvent, I[11]);
+  dart.setFieldSignature(declaration.XmlDeclarationEvent, () => ({
+    __proto__: dart.getFields(declaration.XmlDeclarationEvent.__proto__),
+    attributes: dart.finalFieldType(core.List$(event_attribute.XmlEventAttribute))
+  }));
+  dart.defineExtensionMethods(declaration.XmlDeclarationEvent, ['_equals']);
+  dart.defineExtensionAccessors(declaration.XmlDeclarationEvent, ['hashCode']);
+  var text$3 = dart.privateName(comment, "XmlCommentEvent.text");
+  comment.XmlCommentEvent = class XmlCommentEvent extends event.XmlEvent {
+    get text() {
+      return this[text$3];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.COMMENT;
+    }
+    accept(visitor) {
+      return visitor.visitCommentEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.text[$hashCode]) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return comment.XmlCommentEvent.is(other) && other.text === this.text;
+    }
+  };
+  (comment.XmlCommentEvent.new = function(text) {
+    this[text$3] = text;
+    comment.XmlCommentEvent.__proto__.new.call(this);
+    ;
+  }).prototype = comment.XmlCommentEvent.prototype;
+  dart.addTypeTests(comment.XmlCommentEvent);
+  dart.addTypeCaches(comment.XmlCommentEvent);
+  dart.setMethodSignature(comment.XmlCommentEvent, () => ({
+    __proto__: dart.getMethods(comment.XmlCommentEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(comment.XmlCommentEvent, () => ({
+    __proto__: dart.getGetters(comment.XmlCommentEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(comment.XmlCommentEvent, I[12]);
+  dart.setFieldSignature(comment.XmlCommentEvent, () => ({
+    __proto__: dart.getFields(comment.XmlCommentEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(comment.XmlCommentEvent, ['_equals']);
+  dart.defineExtensionAccessors(comment.XmlCommentEvent, ['hashCode']);
+  var text$4 = dart.privateName(cdata, "XmlCDATAEvent.text");
+  cdata.XmlCDATAEvent = class XmlCDATAEvent extends event.XmlEvent {
+    get text() {
+      return this[text$4];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.CDATA;
+    }
+    accept(visitor) {
+      return visitor.visitCDATAEvent(this);
+    }
+    get hashCode() {
+      return (this.nodeType[$hashCode] ^ this.text[$hashCode]) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return cdata.XmlCDATAEvent.is(other) && other.text === this.text;
+    }
+  };
+  (cdata.XmlCDATAEvent.new = function(text) {
+    this[text$4] = text;
+    cdata.XmlCDATAEvent.__proto__.new.call(this);
+    ;
+  }).prototype = cdata.XmlCDATAEvent.prototype;
+  dart.addTypeTests(cdata.XmlCDATAEvent);
+  dart.addTypeCaches(cdata.XmlCDATAEvent);
+  dart.setMethodSignature(cdata.XmlCDATAEvent, () => ({
+    __proto__: dart.getMethods(cdata.XmlCDATAEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(cdata.XmlCDATAEvent, () => ({
+    __proto__: dart.getGetters(cdata.XmlCDATAEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(cdata.XmlCDATAEvent, I[13]);
+  dart.setFieldSignature(cdata.XmlCDATAEvent, () => ({
+    __proto__: dart.getFields(cdata.XmlCDATAEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(cdata.XmlCDATAEvent, ['_equals']);
+  dart.defineExtensionAccessors(cdata.XmlCDATAEvent, ['hashCode']);
+  var entityMapping$ = dart.privateName(event_encoder, "XmlEventEncoder.entityMapping");
+  event_encoder.XmlEventEncoder = class XmlEventEncoder extends convert.Converter$(core.List$(event.XmlEvent), core.String) {
+    get entityMapping() {
+      return this[entityMapping$];
+    }
+    set entityMapping(value) {
+      super.entityMapping = value;
+    }
+    convert(input) {
+      let t2;
+      T.ListOfXmlEvent().as(input);
+      let buffer = new core.StringBuffer.new();
+      let sink = new (T.ConversionSinkOfString()).new(dart.bind(buffer, 'write'));
+      t2 = this.startChunkedConversion(sink);
+      (() => {
+        t2.add(input);
+        t2.close();
+        return t2;
+      })();
+      return buffer.toString();
+    }
+    startChunkedConversion(sink) {
+      T.SinkOfString().as(sink);
+      return new event_encoder._XmlEventEncoderSink.new(sink, this.entityMapping);
+    }
+  };
+  (event_encoder.XmlEventEncoder.new = function(opts) {
+    let t2;
+    let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+    this[entityMapping$] = (t2 = entityMapping, t2 == null ? default_mapping.defaultEntityMapping : t2);
+    event_encoder.XmlEventEncoder.__proto__.new.call(this);
+    ;
+  }).prototype = event_encoder.XmlEventEncoder.prototype;
+  dart.addTypeTests(event_encoder.XmlEventEncoder);
+  dart.addTypeCaches(event_encoder.XmlEventEncoder);
+  dart.setMethodSignature(event_encoder.XmlEventEncoder, () => ({
+    __proto__: dart.getMethods(event_encoder.XmlEventEncoder.__proto__),
+    convert: dart.fnType(core.String, [dart.nullable(core.Object)]),
+    startChunkedConversion: dart.fnType(convert.ChunkedConversionSink$(core.List$(event.XmlEvent)), [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(event_encoder.XmlEventEncoder, I[14]);
+  dart.setFieldSignature(event_encoder.XmlEventEncoder, () => ({
+    __proto__: dart.getFields(event_encoder.XmlEventEncoder.__proto__),
+    entityMapping: dart.finalFieldType(entity_mapping.XmlEntityMapping)
+  }));
+  const ChunkedConversionSink_XmlEventVisitor$36$ = class ChunkedConversionSink_XmlEventVisitor extends convert.ChunkedConversionSink$(core.List$(event.XmlEvent)) {};
+  (ChunkedConversionSink_XmlEventVisitor$36$.new = function() {
+    ChunkedConversionSink_XmlEventVisitor$36$.__proto__.new.call(this);
+  }).prototype = ChunkedConversionSink_XmlEventVisitor$36$.prototype;
+  dart.applyMixin(ChunkedConversionSink_XmlEventVisitor$36$, visitor.XmlEventVisitor);
+  event_encoder._XmlEventEncoderSink = class _XmlEventEncoderSink extends ChunkedConversionSink_XmlEventVisitor$36$ {
+    add(chunk) {
+      T.ListOfXmlEvent().as(chunk);
+      return chunk[$forEach](dart.bind(this, 'visit'));
+    }
+    close() {
+      return this.sink.close();
+    }
+    visitCDATAEvent(event) {
+      this.sink.add("<![CDATA[");
+      this.sink.add(event.text);
+      this.sink.add("]]>");
+    }
+    visitCommentEvent(event) {
+      this.sink.add("<!--");
+      this.sink.add(event.text);
+      this.sink.add("-->");
+    }
+    visitDeclarationEvent(event) {
+      this.sink.add("<?xml");
+      this.addAttributes(event.attributes);
+      this.sink.add("?>");
+    }
+    visitDoctypeEvent(event) {
+      this.sink.add("<!DOCTYPE");
+      this.sink.add(" ");
+      this.sink.add(event.text);
+      this.sink.add(">");
+    }
+    visitEndElementEvent(event) {
+      this.sink.add("</");
+      this.sink.add(event.name);
+      this.sink.add(">");
+    }
+    visitProcessingEvent(event) {
+      this.sink.add("<?");
+      this.sink.add(event.target);
+      if (event.text[$isNotEmpty]) {
+        this.sink.add(" ");
+        this.sink.add(event.text);
+      }
+      this.sink.add("?>");
+    }
+    visitStartElementEvent(event) {
+      this.sink.add("<");
+      this.sink.add(event.name);
+      this.addAttributes(event.attributes);
+      if (event.isSelfClosing) {
+        this.sink.add("/>");
+      } else {
+        this.sink.add(">");
+      }
+    }
+    visitTextEvent(event) {
+      this.sink.add(this.entityMapping.encodeText(event.text));
+    }
+    addAttributes(attributes) {
+      for (let attribute of attributes) {
+        this.sink.add(" ");
+        this.sink.add(attribute.name);
+        this.sink.add("=");
+        this.sink.add(this.entityMapping.encodeAttributeValueWithQuotes(attribute.value, attribute.attributeType));
+      }
+    }
+  };
+  (event_encoder._XmlEventEncoderSink.new = function(sink, entityMapping) {
+    this.sink = sink;
+    this.entityMapping = entityMapping;
+    event_encoder._XmlEventEncoderSink.__proto__.new.call(this);
+    ;
+  }).prototype = event_encoder._XmlEventEncoderSink.prototype;
+  dart.addTypeTests(event_encoder._XmlEventEncoderSink);
+  dart.addTypeCaches(event_encoder._XmlEventEncoderSink);
+  dart.setMethodSignature(event_encoder._XmlEventEncoderSink, () => ({
+    __proto__: dart.getMethods(event_encoder._XmlEventEncoderSink.__proto__),
+    add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+    close: dart.fnType(dart.void, []),
+    visitCDATAEvent: dart.fnType(dart.void, [cdata.XmlCDATAEvent]),
+    visitCommentEvent: dart.fnType(dart.void, [comment.XmlCommentEvent]),
+    visitDeclarationEvent: dart.fnType(dart.void, [declaration.XmlDeclarationEvent]),
+    visitDoctypeEvent: dart.fnType(dart.void, [doctype.XmlDoctypeEvent]),
+    visitEndElementEvent: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
+    visitProcessingEvent: dart.fnType(dart.void, [processing.XmlProcessingEvent]),
+    visitStartElementEvent: dart.fnType(dart.void, [start_element.XmlStartElementEvent]),
+    visitTextEvent: dart.fnType(dart.void, [text$.XmlTextEvent]),
+    addAttributes: dart.fnType(dart.void, [core.List$(event_attribute.XmlEventAttribute)])
+  }));
+  dart.setLibraryUri(event_encoder._XmlEventEncoderSink, I[14]);
+  dart.setFieldSignature(event_encoder._XmlEventEncoderSink, () => ({
+    __proto__: dart.getFields(event_encoder._XmlEventEncoderSink.__proto__),
+    sink: dart.finalFieldType(core.Sink$(core.String)),
+    entityMapping: dart.finalFieldType(entity_mapping.XmlEntityMapping)
+  }));
+  event_encoder['XmlEventEncoderExtension|toXmlString'] = function XmlEventEncoderExtension$124toXmlString($this, opts) {
+    let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+    return $this.transform(core.String, new event_encoder.XmlEventEncoder.new({entityMapping: entityMapping}));
+  };
+  event_encoder['XmlEventEncoderExtension|get#toXmlString'] = function XmlEventEncoderExtension$124get$35toXmlString($this) {
+    return dart.fn(opts => {
+      let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+      return event_encoder['XmlEventEncoderExtension|toXmlString']($this, {entityMapping: entityMapping});
+    }, T.__ToStreamOfString());
+  };
+  dart.trackLibraries("packages/xml/src/xml_events/events/text.dart", {
+    "package:xml/src/xml_events/events/text.dart": text$,
+    "package:xml/src/xml_events/events/processing.dart": processing,
+    "package:xml/src/xml_events/events/end_element.dart": end_element,
+    "package:xml/src/xml_events/events/doctype.dart": doctype,
+    "package:xml/src/xml_events/streams/with_parent.dart": with_parent,
+    "package:xml/src/xml_events/utils/parented.dart": parented,
+    "package:xml/src/xml_events/events/start_element.dart": start_element,
+    "package:xml/src/xml_events/utils/named.dart": named,
+    "package:xml/src/xml_events/utils/event_attribute.dart": event_attribute,
+    "package:xml/src/xml_events/events/declaration.dart": declaration,
+    "package:xml/src/xml_events/events/comment.dart": comment,
+    "package:xml/src/xml_events/visitor.dart": visitor,
+    "package:xml/src/xml_events/events/cdata.dart": cdata,
+    "package:xml/src/xml_events/converters/event_encoder.dart": event_encoder,
+    "package:xml/src/xml_events/event.dart": event
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["forwarding_link.dart","forwarding_file_system_entity.dart","forwarding_file_system.dart","forwarding_file.dart","forwarding_directory.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/file/src/forwarding/forwarding_link.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["../utils/parented.dart","../event.dart","text.dart","processing.dart","../utils/named.dart","end_element.dart","doctype.dart","../streams/with_parent.dart","../visitor.dart","start_element.dart","../utils/event_attribute.dart","declaration.dart","comment.dart","cdata.dart","../converters/event_encoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/xml/src/xml_events/events/text.dart.lib.js"}');
   // Exports:
   return {
-    src__forwarding__forwarding_link: forwarding_link,
-    src__forwarding__forwarding_file_system_entity: forwarding_file_system_entity,
-    src__forwarding__forwarding_file_system: forwarding_file_system,
-    src__forwarding__forwarding_file: forwarding_file,
-    src__forwarding__forwarding_directory: forwarding_directory,
-    src__forwarding: forwarding,
-    file: file$
+    src__xml_events__events__text: text$,
+    src__xml_events__events__processing: processing,
+    src__xml_events__events__end_element: end_element,
+    src__xml_events__events__doctype: doctype,
+    src__xml_events__streams__with_parent: with_parent,
+    src__xml_events__utils__parented: parented,
+    src__xml_events__events__start_element: start_element,
+    src__xml_events__utils__named: named,
+    src__xml_events__utils__event_attribute: event_attribute,
+    src__xml_events__events__declaration: declaration,
+    src__xml_events__events__comment: comment,
+    src__xml_events__visitor: visitor,
+    src__xml_events__events__cdata: cdata,
+    src__xml_events__converters__event_encoder: event_encoder,
+    src__xml_events__event: event
   };
 }));
 
-//# sourceMappingURL=forwarding_link.dart.lib.js.map
+//# sourceMappingURL=text.dart.lib.js.map

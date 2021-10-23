@@ -1,175 +1,545 @@
-define(['dart_sdk', 'packages/petitparser/src/parser/misc/eof.dart', 'packages/petitparser/src/parser/combinator/optional.dart', 'packages/petitparser/src/parser/predicate/string.dart', 'packages/xml/src/xml/utils/character_data_parser.dart', 'packages/petitparser/src/parser/action/pick.dart', 'packages/petitparser/src/parser/action/flatten.dart', 'packages/petitparser/src/parser/repeater/lazy.dart', 'packages/petitparser/src/parser/repeater/separated_by.dart', 'packages/petitparser/src/parser/character/whitespace.dart', 'packages/petitparser/src/parser/character/pattern.dart', 'packages/petitparser/src/definition/grammar.dart', 'packages/xml/src/xml/entities/entity_mapping.dart'], (function load__packages__xml__src__xml__production_dart(dart_sdk, packages__petitparser__src__parser__misc__eof$46dart, packages__petitparser__src__parser__combinator__optional$46dart, packages__petitparser__src__parser__predicate__string$46dart, packages__xml__src__xml__utils__character_data_parser$46dart, packages__petitparser__src__parser__action__pick$46dart, packages__petitparser__src__parser__action__flatten$46dart, packages__petitparser__src__parser__repeater__lazy$46dart, packages__petitparser__src__parser__repeater__separated_by$46dart, packages__petitparser__src__parser__character__whitespace$46dart, packages__petitparser__src__parser__character__pattern$46dart, packages__petitparser__src__definition__grammar$46dart, packages__xml__src__xml__entities__entity_mapping$46dart) {
+define(['dart_sdk', 'packages/file/src/interface/link.dart', 'packages/path/src/path_set.dart'], (function load__packages__file__src__forwarding__forwarding_link_dart(dart_sdk, packages__file__src__interface__link$46dart, packages__path__src__path_set$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const io = dart_sdk.io;
+  const async = dart_sdk.async;
+  const convert = dart_sdk.convert;
+  const typed_data = dart_sdk.typed_data;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const eof = packages__petitparser__src__parser__misc__eof$46dart.src__parser__misc__eof;
-  const sequence = packages__petitparser__src__parser__combinator__optional$46dart.src__parser__combinator__sequence;
-  const choice = packages__petitparser__src__parser__combinator__optional$46dart.src__parser__combinator__choice;
-  const possessive = packages__petitparser__src__parser__combinator__optional$46dart.src__parser__repeater__possessive;
-  const any = packages__petitparser__src__parser__combinator__optional$46dart.src__parser__predicate__any;
-  const optional = packages__petitparser__src__parser__combinator__optional$46dart.src__parser__combinator__optional;
-  const token = packages__petitparser__src__parser__combinator__optional$46dart.src__parser__action__token;
-  const parser = packages__petitparser__src__parser__combinator__optional$46dart.src__core__parser;
-  const string = packages__petitparser__src__parser__predicate__string$46dart.src__parser__predicate__string;
-  const character_data_parser = packages__xml__src__xml__utils__character_data_parser$46dart.src__xml__utils__character_data_parser;
-  const pick = packages__petitparser__src__parser__action__pick$46dart.src__parser__action__pick;
-  const flatten = packages__petitparser__src__parser__action__flatten$46dart.src__parser__action__flatten;
-  const lazy = packages__petitparser__src__parser__repeater__lazy$46dart.src__parser__repeater__lazy;
-  const separated_by = packages__petitparser__src__parser__repeater__separated_by$46dart.src__parser__repeater__separated_by;
-  const whitespace = packages__petitparser__src__parser__character__whitespace$46dart.src__parser__character__whitespace;
-  const pattern = packages__petitparser__src__parser__character__pattern$46dart.src__parser__character__pattern;
-  const grammar = packages__petitparser__src__definition__grammar$46dart.src__definition__grammar;
-  const entity_mapping = packages__xml__src__xml__entities__entity_mapping$46dart.src__xml__entities__entity_mapping;
-  var production = Object.create(dart.library);
+  const link = packages__file__src__interface__link$46dart.src__interface__link;
+  const file_system_entity = packages__file__src__interface__link$46dart.src__interface__file_system_entity;
+  const directory = packages__file__src__interface__link$46dart.src__interface__directory;
+  const file_system = packages__file__src__interface__link$46dart.src__interface__file_system;
+  const file = packages__file__src__interface__link$46dart.src__interface__file;
+  const context = packages__path__src__path_set$46dart.src__context;
+  var forwarding_link = Object.create(dart.library);
+  var forwarding_file_system_entity = Object.create(dart.library);
+  var forwarding_file_system = Object.create(dart.library);
+  var forwarding_file = Object.create(dart.library);
+  var forwarding_directory = Object.create(dart.library);
+  var forwarding = Object.create(dart.library);
+  var file$ = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
   dart._checkModuleNullSafetyMode(true);
-  var T = {
-    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  var I = ["package:xml/src/xml/production.dart"];
-  var entityMapping$ = dart.privateName(production, "XmlProductionDefinition.entityMapping");
-  production.XmlProductionDefinition = class XmlProductionDefinition extends grammar.GrammarDefinition {
-    get entityMapping() {
-      return this[entityMapping$];
-    }
-    set entityMapping(value) {
-      super.entityMapping = value;
-    }
-    start() {
-      return eof['EndOfInputParserExtension|end'](dart.dynamic, this.ref0(dart.dynamic, dart.bind(this, 'document')), "Expected end of input");
-    }
-    attribute() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](this.ref0(dart.dynamic, dart.bind(this, 'qualified')), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), string['PredicateStringExtension|toParser']("=")), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), this.ref0(dart.dynamic, dart.bind(this, 'attributeValue')));
-    }
-    attributeValue() {
-      return choice['ChoiceParserExtension|or'](this.ref0(dart.dynamic, dart.bind(this, 'attributeValueDouble')), this.ref0(dart.dynamic, dart.bind(this, 'attributeValueSingle')));
-    }
-    attributeValueDouble() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("\""), new character_data_parser.XmlCharacterDataParser.new(this.entityMapping, "\"", 0)), string['PredicateStringExtension|toParser']("\""));
-    }
-    attributeValueSingle() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("'"), new character_data_parser.XmlCharacterDataParser.new(this.entityMapping, "'", 0)), string['PredicateStringExtension|toParser']("'"));
-    }
-    attributes() {
-      return possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, pick['PickParserExtension|pick'](dart.dynamic, sequence['SequenceParserExtension|seq'](this.ref0(dart.dynamic, dart.bind(this, 'space')), this.ref0(dart.dynamic, dart.bind(this, 'attribute'))), 1));
-    }
-    comment() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("<!--"), flatten['FlattenParserExtension|flatten'](T.ListOfString(), lazy['LazyRepeatingParserExtension|starLazy'](core.String, any.any(), string['PredicateStringExtension|toParser']("-->")), "Expected comment content")), string['PredicateStringExtension|toParser']("-->"));
-    }
-    cdata() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("<![CDATA["), flatten['FlattenParserExtension|flatten'](T.ListOfString(), lazy['LazyRepeatingParserExtension|starLazy'](core.String, any.any(), string['PredicateStringExtension|toParser']("]]>")), "Expected CDATA content")), string['PredicateStringExtension|toParser']("]]>"));
-    }
-    content() {
-      return possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](this.ref0(dart.dynamic, dart.bind(this, 'characterData')), this.ref0(dart.dynamic, dart.bind(this, 'element'))), this.ref0(dart.dynamic, dart.bind(this, 'processing'))), this.ref0(dart.dynamic, dart.bind(this, 'comment'))), this.ref0(dart.dynamic, dart.bind(this, 'cdata'))));
-    }
-    declaration() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("<?xml"), this.ref0(dart.dynamic, dart.bind(this, 'attributes'))), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), string['PredicateStringExtension|toParser']("?>"));
-    }
-    doctype() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("<!DOCTYPE"), this.ref0(dart.dynamic, dart.bind(this, 'space'))), flatten['FlattenParserExtension|flatten'](core.List, separated_by['SeparatedBy|separatedBy'](dart.dynamic, dart.dynamic, choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](this.ref0(dart.dynamic, dart.bind(this, 'nameToken')), this.ref0(dart.dynamic, dart.bind(this, 'attributeValue'))), sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("["), lazy['LazyRepeatingParserExtension|starLazy'](core.String, any.any(), string['PredicateStringExtension|toParser']("]"))), string['PredicateStringExtension|toParser']("]"))), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), "Expected doctype content")), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), string['PredicateStringExtension|toParser'](">"));
-    }
-    document() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](optional['OptionalParserExtension|optional'](dart.dynamic, this.ref0(dart.dynamic, dart.bind(this, 'declaration'))), this.ref0(dart.dynamic, dart.bind(this, 'misc'))), optional['OptionalParserExtension|optional'](dart.dynamic, this.ref0(dart.dynamic, dart.bind(this, 'doctype')))), this.ref0(dart.dynamic, dart.bind(this, 'misc'))), this.ref0(dart.dynamic, dart.bind(this, 'element'))), this.ref0(dart.dynamic, dart.bind(this, 'misc')));
-    }
-    documentFragment() {
-      return pick['PickParserExtension|pick'](dart.dynamic, sequence['SequenceParserExtension|seq'](possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, this.ref0(dart.dynamic, dart.bind(this, 'documentFragmentContent'))), choice['ChoiceParserExtension||'](eof.endOfInput("Expected end of input"), this.ref0(dart.dynamic, dart.bind(this, 'element')))), 0);
-    }
-    documentFragmentContent() {
-      return choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](this.ref0(dart.dynamic, dart.bind(this, 'characterData')), this.ref0(dart.dynamic, dart.bind(this, 'element'))), this.ref0(dart.dynamic, dart.bind(this, 'comment'))), this.ref0(dart.dynamic, dart.bind(this, 'cdata'))), this.ref0(dart.dynamic, dart.bind(this, 'declaration'))), this.ref0(dart.dynamic, dart.bind(this, 'processing'))), this.ref0(dart.dynamic, dart.bind(this, 'doctype')));
-    }
-    element() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("<"), this.ref0(dart.dynamic, dart.bind(this, 'qualified'))), this.ref0(dart.dynamic, dart.bind(this, 'attributes'))), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), choice['ChoiceParserExtension|or'](string['PredicateStringExtension|toParser']("/>"), sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser'](">"), this.ref0(dart.dynamic, dart.bind(this, 'content'))), token['TokenParserExtension|token'](core.String, string['PredicateStringExtension|toParser']("</"))), this.ref0(dart.dynamic, dart.bind(this, 'qualified'))), this.ref0(dart.dynamic, dart.bind(this, 'spaceOptional'))), string['PredicateStringExtension|toParser'](">"))));
-    }
-    processing() {
-      return sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](sequence['SequenceParserExtension|seq'](string['PredicateStringExtension|toParser']("<?"), this.ref0(dart.dynamic, dart.bind(this, 'nameToken'))), optional['OptionalParserExtension|optionalWith'](dart.dynamic, pick['PickParserExtension|pick'](dart.dynamic, sequence['SequenceParserExtension|seq'](this.ref0(dart.dynamic, dart.bind(this, 'space')), flatten['FlattenParserExtension|flatten'](T.ListOfString(), lazy['LazyRepeatingParserExtension|starLazy'](core.String, any.any(), string['PredicateStringExtension|toParser']("?>")), "Expected processing instruction content")), 1), "")), string['PredicateStringExtension|toParser']("?>"));
-    }
-    qualified() {
-      return this.ref0(dart.dynamic, dart.bind(this, 'nameToken'));
-    }
-    characterData() {
-      return new character_data_parser.XmlCharacterDataParser.new(this.entityMapping, "<", 1);
-    }
-    misc() {
-      return possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, choice['ChoiceParserExtension|or'](choice['ChoiceParserExtension|or'](this.ref0(dart.dynamic, dart.bind(this, 'spaceText')), this.ref0(dart.dynamic, dart.bind(this, 'comment'))), this.ref0(dart.dynamic, dart.bind(this, 'processing'))));
-    }
-    space() {
-      return possessive['PossessiveRepeatingParserExtension|plus'](core.String, whitespace.whitespace());
-    }
-    spaceText() {
-      return flatten['FlattenParserExtension|flatten'](dart.dynamic, this.ref0(dart.dynamic, dart.bind(this, 'space')), "Expected whitespace");
-    }
-    spaceOptional() {
-      return possessive['PossessiveRepeatingParserExtension|star'](core.String, whitespace.whitespace());
-    }
-    nameToken() {
-      return flatten['FlattenParserExtension|flatten'](core.List, sequence['SequenceParserExtension|seq'](this.ref0(dart.dynamic, dart.bind(this, 'nameStartChar')), possessive['PossessiveRepeatingParserExtension|star'](dart.dynamic, this.ref0(dart.dynamic, dart.bind(this, 'nameChar')))), "Expected name");
-    }
-    nameStartChar() {
-      return pattern.pattern(production.XmlProductionDefinition._nameStartChars);
-    }
-    nameChar() {
-      return pattern.pattern(production.XmlProductionDefinition._nameChars);
-    }
-  };
-  (production.XmlProductionDefinition.new = function(entityMapping) {
-    this[entityMapping$] = entityMapping;
-    production.XmlProductionDefinition.__proto__.new.call(this);
-    ;
-  }).prototype = production.XmlProductionDefinition.prototype;
-  dart.addTypeTests(production.XmlProductionDefinition);
-  dart.addTypeCaches(production.XmlProductionDefinition);
-  dart.setMethodSignature(production.XmlProductionDefinition, () => ({
-    __proto__: dart.getMethods(production.XmlProductionDefinition.__proto__),
-    start: dart.fnType(parser.Parser, []),
-    attribute: dart.fnType(parser.Parser, []),
-    attributeValue: dart.fnType(parser.Parser, []),
-    attributeValueDouble: dart.fnType(parser.Parser, []),
-    attributeValueSingle: dart.fnType(parser.Parser, []),
-    attributes: dart.fnType(parser.Parser, []),
-    comment: dart.fnType(parser.Parser, []),
-    cdata: dart.fnType(parser.Parser, []),
-    content: dart.fnType(parser.Parser, []),
-    declaration: dart.fnType(parser.Parser, []),
-    doctype: dart.fnType(parser.Parser, []),
-    document: dart.fnType(parser.Parser, []),
-    documentFragment: dart.fnType(parser.Parser, []),
-    documentFragmentContent: dart.fnType(parser.Parser, []),
-    element: dart.fnType(parser.Parser, []),
-    processing: dart.fnType(parser.Parser, []),
-    qualified: dart.fnType(parser.Parser, []),
-    characterData: dart.fnType(parser.Parser, []),
-    misc: dart.fnType(parser.Parser, []),
-    space: dart.fnType(parser.Parser, []),
-    spaceText: dart.fnType(parser.Parser, []),
-    spaceOptional: dart.fnType(parser.Parser, []),
-    nameToken: dart.fnType(parser.Parser, []),
-    nameStartChar: dart.fnType(parser.Parser, []),
-    nameChar: dart.fnType(parser.Parser, [])
-  }));
-  dart.setLibraryUri(production.XmlProductionDefinition, I[0]);
-  dart.setFieldSignature(production.XmlProductionDefinition, () => ({
-    __proto__: dart.getFields(production.XmlProductionDefinition.__proto__),
-    entityMapping: dart.finalFieldType(entity_mapping.XmlEntityMapping)
-  }));
-  dart.defineLazy(production.XmlProductionDefinition, {
-    /*production.XmlProductionDefinition._nameStartChars*/get _nameStartChars() {
-      return ":A-Z_a-zÀ-ÖØ-öø-˿Ͱ-ͽͿ-῿‌-‍⁰-↏Ⰰ-⿯、-퟿豈-﷏ﷰ-�";
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: io.FileMode.prototype,
+        [FileMode__mode]: 0
+      });
     },
-    /*production.XmlProductionDefinition._nameChars*/get _nameChars() {
-      return ":A-Z_a-zÀ-ÖØ-öø-˿Ͱ-ͽͿ-῿‌-‍⁰-↏Ⰰ-⿯、-퟿豈-﷏ﷰ-�-.0-9·̀-ͯ‿-⁀";
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: io.FileMode.prototype,
+        [FileMode__mode]: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: convert.Utf8Codec.prototype,
+        [Utf8Codec__allowMalformed]: false
+      });
     }
   }, false);
-  dart.trackLibraries("packages/xml/src/xml/production.dart", {
-    "package:xml/src/xml/production.dart": production
+  var C = Array(3).fill(void 0);
+  var I = [
+    "package:file/src/forwarding/forwarding_link.dart",
+    "package:file/src/forwarding/forwarding_file_system_entity.dart",
+    "package:file/src/forwarding/forwarding_file_system.dart",
+    "package:file/src/forwarding/forwarding_file.dart",
+    "package:file/src/forwarding/forwarding_directory.dart"
+  ];
+  forwarding_link.ForwardingLink = class ForwardingLink extends core.Object {
+    wrap(delegate) {
+      io.Link.as(delegate);
+      return forwarding_link.ForwardingLink.as(this.wrapLink(delegate));
+    }
+    create(target, opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return async.async(link.Link, (function* create() {
+        return this.wrap(yield this.delegate.create(target, {recursive: recursive}));
+      }).bind(this));
+    }
+    createSync(target, opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return this.delegate.createSync(target, {recursive: recursive});
+    }
+    update(target) {
+      return async.async(link.Link, (function* update() {
+        return this.wrap(yield this.delegate.update(target));
+      }).bind(this));
+    }
+    updateSync(target) {
+      return this.delegate.updateSync(target);
+    }
+    target() {
+      return this.delegate.target();
+    }
+    targetSync() {
+      return this.delegate.targetSync();
+    }
+  };
+  (forwarding_link.ForwardingLink.new = function() {
+    ;
+  }).prototype = forwarding_link.ForwardingLink.prototype;
+  dart.addTypeTests(forwarding_link.ForwardingLink);
+  dart.addTypeCaches(forwarding_link.ForwardingLink);
+  forwarding_link.ForwardingLink[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(link.Link, io.Link), link.Link];
+  dart.setMethodSignature(forwarding_link.ForwardingLink, () => ({
+    __proto__: dart.getMethods(forwarding_link.ForwardingLink.__proto__),
+    wrap: dart.fnType(forwarding_link.ForwardingLink, [dart.nullable(core.Object)]),
+    create: dart.fnType(async.Future$(link.Link), [core.String], {recursive: core.bool}, {}),
+    createSync: dart.fnType(dart.void, [core.String], {recursive: core.bool}, {}),
+    update: dart.fnType(async.Future$(link.Link), [core.String]),
+    updateSync: dart.fnType(dart.void, [core.String]),
+    target: dart.fnType(async.Future$(core.String), []),
+    targetSync: dart.fnType(core.String, [])
+  }));
+  dart.setLibraryUri(forwarding_link.ForwardingLink, I[0]);
+  const _is_ForwardingFileSystemEntity_default = Symbol('_is_ForwardingFileSystemEntity_default');
+  forwarding_file_system_entity.ForwardingFileSystemEntity$ = dart.generic((T, D) => {
+    class ForwardingFileSystemEntity extends core.Object {
+      get uri() {
+        return this.delegate.uri;
+      }
+      exists() {
+        return this.delegate.exists();
+      }
+      existsSync() {
+        return this.delegate.existsSync();
+      }
+      rename(newPath) {
+        return async.async(T, (function* rename() {
+          return this.wrap(D.as(yield this.delegate.rename(newPath)));
+        }).bind(this));
+      }
+      renameSync(newPath) {
+        return this.wrap(D.as(this.delegate.renameSync(newPath)));
+      }
+      resolveSymbolicLinks() {
+        return this.delegate.resolveSymbolicLinks();
+      }
+      resolveSymbolicLinksSync() {
+        return this.delegate.resolveSymbolicLinksSync();
+      }
+      stat() {
+        return this.delegate.stat();
+      }
+      statSync() {
+        return this.delegate.statSync();
+      }
+      delete(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return async.async(T, (function* $delete() {
+          return this.wrap(D.as(yield this.delegate.delete({recursive: recursive})));
+        }).bind(this));
+      }
+      deleteSync(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return this.delegate.deleteSync({recursive: recursive});
+      }
+      watch(opts) {
+        let events = opts && 'events' in opts ? opts.events : 15;
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return this.delegate.watch({events: events, recursive: recursive});
+      }
+      get isAbsolute() {
+        return this.delegate.isAbsolute;
+      }
+      get absolute() {
+        return this.wrap(D.as(this.delegate.absolute));
+      }
+      get parent() {
+        return this.wrapDirectory(this.delegate.parent);
+      }
+      get path() {
+        return this.delegate.path;
+      }
+      get basename() {
+        return this.fileSystem.path.basename(this.path);
+      }
+      get dirname() {
+        return this.fileSystem.path.dirname(this.path);
+      }
+    }
+    (ForwardingFileSystemEntity.new = function() {
+      ;
+    }).prototype = ForwardingFileSystemEntity.prototype;
+    dart.addTypeTests(ForwardingFileSystemEntity);
+    ForwardingFileSystemEntity.prototype[_is_ForwardingFileSystemEntity_default] = true;
+    dart.addTypeCaches(ForwardingFileSystemEntity);
+    ForwardingFileSystemEntity[dart.implements] = () => [file_system_entity.FileSystemEntity];
+    dart.setMethodSignature(ForwardingFileSystemEntity, () => ({
+      __proto__: dart.getMethods(ForwardingFileSystemEntity.__proto__),
+      exists: dart.fnType(async.Future$(core.bool), []),
+      existsSync: dart.fnType(core.bool, []),
+      rename: dart.fnType(async.Future$(T), [core.String]),
+      renameSync: dart.fnType(T, [core.String]),
+      resolveSymbolicLinks: dart.fnType(async.Future$(core.String), []),
+      resolveSymbolicLinksSync: dart.fnType(core.String, []),
+      stat: dart.fnType(async.Future$(io.FileStat), []),
+      statSync: dart.fnType(io.FileStat, []),
+      delete: dart.fnType(async.Future$(T), [], {recursive: core.bool}, {}),
+      deleteSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
+      watch: dart.fnType(async.Stream$(io.FileSystemEvent), [], {events: core.int, recursive: core.bool}, {})
+    }));
+    dart.setGetterSignature(ForwardingFileSystemEntity, () => ({
+      __proto__: dart.getGetters(ForwardingFileSystemEntity.__proto__),
+      uri: core.Uri,
+      isAbsolute: core.bool,
+      absolute: T,
+      parent: directory.Directory,
+      path: core.String,
+      basename: core.String,
+      dirname: core.String
+    }));
+    dart.setLibraryUri(ForwardingFileSystemEntity, I[1]);
+    return ForwardingFileSystemEntity;
+  });
+  forwarding_file_system_entity.ForwardingFileSystemEntity = forwarding_file_system_entity.ForwardingFileSystemEntity$();
+  dart.addTypeTests(forwarding_file_system_entity.ForwardingFileSystemEntity, _is_ForwardingFileSystemEntity_default);
+  var delegate$ = dart.privateName(forwarding_file_system, "ForwardingFileSystem.delegate");
+  forwarding_file_system.ForwardingFileSystem = class ForwardingFileSystem extends file_system.FileSystem {
+    get delegate() {
+      return this[delegate$];
+    }
+    set delegate(value) {
+      super.delegate = value;
+    }
+    directory(path) {
+      return this.delegate.directory(path);
+    }
+    file(path) {
+      return this.delegate.file(path);
+    }
+    link(path) {
+      return this.delegate.link(path);
+    }
+    get path() {
+      return this.delegate.path;
+    }
+    get systemTempDirectory() {
+      return this.delegate.systemTempDirectory;
+    }
+    get currentDirectory() {
+      return this.delegate.currentDirectory;
+    }
+    set currentDirectory(path) {
+      return this.delegate.currentDirectory = path;
+    }
+    stat(path) {
+      return this.delegate.stat(path);
+    }
+    statSync(path) {
+      return this.delegate.statSync(path);
+    }
+    identical(path1, path2) {
+      return this.delegate.identical(path1, path2);
+    }
+    identicalSync(path1, path2) {
+      return this.delegate.identicalSync(path1, path2);
+    }
+    get isWatchSupported() {
+      return this.delegate.isWatchSupported;
+    }
+    type(path, opts) {
+      let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+      return this.delegate.type(path, {followLinks: followLinks});
+    }
+    typeSync(path, opts) {
+      let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+      return this.delegate.typeSync(path, {followLinks: followLinks});
+    }
+  };
+  (forwarding_file_system.ForwardingFileSystem.new = function(delegate) {
+    this[delegate$] = delegate;
+    forwarding_file_system.ForwardingFileSystem.__proto__.new.call(this);
+    ;
+  }).prototype = forwarding_file_system.ForwardingFileSystem.prototype;
+  dart.addTypeTests(forwarding_file_system.ForwardingFileSystem);
+  dart.addTypeCaches(forwarding_file_system.ForwardingFileSystem);
+  dart.setMethodSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getMethods(forwarding_file_system.ForwardingFileSystem.__proto__),
+    directory: dart.fnType(directory.Directory, [dart.dynamic]),
+    file: dart.fnType(file.File, [dart.dynamic]),
+    link: dart.fnType(link.Link, [dart.dynamic]),
+    stat: dart.fnType(async.Future$(io.FileStat), [core.String]),
+    statSync: dart.fnType(io.FileStat, [core.String]),
+    identical: dart.fnType(async.Future$(core.bool), [core.String, core.String]),
+    identicalSync: dart.fnType(core.bool, [core.String, core.String]),
+    type: dart.fnType(async.Future$(io.FileSystemEntityType), [core.String], {followLinks: core.bool}, {}),
+    typeSync: dart.fnType(io.FileSystemEntityType, [core.String], {followLinks: core.bool}, {})
+  }));
+  dart.setGetterSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getGetters(forwarding_file_system.ForwardingFileSystem.__proto__),
+    path: context.Context,
+    systemTempDirectory: directory.Directory,
+    currentDirectory: directory.Directory,
+    isWatchSupported: core.bool
+  }));
+  dart.setSetterSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getSetters(forwarding_file_system.ForwardingFileSystem.__proto__),
+    currentDirectory: dart.dynamic
+  }));
+  dart.setLibraryUri(forwarding_file_system.ForwardingFileSystem, I[2]);
+  dart.setFieldSignature(forwarding_file_system.ForwardingFileSystem, () => ({
+    __proto__: dart.getFields(forwarding_file_system.ForwardingFileSystem.__proto__),
+    delegate: dart.finalFieldType(file_system.FileSystem)
+  }));
+  var FileMode__mode = dart.privateName(io, "FileMode._mode");
+  var Utf8Codec__allowMalformed = dart.privateName(convert, "Utf8Codec._allowMalformed");
+  forwarding_file.ForwardingFile = class ForwardingFile extends core.Object {
+    wrap(delegate) {
+      io.File.as(delegate);
+      return forwarding_file.ForwardingFile.as(this.wrapFile(delegate));
+    }
+    create(opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return async.async(file.File, (function* create() {
+        return this.wrap(yield this.delegate.create({recursive: recursive}));
+      }).bind(this));
+    }
+    createSync(opts) {
+      let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+      return this.delegate.createSync({recursive: recursive});
+    }
+    copy(newPath) {
+      return async.async(file.File, (function* copy() {
+        return this.wrap(yield this.delegate.copy(newPath));
+      }).bind(this));
+    }
+    copySync(newPath) {
+      return this.wrap(this.delegate.copySync(newPath));
+    }
+    length() {
+      return this.delegate.length();
+    }
+    lengthSync() {
+      return this.delegate.lengthSync();
+    }
+    lastAccessed() {
+      return this.delegate.lastAccessed();
+    }
+    lastAccessedSync() {
+      return this.delegate.lastAccessedSync();
+    }
+    setLastAccessed(time) {
+      return this.delegate.setLastAccessed(time);
+    }
+    setLastAccessedSync(time) {
+      return this.delegate.setLastAccessedSync(time);
+    }
+    lastModified() {
+      return this.delegate.lastModified();
+    }
+    lastModifiedSync() {
+      return this.delegate.lastModifiedSync();
+    }
+    setLastModified(time) {
+      return this.delegate.setLastModified(time);
+    }
+    setLastModifiedSync(time) {
+      return this.delegate.setLastModifiedSync(time);
+    }
+    open(opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[0] || CT.C0;
+      return this.delegate.open({mode: mode});
+    }
+    openSync(opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[0] || CT.C0;
+      return this.delegate.openSync({mode: mode});
+    }
+    openRead(start = null, end = null) {
+      return this.delegate.openRead(start, end);
+    }
+    openWrite(opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.openWrite({mode: mode, encoding: encoding});
+    }
+    readAsBytes() {
+      return this.delegate.readAsBytes();
+    }
+    readAsBytesSync() {
+      return this.delegate.readAsBytesSync();
+    }
+    readAsString(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsString({encoding: encoding});
+    }
+    readAsStringSync(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsStringSync({encoding: encoding});
+    }
+    readAsLines(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsLines({encoding: encoding});
+    }
+    readAsLinesSync(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      return this.delegate.readAsLinesSync({encoding: encoding});
+    }
+    writeAsBytes(bytes, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return async.async(file.File, (function* writeAsBytes() {
+        return this.wrap(yield this.delegate.writeAsBytes(bytes, {mode: mode, flush: flush}));
+      }).bind(this));
+    }
+    writeAsBytesSync(bytes, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return this.delegate.writeAsBytesSync(bytes, {mode: mode, flush: flush});
+    }
+    writeAsString(contents, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return async.async(file.File, (function* writeAsString() {
+        return this.wrap(yield this.delegate.writeAsString(contents, {mode: mode, encoding: encoding, flush: flush}));
+      }).bind(this));
+    }
+    writeAsStringSync(contents, opts) {
+      let mode = opts && 'mode' in opts ? opts.mode : C[1] || CT.C1;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[2] || CT.C2;
+      let flush = opts && 'flush' in opts ? opts.flush : false;
+      return this.delegate.writeAsStringSync(contents, {mode: mode, encoding: encoding, flush: flush});
+    }
+  };
+  (forwarding_file.ForwardingFile.new = function() {
+    ;
+  }).prototype = forwarding_file.ForwardingFile.prototype;
+  dart.addTypeTests(forwarding_file.ForwardingFile);
+  dart.addTypeCaches(forwarding_file.ForwardingFile);
+  forwarding_file.ForwardingFile[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(file.File, io.File), file.File];
+  dart.setMethodSignature(forwarding_file.ForwardingFile, () => ({
+    __proto__: dart.getMethods(forwarding_file.ForwardingFile.__proto__),
+    wrap: dart.fnType(forwarding_file.ForwardingFile, [dart.nullable(core.Object)]),
+    create: dart.fnType(async.Future$(file.File), [], {recursive: core.bool}, {}),
+    createSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
+    copy: dart.fnType(async.Future$(file.File), [core.String]),
+    copySync: dart.fnType(file.File, [core.String]),
+    length: dart.fnType(async.Future$(core.int), []),
+    lengthSync: dart.fnType(core.int, []),
+    lastAccessed: dart.fnType(async.Future$(core.DateTime), []),
+    lastAccessedSync: dart.fnType(core.DateTime, []),
+    setLastAccessed: dart.fnType(async.Future, [core.DateTime]),
+    setLastAccessedSync: dart.fnType(dart.void, [core.DateTime]),
+    lastModified: dart.fnType(async.Future$(core.DateTime), []),
+    lastModifiedSync: dart.fnType(core.DateTime, []),
+    setLastModified: dart.fnType(async.Future, [core.DateTime]),
+    setLastModifiedSync: dart.fnType(dart.void, [core.DateTime]),
+    open: dart.fnType(async.Future$(io.RandomAccessFile), [], {mode: io.FileMode}, {}),
+    openSync: dart.fnType(io.RandomAccessFile, [], {mode: io.FileMode}, {}),
+    openRead: dart.fnType(async.Stream$(core.List$(core.int)), [], [dart.nullable(core.int), dart.nullable(core.int)]),
+    openWrite: dart.fnType(io.IOSink, [], {encoding: convert.Encoding, mode: io.FileMode}, {}),
+    readAsBytes: dart.fnType(async.Future$(typed_data.Uint8List), []),
+    readAsBytesSync: dart.fnType(typed_data.Uint8List, []),
+    readAsString: dart.fnType(async.Future$(core.String), [], {encoding: convert.Encoding}, {}),
+    readAsStringSync: dart.fnType(core.String, [], {encoding: convert.Encoding}, {}),
+    readAsLines: dart.fnType(async.Future$(core.List$(core.String)), [], {encoding: convert.Encoding}, {}),
+    readAsLinesSync: dart.fnType(core.List$(core.String), [], {encoding: convert.Encoding}, {}),
+    writeAsBytes: dart.fnType(async.Future$(file.File), [core.List$(core.int)], {flush: core.bool, mode: io.FileMode}, {}),
+    writeAsBytesSync: dart.fnType(dart.void, [core.List$(core.int)], {flush: core.bool, mode: io.FileMode}, {}),
+    writeAsString: dart.fnType(async.Future$(file.File), [core.String], {encoding: convert.Encoding, flush: core.bool, mode: io.FileMode}, {}),
+    writeAsStringSync: dart.fnType(dart.void, [core.String], {encoding: convert.Encoding, flush: core.bool, mode: io.FileMode}, {})
+  }));
+  dart.setLibraryUri(forwarding_file.ForwardingFile, I[3]);
+  var _wrap = dart.privateName(forwarding_directory, "_wrap");
+  const _is_ForwardingDirectory_default = Symbol('_is_ForwardingDirectory_default');
+  forwarding_directory.ForwardingDirectory$ = dart.generic(T => {
+    class ForwardingDirectory extends core.Object {
+      wrap(delegate) {
+        io.Directory.as(delegate);
+        return T.as(this.wrapDirectory(delegate));
+      }
+      create(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return async.async(directory.Directory, (function* create() {
+          return this.wrap(yield this.delegate.create({recursive: recursive}));
+        }).bind(this));
+      }
+      createSync(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        return this.delegate.createSync({recursive: recursive});
+      }
+      createTemp(prefix = null) {
+        return async.async(directory.Directory, (function* createTemp() {
+          return this.wrap(yield this.delegate.createTemp(prefix));
+        }).bind(this));
+      }
+      createTempSync(prefix = null) {
+        return this.wrap(this.delegate.createTempSync(prefix));
+      }
+      list(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+        return this.delegate.list({recursive: recursive, followLinks: followLinks}).map(file_system_entity.FileSystemEntity, dart.bind(this, _wrap));
+      }
+      listSync(opts) {
+        let recursive = opts && 'recursive' in opts ? opts.recursive : false;
+        let followLinks = opts && 'followLinks' in opts ? opts.followLinks : true;
+        return this.delegate.listSync({recursive: recursive, followLinks: followLinks})[$map](file_system_entity.FileSystemEntity, dart.bind(this, _wrap))[$toList]();
+      }
+      [_wrap](entity) {
+        if (io.File.is(entity)) {
+          return this.wrapFile(entity);
+        } else if (io.Directory.is(entity)) {
+          return this.wrapDirectory(entity);
+        } else if (io.Link.is(entity)) {
+          return this.wrapLink(entity);
+        }
+        dart.throw(new io.FileSystemException.new("Unsupported type: " + dart.str(entity), entity.path));
+      }
+    }
+    (ForwardingDirectory.new = function() {
+      ;
+    }).prototype = ForwardingDirectory.prototype;
+    dart.addTypeTests(ForwardingDirectory);
+    ForwardingDirectory.prototype[_is_ForwardingDirectory_default] = true;
+    dart.addTypeCaches(ForwardingDirectory);
+    ForwardingDirectory[dart.implements] = () => [forwarding_file_system_entity.ForwardingFileSystemEntity$(T, io.Directory), directory.Directory];
+    dart.setMethodSignature(ForwardingDirectory, () => ({
+      __proto__: dart.getMethods(ForwardingDirectory.__proto__),
+      wrap: dart.fnType(T, [dart.nullable(core.Object)]),
+      create: dart.fnType(async.Future$(directory.Directory), [], {recursive: core.bool}, {}),
+      createSync: dart.fnType(dart.void, [], {recursive: core.bool}, {}),
+      createTemp: dart.fnType(async.Future$(directory.Directory), [], [dart.nullable(core.String)]),
+      createTempSync: dart.fnType(directory.Directory, [], [dart.nullable(core.String)]),
+      list: dart.fnType(async.Stream$(file_system_entity.FileSystemEntity), [], {followLinks: core.bool, recursive: core.bool}, {}),
+      listSync: dart.fnType(core.List$(file_system_entity.FileSystemEntity), [], {followLinks: core.bool, recursive: core.bool}, {}),
+      [_wrap]: dart.fnType(file_system_entity.FileSystemEntity, [io.FileSystemEntity])
+    }));
+    dart.setLibraryUri(ForwardingDirectory, I[4]);
+    return ForwardingDirectory;
+  });
+  forwarding_directory.ForwardingDirectory = forwarding_directory.ForwardingDirectory$();
+  dart.addTypeTests(forwarding_directory.ForwardingDirectory, _is_ForwardingDirectory_default);
+  dart.trackLibraries("packages/file/src/forwarding/forwarding_link.dart", {
+    "package:file/src/forwarding/forwarding_link.dart": forwarding_link,
+    "package:file/src/forwarding/forwarding_file_system_entity.dart": forwarding_file_system_entity,
+    "package:file/src/forwarding/forwarding_file_system.dart": forwarding_file_system,
+    "package:file/src/forwarding/forwarding_file.dart": forwarding_file,
+    "package:file/src/forwarding/forwarding_directory.dart": forwarding_directory,
+    "package:file/src/forwarding.dart": forwarding,
+    "package:file/file.dart": file$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["production.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA2ByB;;;;;;;AAKL,YAAe,oDAAf,kCAAK,oBAAc;IAAwB;;AAEvC,YAIjB,yCADA,wCADA,wCADA,wCADiB,kCAAK,qBAClB,kCAAK,0BACW,mDAChB,kCAAK,0BACL,kCAAK;IAAgB;;AAG1B,YAA2B,oCAA3B,kCAAK,gCAAyB,kCAAK;IAAsB;;AAE5B,YAG5B,yCADA,wCADA,mDACI,qDAAuB,0BAAqC,KACvC;IAAW;;AAER,YAG5B,yCADA,wCADA,kDACI,qDAAuB,yBAAqC,KACvC;IAAW;;AAElB,YAAyC,qEAAR,+CAArB,wCAAZ,kCAAK,iBAAW,kCAAK,sBAAiB;IAAS;;AAElD,YAKf,yCAHA,wCADA,qDAGI,4DADA,2DADA,WAC+B,qDACvB,8BACc;IAAW;;AAExB,YAKb,yCAHA,wCADA,0DAGI,4DADA,2DADA,WAC6B,qDACrB,4BACY;IAAW;;AAEpB,YAKf,qEADA,mCADA,mCADA,mCADA,mCADe,kCAAK,yBACjB,kCAAK,oBACL,kCAAK,uBACL,kCAAK,oBACL,kCAAK;IACF;;AAEa,YAInB,yCADA,wCADA,wCADA,sDACI,kCAAK,uBACL,kCAAK,0BACqB;IAAW;;AAE1B,YAYf,yCADA,wCARA,wCADA,wCADA,0DACI,kCAAK,kBAQL,qDADA,oEAJA,mCADA,mCADA,kCAAK,qBACF,kCAAK,2BAIJ,wCADA,wCADA,kDACU,2DAAN,WAA0C,oDACf,oDACvB,kCAAK,0BACT,8BACR,kCAAK,0BACiB;IAAW;;AAErB,YAMhB,yCADA,wCADA,wCADA,wCADA,wCADA,2DADgB,kCAAK,wBAEjB,kCAAK,iBACS,2DAAd,kCAAK,qBACL,kCAAK,iBACL,kCAAK,oBACL,kCAAK;IAAM;;AAES,YAGxB,gDADA,wCADA,oEADwB,kCAAK,oCAEW,kCAApC,eAAW,0BAA2B,kCAAK,qBAC1C;IAAE;;AAEwB,YAM/B,oCADA,mCADA,mCADA,mCADA,mCADA,mCAD+B,kCAAK,yBACjC,kCAAK,oBACL,kCAAK,oBACL,kCAAK,kBACL,kCAAK,wBACL,kCAAK,uBACL,kCAAK;IAAS;;AAEF,YAKf,yCADA,wCADA,wCADA,wCADA,kDACI,kCAAK,sBACL,kCAAK,uBACL,kCAAK,0BAC+B,mCAAX,mDAMzB,wCADA,wCADA,wCADA,wCADA,wCADA,kDACI,kCAAK,oBAC8B,iDAAX,qDACxB,kCAAK,sBACL,kCAAK,0BACiB;IAAa;;AAEzB,YASlB,yCANA,wCADA,wCADA,mDACI,kCAAK,sBAML,+DADA,+CAHA,wCADA,kCAAK,iBAGD,4DADA,2DADA,WACkC,oDAC1B,6CACP,IACQ,MACY;IAAW;;AAEvB,+CAAK;IAAU;;AAGjC,kEAAuB,yBAAqC;IAAE;;AAG9D,YAAuD,qEAArB,mCAAlB,mCAAhB,kCAAK,qBAAc,kCAAK,oBAAa,kCAAK;IAAmB;;AAE/C,YAAa,oEAAb;IAAmB;;AAEf,YAAY,yDAAZ,kCAAK,iBAAe;IAAsB;;AAEtC,YAAa,oEAAb;IAAmB;;AAGzC,YAA+C,sDAA3B,wCAApB,kCAAK,yBAAkC,oEAAf,kCAAK,sBAA0B;IAAgB;;AAEjD,6BAAQ;IAAgB;;AAE7B,6BAAQ;IAAW;;;IAnIX;AAA7B;;EAA2C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MApBvB,kDAAe;;;MAYf,6CAAU","file":"../../../../../../../../../packages/xml/src/xml/production.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["forwarding_link.dart","forwarding_file_system_entity.dart","forwarding_file_system.dart","forwarding_file.dart","forwarding_directory.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/file/src/forwarding/forwarding_link.dart.lib.js"}');
   // Exports:
   return {
-    src__xml__production: production
+    src__forwarding__forwarding_link: forwarding_link,
+    src__forwarding__forwarding_file_system_entity: forwarding_file_system_entity,
+    src__forwarding__forwarding_file_system: forwarding_file_system,
+    src__forwarding__forwarding_file: forwarding_file,
+    src__forwarding__forwarding_directory: forwarding_directory,
+    src__forwarding: forwarding,
+    file: file$
   };
 }));
 
-//# sourceMappingURL=production.dart.lib.js.map
+//# sourceMappingURL=forwarding_link.dart.lib.js.map

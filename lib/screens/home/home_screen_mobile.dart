@@ -9,13 +9,14 @@ class HomeScreenMobilePortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         brightness: Brightness.dark,
         toolbarHeight: 65.0,
         backgroundColor: Colors.black,
         centerTitle: true,
+        elevation: 0.0,
         // leading: Icon(
         //   Icons.menu,
         //   color: Colors.white,
